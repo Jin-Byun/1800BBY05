@@ -6,6 +6,7 @@
 
 ## General Info
 This browser based web application to ...
+* Hi this is Jin and time is 9/22/21 8:57 AM.
 	
 ## Technologies
 Technologies used for this project:
