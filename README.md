@@ -10,8 +10,7 @@ This browser based web application to ...
 <<<<<<< HEAD
 
 
-Basil: Hi my name is Basil I will be the designer for this project. I am excited to learn about iterative design and build things. 
-
+Basil: Hi my name is Basil I will be the designer for this project. 
 Test stuff
 	
 =======
