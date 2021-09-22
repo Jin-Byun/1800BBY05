@@ -7,12 +7,16 @@
 ## General Info
 This browser based web application to ...
 * Hi this is Jin and time is 9/22/21 8:57 AM.
+<<<<<<< HEAD
 
 
 Basil: Hi my name is Basil I will be the designer for this project. I am excited to learn about iterative design and build things. 
 
 Test stuff
 	
+=======
+* adding line of code from ryan	
+>>>>>>> 41fbd46 (some changes made in README.md by Jin)
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
@@ -48,7 +52,11 @@ Tips for file naming files and folders:
 * use lowercase with no spaces
 * use dashes (not underscore) for word separation
 
+<<<<<<< HEAD
 adding line of code from ryan 
 adding second line from ryan 
 THIRD LINE from ryan 
 4th line from ryan 
+=======
+ 
+>>>>>>> 41fbd46 (some changes made in README.md by Jin)
