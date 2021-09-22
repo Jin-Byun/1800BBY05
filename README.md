@@ -10,7 +10,12 @@ This browser based web application to ...
 <<<<<<< HEAD
 
 
+<<<<<<< HEAD
 Basil: Hi my name is Basil I will be the designer for this project. 
+=======
+Basil: Hi my name is Basil I will be the designer for this project. I am excited to learn about iterative design and build things with my teammates.....
+
+>>>>>>> 7e3e9a8 (5th line)
 Test stuff
 	
 =======
@@ -55,7 +60,12 @@ Tips for file naming files and folders:
 adding line of code from ryan 
 adding second line from ryan 
 THIRD LINE from ryan 
+<<<<<<< HEAD
 4th line from ryan 
 =======
  
 >>>>>>> 41fbd46 (some changes made in README.md by Jin)
+=======
+fourth line from ryan 
+5th line 
+>>>>>>> 7e3e9a8 (5th line)
