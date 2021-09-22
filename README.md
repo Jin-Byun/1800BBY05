@@ -68,4 +68,8 @@ THIRD LINE from ryan
 =======
 fourth line from ryan 
 5th line 
+<<<<<<< HEAD
 >>>>>>> 7e3e9a8 (5th line)
+=======
+6th line lol 
+>>>>>>> 224649b (6th line)
