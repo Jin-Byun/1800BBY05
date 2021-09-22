@@ -7,6 +7,9 @@
 ## General Info
 This browser based web application to ...
 * Hi this is Jin and time is 9/22/21 8:57 AM.
+
+
+Basil: Hi my name is Basil I will be the designer for this project. I am excited to learn about iterative design and build things with my teammates. 
 	
 ## Technologies
 Technologies used for this project:
