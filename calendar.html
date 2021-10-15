@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My BCIT Project</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!-- Bootstrap, firebase-auth-ui -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+    <!-- Optional styles and scripts of your own -->
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+    <link type="text/css" href="styles/my_style.css">
+
+</head>
+
+<body>
+
+    <!-------------------------------------->
+    <!-- The following is HTML for layout -->
+    <!-------------------------------------->
+    <!-- Header Navigation Bar -->
+    <!-- Header Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
+            <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-search" style="color: white;"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div style="float: right;">
+                            <input id="title" type="text">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- welcome and main part of the page -->
+    <br />
+    <div class="mx-2">
+        <div class="border-bottom border-dark bg mx-5">
+            <div class="row mx-auto">
+                <div class="col text-left py-1 px-4" style="font-size: 1.3rem; font-weight: bold;">October
+                    2021</div>
+            </div>
+            <div class="row bg-dark text-light mx-auto">
+                <div class="col border-end mx-0">Sun</div>
+                <div class="col border-end  mx-0">Mon</div>
+                <div class="col border-end mx-0">Tue</div>
+                <div class="col border-end mx-0">Wed</div>
+                <div class="col border-end mx-0">Thu</div>
+                <div class="col border-end mx-0">Fri</div>
+                <div class="col mx-0">Sat</div>
+            </div>
+            <div class="row border-top border-start border-end border-dark mx-auto">
+                <div class="col border-end border-dark bg-secondary text-light">26</div>
+                <div class="col border-end border-dark bg-secondary text-light">27</div>
+                <div class="col border-end border-dark bg-secondary text-light">28</div>
+                <div class="col border-end border-dark bg-secondary text-light">29</div>
+                <div class="col border-end border-dark bg-secondary text-light">30</div>
+                <div class="col border-end border-dark">1</div>
+                <div class="col ">2</div>
+            </div>
+            <div class="row border-top border-start border-end border-dark mx-auto">
+                <div class="col border-end border-dark">3</div>
+                <div class="col border-end border-dark bg-danger text-light">4 *</div>
+                <div class="col border-end border-dark">5</div>
+                <div class="col border-end border-dark">6</div>
+                <div class="col border-end border-dark">7</div>
+                <div class="col border-end border-dark">8</div>
+                <div class="col">9</div>
+            </div>
+            <div class="row border-top border-start border-end border-dark mx-auto">
+                <div class="col border-end border-dark">10</div>
+                <div class="col border-end border-dark">11</div>
+                <div class="col border-end border-dark">12</div>
+                <div class="col border-end border-dark">13</div>
+                <div class="col border-end border-dark">14</div>
+                <div class="col border-end border-dark bg-warning text-primary">15</div>
+                <div class="col">16</div>
+            </div>
+            <div class="row border-top border-start border-end border-dark mx-auto">
+                <div class="col border-end border-dark">17</div>
+                <div class="col border-end border-dark">18</div>
+                <div class="col border-end border-dark">19</div>
+                <div class="col border-end border-dark">20</div>
+                <div class="col border-end border-dark">21</div>
+                <div class="col border-end border-dark">22</div>
+                <div class="col">23</div>
+            </div>
+            <div class="row border-top border-start border-end border-dark mx-auto">
+                <div class="col border-end border-dark">24</div>
+                <div class="col border-end border-dark">25</div>
+                <div class="col border-end border-dark">26</div>
+                <div class="col border-end border-dark">27</div>
+                <div class="col border-end border-dark">28</div>
+                <div class="col border-end border-dark">29</div>
+                <div class="col">30</div>
+            </div>
+            <div class="row border-top border-start border-end border-dark mx-auto">
+                <div class="col border-end border-dark">31</div>
+                <div class="col border-end border-dark bg-secondary text-light">1</div>
+                <div class="col border-end border-dark bg-secondary text-light">2</div>
+                <div class="col border-end border-dark bg-secondary text-light">3</div>
+                <div class="col border-end border-dark bg-secondary text-light">4</div>
+                <div class="col border-end border-dark bg-secondary text-light">5</div>
+                <div class="col bg-secondary text-light">6</div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="row mx-5">
+        <div class="col">
+            <h1>Today's TO DO</h1>
+        </div>
+    </div>
+    <div class="row mx-5">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-7">
+            <ul>
+                <li>Eat lunch</li>
+                <li>Walk the Dog</li>
+                <li>Finish Assignment(due tmrw)</li>
+            </ul>
+        </div>
+        <div class="col-sm-4 py-2"><input type="radio" class="btn-check a" name="btnradio" id="btnradio1"
+                autocomplete="off" checked>
+            <label class="btn btn-outline-secondary align-items-center" for="btnradio1">All Done</label></div>
+    </div>
+    <br />
+    <div class="row mx-5">
+        <div class="col">
+            <h3>Quote of the day</h3>
+        </div>
+    </div>
+
+    <div class="row mx-5">
+        <div class="col">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </div>
+    </div>
+
+    <div style="height: 80px"></div>
+
+
+
+    <div class="fixed-bottom py-3 bg-secondary align-items-center">
+        <div class="container text-center py-0">
+            <footer class="navbar bg-secondary fixed-bottom py-0">
+                <a href="frontpage.html" class="bi bi-arrow-left-circle mx-3 "
+                    style="font-size:  2em; color: white"></a>
+                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
+                <i class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></i>
+                <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
+                <i class="bi bi-person mx-3" style="font-size: 2em; color: white"></i>
+
+            </footer>
+        </div>
+    </div>
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
+    <!----------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+    <!-- Link to the api keys for your firebase project -->
+    <script src="scripts/firebase_api_elmo.js"></script>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+
+</body>
+
+</html>
