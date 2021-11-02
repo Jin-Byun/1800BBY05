@@ -14,17 +14,17 @@
     <!-- Bootstrap FirebaseUI CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    
-     <!-- Firebase 8 CDNs-->
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-     </script>
-     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-     
-    
+
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+
     <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
 
@@ -33,6 +33,54 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
     <link type="text/css" href="styles/my_style.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        #app-calendar {
+            border: solid black 2px;
+            height: 45vh;
+            width: 80vw;
+            margin: 0 10%;
+            display: grid;
+            text-align: center;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: 8.8% repeat(5, 1fr);
+        }
+
+        .xtrablock {
+            background-color: gray;
+            color: white;
+        }
+
+        .block {
+            background-color: whitesmoke;
+            border: black solid 1px;
+        }
+
+        .weekend {
+            color: red;
+        }
+
+        .date {
+            background-color: ivory;
+            margin: auto 0;
+            border: black solid 1px;
+            font-weight: bold;
+        }
+
+        .today {
+            background-color: khaki;
+            color: darkblue;
+            font-weight: bold;
+            border: solid blue 1px;
+        }
+        .selected {
+            background-color: brown;
+        }
+    </style>
 
 </head>
 
@@ -65,77 +113,10 @@
 
     <!-- welcome and main part of the page -->
     <br />
-    <div class="mx-2">
-        <div class="border-bottom border-dark bg mx-5">
-            <div class="row mx-auto">
-                <div class="col text-left py-1 px-4" style="font-size: 1.3rem; font-weight: bold;">October
-                    2021</div>
-            </div>
-            <div class="row bg-dark text-light mx-auto">
-                <div class="col border-end mx-0">Sun</div>
-                <div class="col border-end  mx-0">Mon</div>
-                <div class="col border-end mx-0">Tue</div>
-                <div class="col border-end mx-0">Wed</div>
-                <div class="col border-end mx-0">Thu</div>
-                <div class="col border-end mx-0">Fri</div>
-                <div class="col mx-0">Sat</div>
-            </div>
-            <div class="row border-top border-start border-end border-dark mx-auto">
-                <div class="col border-end border-dark bg-secondary text-light">26</div>
-                <div class="col border-end border-dark bg-secondary text-light">27</div>
-                <div class="col border-end border-dark bg-secondary text-light">28</div>
-                <div class="col border-end border-dark bg-secondary text-light">29</div>
-                <div class="col border-end border-dark bg-secondary text-light">30</div>
-                <div class="col border-end border-dark">1</div>
-                <div class="col ">2</div>
-            </div>
-            <div class="row border-top border-start border-end border-dark mx-auto">
-                <div class="col border-end border-dark">3</div>
-                <div class="col border-end border-dark bg-danger text-light">4 *</div>
-                <div class="col border-end border-dark">5</div>
-                <div class="col border-end border-dark">6</div>
-                <div class="col border-end border-dark">7</div>
-                <div class="col border-end border-dark">8</div>
-                <div class="col">9</div>
-            </div>
-            <div class="row border-top border-start border-end border-dark mx-auto">
-                <div class="col border-end border-dark">10</div>
-                <div class="col border-end border-dark">11</div>
-                <div class="col border-end border-dark">12</div>
-                <div class="col border-end border-dark">13</div>
-                <div class="col border-end border-dark">14</div>
-                <div class="col border-end border-dark bg-warning text-primary">15</div>
-                <div class="col">16</div>
-            </div>
-            <div class="row border-top border-start border-end border-dark mx-auto">
-                <div class="col border-end border-dark">17</div>
-                <div class="col border-end border-dark">18</div>
-                <div class="col border-end border-dark">19</div>
-                <div class="col border-end border-dark">20</div>
-                <div class="col border-end border-dark">21</div>
-                <div class="col border-end border-dark">22</div>
-                <div class="col">23</div>
-            </div>
-            <div class="row border-top border-start border-end border-dark mx-auto">
-                <div class="col border-end border-dark">24</div>
-                <div class="col border-end border-dark">25</div>
-                <div class="col border-end border-dark">26</div>
-                <div class="col border-end border-dark">27</div>
-                <div class="col border-end border-dark">28</div>
-                <div class="col border-end border-dark">29</div>
-                <div class="col">30</div>
-            </div>
-            <div class="row border-top border-start border-end border-dark mx-auto">
-                <div class="col border-end border-dark">31</div>
-                <div class="col border-end border-dark bg-secondary text-light">1</div>
-                <div class="col border-end border-dark bg-secondary text-light">2</div>
-                <div class="col border-end border-dark bg-secondary text-light">3</div>
-                <div class="col border-end border-dark bg-secondary text-light">4</div>
-                <div class="col border-end border-dark bg-secondary text-light">5</div>
-                <div class="col bg-secondary text-light">6</div>
-            </div>
-        </div>
-    </div>
+    <div id="date" class="col" style="font-size: 4vw; font-weight: bold; margin-left: 10%; margin-bottom: 2%;"></div>
+    
+    <div id="app-calendar"></div>
+
     <br />
     <div class="row mx-5">
         <div class="col">
@@ -203,6 +184,79 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script>
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+            "October", "November", "December"
+        ]
+        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+
+        const fulldays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        
+        const monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+        let today = new Date(Date.now());
+        let month = today.getMonth();
+        let date = today.getDate();
+        let year = today.getFullYear();
+        let day = today.getDay();
+        let firstday = new Date(year, month, 1);
+        let lastday = new Date(year, month + 1, 0);
+
+        const nth = function(d) {
+  if (d > 3 && d < 21) return 'th';
+  switch (d % 10) {
+    case 1:  return "st";
+    case 2:  return "nd";
+    case 3:  return "rd";
+    default: return "th";
+  }
+}
+
+        document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " + fulldays[day];
+
+        const isWeekend = block => {
+            return block % 7 === ((1 + (7 - firstday.getDay())) % 7) || block % 7 === (7 - firstday.getDay());
+        }
+
+        const istoday = block => {
+            return block === date;
+        }
+
+        const calendar = document.querySelector("#app-calendar");
+
+        for (let i = 0; i < 7; i++) {
+            calendar.insertAdjacentHTML("beforeend",
+                `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
+        }
+
+        for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
+            calendar.insertAdjacentHTML("beforeend",
+                `<div class="xtrablock">${monthdays[month - 1] + (xtrablock - firstday.getDay())}</div>`);
+        }
+
+        for (let block = 1; block <= monthdays[month]; block++) {
+
+            const weekend = isWeekend(block)
+            const now = istoday(block)
+
+            console.log(block)
+            calendar.insertAdjacentHTML("beforeend",
+                `<div class="block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div>`);
+        }
+
+        for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
+            calendar.insertAdjacentHTML("beforeend", `<div class="xtrablock">${xtrablock - lastday.getDay()}</div>`);
+        }
+
+        document.querySelectorAll("#app-calendar .block").forEach(block => {
+            block.addEventListener("click", e => {
+                e.currentTarget.classList.toggle("selected");
+            })
+        })
+
+
+        console.log(months[month], date, firstday, lastday, year, day, days[day]);
+    </script>
 
 </body>
 
