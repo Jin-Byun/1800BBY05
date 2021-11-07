@@ -7,7 +7,6 @@
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="profile_style.css" rel="stylesheet">
 
     <!-- Bootstrap, firebase-auth-ui -->
     <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" /> -->
@@ -342,7 +341,12 @@ a.text-lightred:hover {
     
                 <div class="col-lg-8 col-md-7">
                     <div class="team-single-text padding-50px-left sm-no-padding-left">
-                        <h4 class="font-size38 sm-font-size32 xs-font-size30">Eduard Heili</h4>
+                        <form id="add-user-form"><h4 class="font-size38 sm-font-size32 xs-font-size30">Eduard H</h4>
+                            <input type="text" name="name" placeholder="User name">
+                            <input type="age"  name="age" placeholder="User age">
+                            <button id="add-user">Add User</button>
+                        </form>
+                        <br>
                         <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>
                         <div class="contact-info-section margin-40px-tb">
                             <ul class="list-style9 no-margin">
@@ -510,6 +514,69 @@ a.text-lightred:hover {
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+
+
+<script>
+
+    const userList = document.querySelector('#user-name');
+    const form = document.querySelector('#add-user-form');
+
+    function renderUser(doc) {
+        let li = document.createElement('li');
+        let name = document.createElement('span');
+        let age = document.createElement('span');
+        let cross = document.createElement('div');
+
+        li.setAttribute('user-id', doc.id);
+        name.textContent = doc.data().name;
+        age.textContent = doc.data().age;
+        cross.textContent = 'x';
+
+        li.appendChild(name);
+        li.appendChild(age);
+        li.appendChild(cross);
+
+        userList.appendChild(li);
+
+        // delete user from firestore (has to stay inside this function)
+        cross.addEventListener('click', (e) => {
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute('user-id');
+        db.collection('users').doc(id).delete();
+    })
+
+    }    
+
+    // db.collection('users').get().then((snapshot) => {
+    //     snapshot.docs.forEach(doc => {
+    //         renderUser(doc);
+    //     })
+    // })
+
+    // get data from firestore  // can add .where() or .orderBy() after ('users') for additional search algorithms
+    // where has 3 parameters: ('users', '==', 'Bob') .orderBy('name') sorts alphabetically
+    db.collection('users').get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        console.log(doc.data());
+            renderUser(doc);
+        })
+    });
+
+    // save data to firestore
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('users').add({
+            name: form.name.value,
+            age: form.age.value
+        })
+        form.name.value = '';
+        form.age.value = '';
+    })
+
+
+</script>
+
+
 
   
 
