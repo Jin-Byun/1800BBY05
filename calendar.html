@@ -45,9 +45,10 @@
             width: 80vw;
             margin: 0 10%;
             display: grid;
+            overflow: hidden;
             text-align: center;
             grid-template-columns: repeat(7, 1fr);
-            grid-template-rows: 8.8% repeat(5, 1fr);
+            grid-template-rows: 8.8% repeat(6, 1fr);
         }
 
         .xtrablock {
@@ -77,6 +78,7 @@
             font-weight: bold;
             border: solid blue 1px;
         }
+
         .selected {
             background-color: brown;
         }
@@ -114,7 +116,7 @@
     <!-- welcome and main part of the page -->
     <br />
     <div id="date" class="col" style="font-size: 4vw; font-weight: bold; margin-left: 10%; margin-bottom: 2%;"></div>
-    
+
     <div id="app-calendar"></div>
 
     <br />
@@ -155,16 +157,17 @@
 
     <div class="fixed-bottom py-3 bg-secondary align-items-center">
         <div class="container text-center py-0">
-          <footer class="navbar bg-secondary fixed-bottom py-0">
-            <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
-            <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
-            <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
-            <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
-            <a href="profile_user2.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
-    
-          </footer>
+            <footer class="navbar bg-secondary fixed-bottom py-0">
+                <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 "
+                    style="font-size:  2em; color: white"></a>
+                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
+                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
+                <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
+                <a href="profile_user2.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
+
+            </footer>
         </div>
-      </div>
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
@@ -190,7 +193,7 @@
         const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
         const fulldays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        
+
         const monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
         let today = new Date(Date.now());
@@ -201,17 +204,34 @@
         let firstday = new Date(year, month, 1);
         let lastday = new Date(year, month + 1, 0);
 
-        const nth = function(d) {
-  if (d > 3 && d < 21) return 'th';
-  switch (d % 10) {
-    case 1:  return "st";
-    case 2:  return "nd";
-    case 3:  return "rd";
-    default: return "th";
-  }
-}
+        const nth = function (d) {
+            if (d > 3 && d < 21) return 'th';
+            switch (d % 10) {
+                case 1:
+                    return "st";
+                case 2:
+                    return "nd";
+                case 3:
+                    return "rd";
+                default:
+                    return "th";
+            }
+        }
 
-        document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " + fulldays[day];
+        for (let i = 1; i <= monthdays[month]; i++) {
+            var docData = {
+                weekday: ((firstday.getDay() + i - 1) % 7),
+                activity: false,
+                user: 
+            };
+            db.collection("dates").doc(year.toString())
+            .collection(months[month]).doc(i.toString()).set(docData).then(() => {
+                console.log("Document successfully written!");
+            });
+        }
+
+        document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
+            fulldays[day];
 
         const isWeekend = block => {
             return block % 7 === ((1 + (7 - firstday.getDay())) % 7) || block % 7 === (7 - firstday.getDay());
@@ -240,11 +260,19 @@
 
             console.log(block)
             calendar.insertAdjacentHTML("beforeend",
-                `<div class="block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div>`);
+                `<div id="${year}_${months[month]}_${block}" class="${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div>`
+            );
         }
-
-        for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
-            calendar.insertAdjacentHTML("beforeend", `<div class="xtrablock">${xtrablock - lastday.getDay()}</div>`);
+        if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
+            for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
+                calendar.insertAdjacentHTML("beforeend",
+                    `<div class="xtrablock">${xtrablock - lastday.getDay()}</div>`);
+            }
+        } else {
+            for (let xtrablock = lastday.getDay() + 1; xtrablock < 14; xtrablock++) {
+                calendar.insertAdjacentHTML("beforeend",
+                    `<div class="xtrablock">${xtrablock - lastday.getDay()}</div>`);
+            }
         }
 
         document.querySelectorAll("#app-calendar .block").forEach(block => {
@@ -253,8 +281,7 @@
             })
         })
 
-
-        console.log(months[month], date, firstday, lastday, year, day, days[day]);
+        console.log(months[month], date, firstday.getDay(), lastday, year, day, days[day]);
     </script>
 
 </body>
