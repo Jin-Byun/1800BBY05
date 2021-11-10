@@ -213,22 +213,22 @@
                     return "nd";
                 case 3:
                     return "rd";
-                default:
+                default:    
                     return "th";
             }
         }
 
-        for (let i = 1; i <= monthdays[month]; i++) {
-            var docData = {
-                weekday: ((firstday.getDay() + i - 1) % 7),
-                activity: false,
-                user: 
-            };
-            db.collection("dates").doc(year.toString())
-            .collection(months[month]).doc(i.toString()).set(docData).then(() => {
-                console.log("Document successfully written!");
-            });
-        }
+        // for (let i = 1; i <= monthdays[month]; i++) {
+        //     var docData = {
+        //         weekday: ((firstday.getDay() + i - 1) % 7),
+        //         activity: false,
+        //         user: 
+        //     };
+        //     db.collection("dates").doc(year.toString())
+        //     .collection(months[month]).doc(i.toString()).set(docData).then(() => {
+        //         console.log("Document successfully written!");
+        //     });
+        // }
 
         document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
             fulldays[day];
