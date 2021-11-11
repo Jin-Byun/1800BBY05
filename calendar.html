@@ -48,7 +48,13 @@
             overflow: hidden;
             text-align: center;
             grid-template-columns: repeat(7, 1fr);
-            grid-template-rows: 8.8% repeat(6, 1fr);
+            grid-template-rows: 7.8% repeat(6, 1fr);
+        }
+
+        .block {
+            background-color: whitesmoke;
+            border: black solid 1px;
+            font-size: 1.8vw;
         }
 
         .xtrablock {
@@ -56,20 +62,20 @@
             color: white;
         }
 
-        .block {
-            background-color: whitesmoke;
-            border: black solid 1px;
-        }
-
         .weekend {
             color: red;
         }
 
         .date {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background-color: ivory;
             margin: auto 0;
+            line-height: 100%;
             border: black solid 1px;
-            font-weight: bold;
+            font-size: 2.2vw;
+            height: 100%;
         }
 
         .today {
@@ -169,27 +175,14 @@
         </div>
     </div>
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
-    <!----------------------------------------------->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
-    <!-- Link to the api keys for your firebase project -->
-    <!-- <script src="scripts/firebase_api_elmo.js"></script> -->
-
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
         var userID
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-            "October", "November", "December"]
+            "October", "November", "December"
+        ]
         const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
         const fulldays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         const monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -211,90 +204,94 @@
                     return "nd";
                 case 3:
                     return "rd";
-                default:    
+                default:
                     return "th";
             }
         }
         // adding dates into db collection.
         for (let i = 1; i <= monthdays[month]; i++) {
             firebase.auth().onAuthStateChanged(user => {
-                    if (user) {
-                        console.log(user.uid);
-                        var currentUser = db.collection("users").doc(user.uid)
-                        userID = user.uid;
-                        //get the document for current user.
-                        currentUser.get()
-                            .then(userDoc => {
-                                //get user name
-                                userName = userDoc.data().name;
-                                // Start a new collection and add all data in it.
-                                let docData = {
-                                    weekday: ((firstday.getDay() + i - 1) % 7),
-                                    activity: [],
-                                    name: userName
-                                };
-                                db.collection("dates").doc(userID)
-                                .collection(months[month]+"_"+year)
+                if (user) {
+                    console.log(user.uid);
+                    var currentUser = db.collection("users").doc(user.uid)
+                    userID = user.uid;
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            //get user name
+                            userName = userDoc.data().name;
+                            // Start a new collection and add all data in it.
+                            let docData = {
+                                weekday: ((firstday.getDay() + i - 1) % 7),
+                                activity: [],
+                                name: userName
+                            };
+                            db.collection("dates").doc(userID)
+                                .collection(months[month] + "_" + year)
                                 .doc(i.toString()).set(docData).then(() => {
-                                        console.log("Document successfully written!");
-                                    });
-                            })
-                    } else {}
-                })}
-            console.log(userID);
-
-            document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
-                fulldays[day];
-
-            const isWeekend = block => {
-                return block % 7 === ((1 + (7 - firstday.getDay())) % 7) || block % 7 === (7 - firstday.getDay());
-            }
-
-            const istoday = block => {
-                return block === date;
-            }
-
-            const calendar = document.querySelector("#app-calendar");
-
-            for (let i = 0; i < 7; i++) {
-                calendar.insertAdjacentHTML("beforeend",
-                    `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
-            }
-
-            for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
-                calendar.insertAdjacentHTML("beforeend",
-                    `<div class="xtrablock">${monthdays[month - 1] + (xtrablock - firstday.getDay())}</div>`);
-            }
-
-            for (let block = 1; block <= monthdays[month]; block++) {
-
-                const weekend = isWeekend(block)
-                const now = istoday(block)
-
-                console.log(block)
-                calendar.insertAdjacentHTML("beforeend",
-                    `<div id="${year}_${months[month]}_${block}" class="${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div>`
-                );
-            }
-            if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
-                for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
-                    calendar.insertAdjacentHTML("beforeend",
-                        `<div class="xtrablock">${xtrablock - lastday.getDay()}</div>`);
-                }
-            } else {
-                for (let xtrablock = lastday.getDay() + 1; xtrablock < 14; xtrablock++) {
-                    calendar.insertAdjacentHTML("beforeend",
-                        `<div class="xtrablock">${xtrablock - lastday.getDay()}</div>`);
-                }
-            }
-
-            document.querySelectorAll("#app-calendar .block").forEach(block => {
-                block.addEventListener("click", e => {
-                    e.currentTarget.classList.toggle("selected");
-                })
+                                    console.log("Document successfully written!");
+                                });
+                        })
+                } else {}
             })
+        }
 
-            console.log(months[month], date, firstday.getDay(), lastday, year, day, days[day]);
+        document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
+            fulldays[day];
+
+        const isWeekend = block => {
+            return block % 7 === ((1 + (7 - firstday.getDay())) % 7) || block % 7 === (7 - firstday.getDay());
+        }
+
+        const istoday = block => {
+            return block === date;
+        }
+        // --------------------------------------
+        // Making calendar
+        // --------------------------------------
+        const calendar = document.querySelector("#app-calendar");
+
+        for (let i = 0; i < 7; i++) {
+            calendar.insertAdjacentHTML("beforeend",
+                `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
+        }
+
+        for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
+            calendar.insertAdjacentHTML("beforeend",
+                `<div class="xtrablock block">${monthdays[month - 1] + (xtrablock - firstday.getDay())}</div>`);
+        }
+
+        for (let block = 1; block <= monthdays[month]; block++) {
+
+            const weekend = isWeekend(block)
+            const now = istoday(block)
+
+            console.log(block)
+            calendar.insertAdjacentHTML("beforeend",
+                `<div id="${year}_${months[month]}_${block}" class="${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div>`
+            );
+        }
+        if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
+            for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
+                calendar.insertAdjacentHTML("beforeend",
+                    `<div class="xtrablock block">${xtrablock - lastday.getDay()}</div>`);
+            }
+        } else {
+            for (let xtrablock = lastday.getDay() + 1; xtrablock < 14; xtrablock++) {
+                calendar.insertAdjacentHTML("beforeend",
+                    `<div class="xtrablock block">${xtrablock - lastday.getDay()}</div>`);
+            }
+        }
+        // --------------------------------------
+        // set calendar toggle action
+        // --------------------------------------
+        document.querySelectorAll("#app-calendar .block").forEach(block => {
+            block.addEventListener("click", e => {
+                e.currentTarget.classList.toggle("selected");
+            })
+        })
+
+        console.log(months[month], date, firstday.getDay(), lastday, year, day, days[day]);
     </script>
 
 </body>
