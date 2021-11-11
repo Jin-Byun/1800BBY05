@@ -1,140 +1,220 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hej!</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project" />
+    <meta name="author" content="BCIT" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-  <meta charset="utf-8">
-  <title>Hej!</title>
-  <meta name="comp1800 boilerplate code" content="my bcit project">
-  <meta name="author" content="BCIT">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap, firebase-auth-ui -->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
 
-  <!-- Bootstrap, firebase-auth-ui -->
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- Bootstrap FirebaseUI CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap FirebaseUI CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
-<!-- Firebase 8 CDNs-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-</script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Link to the api keys for your firebase project -->
+    <script src="scripts/firebaseAPI.js"></script>
 
+    <!-- Optional styles and scripts of your own -->
+    <!-- Google Icons (Material Design)-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+    />
+    <link type="text/css" href="styles/my_style.css" />
+  </head>
 
-<!-- Link to the api keys for your firebase project -->
-<script src="scripts/firebaseAPI.js"></script>
+  <body>
+    <!-------------------------------------->
+    <!-- The following is HTML for layout -->
+    <!-------------------------------------->
+    <!-- Header Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#" style="color: white">HEJ!</a>
+        <a
+          href="frontpage.html"
+          type="button"
+          class="btn btn-outline-dark"
+          style="color: white"
+          >Home</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bi bi-search" style="color: white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <div style="float: right">
+                <input id="title" type="text" />
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
-  <!-- Optional styles and scripts of your own -->
-  <!-- Google Icons (Material Design)-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-  <link type="text/css" href="styles/my_style.css">
+    <!-- The following is the input form for creating a new reminder -->
 
+    <form class="form position-absolute start-50 top-50 translate-middle">
+      <fieldset id="set-reminder">
+        <div class="form-group" style="height: 100px; width: 450px">
+          <label for="reminder" style="font-size: xx-large"
+            >What is the the reminder for ?</label
+          >
+          <hr />
+          <input
+            type="text"
+            class="form-control"
+            id="reminder"
+            aria-describedby="reminder"
+            placeholder="Enter reminder"
+            style="width: 450px"
+          />
+        </div>
 
-</head>
+        <br/>
 
-<body>
+        <div class="form-group" style="height: 150px; width: 450px">
+          <label for="time" style="font-size: xx-large"
+            >When should we remind you ?</label
+          >
+          <hr />
+          <input
+            type="time"
+            class="form-control"
+            id="time"
+            aria-describedby="time"
+            placeholder="Enter reminder"
+            style="width: 450px"
+          />
+        </div>
 
-  <!-------------------------------------->
-  <!-- The following is HTML for layout -->
-  <!-------------------------------------->
-  <!-- Header Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
-      <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="bi bi-search" style="color: white;"></i>
+    
+
+        <div class="form-group" style="height: 150px; width: 450px">
+          <label for="frequency" style="font-size: xx-large"
+            >How frequently ?</label
+          >
+          <hr />
+
+          <label class="btn btn-outline-primary">
+            <input
+              type="radio"
+              name="options"
+              id="option1"
+              autocomplete="off"
+              value="daily"
+              checked
+            />
+            Daily
+          </label>
+
+          <label class="btn btn-outline-primary">
+            <input
+              type="radio"
+              name="options"
+              id="option2"
+              autocomplete="off"
+              value="weekly"
+            />
+            Weekly
+          </label>
+
+          <label class="btn btn-outline-primary">
+            <input
+              type="radio"
+              name="options"
+              id="option3"
+              value="Bi-Weekly"
+              autocomplete="off"
+            />
+            Bi-Weekly
+          </label>
+        </div>
+      </fieldset>
+      <button
+        type="button"
+        class="btn btn-primary"
+        onclick="saveReminderInfo()"
+        
+      >
+        Submit
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <div style="float: right;">
-              <input id="title" type="text">
-            </div>
-          </li>
-        </ul>
+    </form>
+<br/>
+    <!-- The following is the fixed bottom nav bar -->
+
+    <div class="fixed-bottom py-3 bg-secondary align-items-center">
+      <div class="container text-center py-0">
+        <footer class="navbar bg-secondary fixed-bottom py-0">
+          <a
+            href="frontpage.html"
+            i
+            class="bi bi-arrow-left-circle mx-3"
+            style="font-size: 2em; color: white"
+          ></a>
+          <a
+            href="calendar.html"
+            class="bi bi-calendar-date"
+            style="font-size: 2em; color: white"
+          ></a>
+          <a
+            href="create_schedule.html"
+            class="bi bi-plus-circle mx-3"
+            style="font-size: 3em; color: white"
+          ></a>
+          <i class="bi bi-trophy" style="font-size: 2em; color: white"></i>
+          <a
+            href="profile_user2.html"
+            i
+            class="bi bi-person mx-3"
+            style="font-size: 2em; color: white"
+          ></a>
+        </footer>
       </div>
     </div>
-  </nav>
 
-
-<!-- The following is the input form for creating a new reminder -->
-
-<form class="form position-absolute start-50 top-50 translate-middle">
-
-
-  <div class="form-group" style="height: 100px; width: 450px;">
-    <label for="reminder" style="font-size:xx-large;">What is the the reminder for ?</label>
-    <hr/>
-    <input type="text" class="form-control" id="input-reminder" aria-describedby="reminder" placeholder="Enter reminder" style="height: 50px; width: 450px;">
-  </div>
- 
-  <br>
-
-  <div class="form-group" style="height: 150px; width: 450px;">
-    <label for="time" style="font-size:xx-large;">When should we remind you ?</label>
-    <hr/>
-    <input type="time" class="form-control" id="input-time" aria-describedby="time" placeholder="Enter reminder" style="height: 50px; width: 450px;">
-  </div>
-
-  <br>
-
-  <div class="form-group" style="height: 150px; width: 450px;">
-    <label for="frequency" style="font-size:xx-large;">How frequently ?</label>
-    <hr/>
-    
-    <label class="btn btn-outline-primary" >
-      <input type="radio" name="options" id="option1" autocomplete="off" checked> Daily
-    </label>
-
-    <label class="btn btn-outline-primary">
-      <input type="radio" name="options" id="option2" autocomplete="off"> Weekly
-    </label>
-    
-    <label class="btn btn-outline-primary">
-      <input type="radio" name="options" id="option3" autocomplete="off"> Bi-Weekly
-    </label>
-
-
-  </div>
-
-  
-
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-
-
-
-</form>
-
-
- 
-
-<!-- The following is the fixed bottom nav bar -->
-
-<div class="fixed-bottom py-3 bg-secondary align-items-center">
-  <div class="container text-center py-0">
-    <footer class="navbar bg-secondary fixed-bottom py-0">
-      <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
-      <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
-      <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
-      <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
-      <a href="profile_user2.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
-
-    </footer>
-  </div>
-</div>
-
-  <!----------------------------------------------->
-  <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
-  <!----------------------------------------------->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
+    <!----------------------------------------------->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
   </script>
@@ -142,13 +222,67 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
-  <!-- Link to the api keys for your firebase project -->
-  <!-- <script src="scripts/firebase_api_elmo.js"></script> -->
+    <!-- Link to the api keys for your firebase project -->
+    <!-- <script src="scripts/firebase_api_elmo.js"></script> -->
 
-  <!--------------------------------------------------------------------->
-  <!-- JS files: Your own JavaScript functions included here    -->
-  <!--------------------------------------------------------------------->
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+    <script>
+      
+      var currentUser;
 
-</body>
+      function redirect() {
 
+      }
+
+
+
+
+
+
+      // Function that saves Reminder info and sends data to firebase
+      //-------------------------------------------------------------\\
+      function saveReminderInfo() {
+        
+        let Name = document.getElementById("reminder").value;
+        let Time = document.getElementById("time").value;
+       
+        let Frequency = document.querySelector(
+          'input[name="options"]:checked'
+        ).value;
+        // console.log(Name + " " + Time + " " + Frequency);
+        // alert(Name + " " + Time + " " + Frequency);
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            var currentUser = db.collection("users").doc(user.uid);
+            var userID = user.uid;
+            console.log(user.uid);
+            //get the document for current user.
+            currentUser.get().then((userDoc) => {
+              //get user Email
+              var userEmail = userDoc.data().email;
+              // alert(userEmail);
+              // console.log(userDoc.data());
+              // Start a new collection and add all data in it.
+              db.collection("Reminders").add({
+                UserID: userID,
+                email: userEmail,
+                Name: Name,
+                Time: Time,
+                Frequency: Frequency,
+              });
+            });
+          } else {
+            // No user is signed in.
+            console.log("no user signed in");
+          }
+        });
+
+        document.getElementById("set-reminder").disabled = true;
+      }
+  //  \\------------------------------------------------------//  \\
+
+    </script>
+  </body>
 </html>
