@@ -1,1 +1,37 @@
+@font-face {
+    font-family: logo;
+    src: url(fonts\Righteous-Regular.ttf)
+}
 
+@font-face {
+    font-family: heading;
+    src: url(fonts\Oxygen-Regular.ttf)
+}
+
+@font-face {
+    font-family: body;
+    src: url(fonts\Sanchez-Regular.ttf);
+}
+
+#logo {
+    font-family: logo;
+}
+label, th, td {
+    font-family: heading;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: heading;
+}
+
+li {
+    font-family: body;
+}
+
+#date, #app-calendar {
+    font-family: heading;
+}
+
+p {
+    font-family: body;
+}
