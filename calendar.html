@@ -41,25 +41,27 @@
 
         #app-calendar {
             border: solid black 2px;
-            height: 45vh;
+            height: 35vh;
             width: 80vw;
             margin: 0 10%;
             display: grid;
             overflow: hidden;
             text-align: center;
             grid-template-columns: repeat(7, 1fr);
-            grid-template-rows: 7.8% repeat(6, 1fr);
+            grid-template-rows: 9% repeat(6, 1fr);
         }
 
         .block {
             background-color: whitesmoke;
             border: black solid 1px;
-            font-size: 1.8vw;
+            font-size: 12pt;
+            height: 100%;
         }
 
         .xtrablock {
-            background-color: gray;
+            background-color: gray!important;
             color: white;
+            height: 100%;
         }
 
         .weekend {
@@ -74,7 +76,7 @@
             margin: auto 0;
             line-height: 100%;
             border: black solid 1px;
-            font-size: 2.2vw;
+            font-size: 10pt;
             height: 100%;
         }
 
@@ -87,6 +89,12 @@
 
         .selected {
             background-color: brown;
+        }
+        
+        .day {
+            display: block;
+            height: 100%;
+            text-decoration: none;
         }
     </style>
 
@@ -212,7 +220,6 @@
         for (let i = 1; i <= monthdays[month]; i++) {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
-                    console.log(user.uid);
                     var currentUser = db.collection("users").doc(user.uid)
                     userID = user.uid;
                     //get the document for current user.
@@ -246,52 +253,70 @@
         const istoday = block => {
             return block === date;
         }
+
+        firebase.auth().onAuthStateChanged(user => {
+                if (user) {fillCalendar();}})
+
         // --------------------------------------
         // Making calendar
         // --------------------------------------
         const calendar = document.querySelector("#app-calendar");
-
+        function fillCalendar() {
         for (let i = 0; i < 7; i++) {
-            calendar.insertAdjacentHTML("beforeend",
-                `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
-        }
-
+            calendar.insertAdjacentHTML("beforeend", `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);}
         for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
-            calendar.insertAdjacentHTML("beforeend",
-                `<div class="xtrablock block">${monthdays[month - 1] + (xtrablock - firstday.getDay())}</div>`);
-        }
-
+            calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month-1]}?${monthdays[month - 1] + (xtrablock - firstday.getDay())}"><div class="xtrablock block">${monthdays[month - 1] + (xtrablock - firstday.getDay())}</div></a>`);}
         for (let block = 1; block <= monthdays[month]; block++) {
-
-            const weekend = isWeekend(block)
-            const now = istoday(block)
-
-            console.log(block)
-            calendar.insertAdjacentHTML("beforeend",
-                `<div id="${year}_${months[month]}_${block}" class="${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div>`
-            );
-        }
+        const weekend = isWeekend(block);
+        const now = istoday(block);
+        calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month]}?${block}"><div class="${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div></a>`);}
         if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
             for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
-                calendar.insertAdjacentHTML("beforeend",
-                    `<div class="xtrablock block">${xtrablock - lastday.getDay()}</div>`);
-            }
+                    calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${month + 1 == 12 ? year + 1 : year}?${months[(month+1)%12]}?${xtrablock - lastday.getDay()}"><div class="xtrablock block">${xtrablock - lastday.getDay()}</div></a>`);}
         } else {
             for (let xtrablock = lastday.getDay() + 1; xtrablock < 14; xtrablock++) {
-                calendar.insertAdjacentHTML("beforeend",
-                    `<div class="xtrablock block">${xtrablock - lastday.getDay()}</div>`);
+                    calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${month + 1 == 12 ? year + 1 : year}?${months[(month+1)%12]}?${xtrablock - lastday.getDay()}"><div class="xtrablock block">${xtrablock - lastday.getDay()}</div></a>`);}}
             }
-        }
+        //-------------------------
+        //Get reminder
+        //-------------------------
+//         firebase.auth().onAuthStateChanged(user => {
+//                 if (user) {
+//                     var activities = [];
+//                     let uid = user.uid;
+//                     console.log(uid);
+//                     var reminderRef = db.collection("reminders");
+//                     reminderRef.where("UserID", "==", user.uid).get()
+//     .then((querySnapshot) => {
+//         querySnapshot.forEach((doc) => {
+//             activities.push(doc.data());
+//             // doc.data() is never undefined for query doc snapshots
+//         });
+//     }).then(() =>{
+//         var dailyCount = 0;
+//         for (let i =0; i< activities.length ;i++) {
+//         if (activities[i].Frequncy == 'daily') {
+//             dailyCount++;
+//         }     console.log(dailyCount);
+
+//     }
+//     }).catch((error) => {
+//         console.log("Error getting documents: ", error);
+//     });
+//                 } else {
+//     // User is signed out
+//     // ...
+//   }
+// });
+
         // --------------------------------------
         // set calendar toggle action
         // --------------------------------------
-        document.querySelectorAll("#app-calendar .block").forEach(block => {
-            block.addEventListener("click", e => {
-                e.currentTarget.classList.toggle("selected");
-            })
-        })
-
-        console.log(months[month], date, firstday.getDay(), lastday, year, day, days[day]);
+        // document.querySelectorAll("#app-calendar .block").forEach(block => {
+        //     block.addEventListener("click", e => {
+        //         e.currentTarget.classList.toggle("selected");
+        //     })
+        // })
     </script>
 
 </body>
