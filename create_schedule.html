@@ -280,12 +280,21 @@
 
         
         validateForm();
+        
       }
   //  \\------------------------------------------------------//  \\
   
   //  //---Function that redirects to a page if inputs are not empty---\\  \\
   function redirect() {
-          
+        let Name = document.getElementById("reminder").value;
+        let Time = document.getElementById("time").value;
+        let Frequency = document.querySelector(
+          'input[name="options"]:checked'
+        ).value;
+
+        window.location.href = "redirect.html?"+Name;
+        
+      
       }
 
 
@@ -302,6 +311,10 @@
       alert("Time of the reminder must be provided.");
       document.getElementById("set-reminder").disabled = false;
       return false;
+    }
+
+    if (x && y) {
+      redirect();
     }
 
   }

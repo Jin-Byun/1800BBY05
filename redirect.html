@@ -58,7 +58,7 @@ rel="stylesheet">
     </nav>
 
     <!-- welcome and main part of the page -->
-    <!-- Get started Button-->
+   
     <div class="position-absolute top-50 start-50 translate-middle">
         <div class="container-fluid bg-light-gray text-light p-5">
             <div class="container bg-dark p-5">
@@ -104,37 +104,16 @@ rel="stylesheet">
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 <script>
-    var currentUser;
+   var queryString = decodeURIComponent(window.location.search);
+   var queries = queryString.split("?");
+   var Name = queries[1];
 
-    function getInfo() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-
-                    //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
-                    currentUser.get()
-                        .then(userDoc => {
-                            //get the data fields of the user
-                            var userName = userDoc.data().name;
-                            
-
-                            //if the data fields are not empty, then write them in to the form.
-                            if (userName != null) {
-                                document.getElementById("user-name-here").value = userName;
-                            }
-                           
-                        })
-                } else {
-                    // No user is signed in.
-                    console.log ("No user is signed in");
-                }
-            });
-        }
-
-//call the function to run it 
-getInfo();
+   var para = document.createElement("p");
+   
+   document.body.appendChild(para);
+   var node = document.createTextNode(Name);
+   para.appendChild(node);
+   document.getElementById("reminder-here").innerHTML = node;
 </script>
 </body>
 
