@@ -1,3 +1,5 @@
+/** Fonts **/
+
 @font-face {
     font-family: logo;
     src: url(fonts\Righteous-Regular.ttf)
@@ -34,4 +36,9 @@ li {
 
 p {
     font-family: body;
+}
+/** Create New Schedule**/
+option1, option2, option3 {
+    display: inline-block;
+    
 }
