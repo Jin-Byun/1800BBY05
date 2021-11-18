@@ -40,7 +40,7 @@ rel="stylesheet">
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
-                <button class="btn btn-outline-dark" type="button" style="color: white;">Home</button>
+            <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-search" style="color: white;"></i>
@@ -62,7 +62,7 @@ rel="stylesheet">
     <div class="position-absolute top-50 start-50 translate-middle">
         <div class="container-fluid bg-light-gray text-light p-5">
             <div class="container bg-dark p-5">
-                <h2 class="display-4">Nice <span id="user-name-here"></span>!</h2>
+                <h2 class="display-4">Nice!</h2>
                 <hr>
                 <h2>You set a reminder for <span id="reminder-here"></span>.</h2>
 
@@ -76,12 +76,13 @@ rel="stylesheet">
     <div class="fixed-bottom py-3 bg-secondary align-items-center">
         <div class="container text-center py-0">
             <footer class="navbar bg-secondary fixed-bottom py-0">
-                <i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></i>
-                <i class="bi bi-calendar-date" style="font-size: 2em; color: white;"></i>
-                <i class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></i>
+                
+                <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
+                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
+                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
                 <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
-                <i class="bi bi-person mx-3" style="font-size: 2em; color: white"></i>
-
+                <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
+              
             </footer>       
          </div>
 </div>
@@ -108,12 +109,13 @@ rel="stylesheet">
    var queries = queryString.split("?");
    var Name = queries[1];
 
-   var para = document.createElement("p");
+   //how to add strings dynamically through js
+   var para = document.getElementById("reminder-here").innerHTML = Name;
    
    document.body.appendChild(para);
    var node = document.createTextNode(Name);
    para.appendChild(node);
-   document.getElementById("reminder-here").innerHTML = node;
+   
 </script>
 </body>
 

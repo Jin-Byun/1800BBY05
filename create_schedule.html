@@ -235,10 +235,21 @@
     <script>
       
       var currentUser;
-      validateForm();
+      var time = Date.now || function() {
+        return +new Date;
+        console.log("TimeStamp works");
+      };
+     
+      
+     
+
+
+      
       
       // Function that saves Reminder info and sends data to firebase
       //-------------------------------------------------------------\\
+      
+
       function saveReminderInfo() {
         
         let Name = document.getElementById("reminder").value;
@@ -246,6 +257,8 @@
         let Frequency = document.querySelector(
           'input[name="options"]:checked'
         ).value;
+        
+        
         
         // console.log(Name + " " + Time + " " + Frequency);
         // alert(Name + " " + Time + " " + Frequency);
@@ -266,12 +279,14 @@
                 email: userEmail,
                 Name: Name,
                 Time: Time,
-                Frequency: Frequency
+                Frequency: Frequency,
+                TimeStamp: time()
                 
               })
-              // .then(() => {
-              //   console.log("Success!");
-              // })
+              .then(() => {
+                validateForm();
+                
+              })
             });
           } else {
             // No user is signed in.
@@ -280,11 +295,12 @@
           
         });
 
-        document.getElementById("set-reminder").disabled = true;
+        document.getElementById("set-reminder").disabled = false;
 
         
         
       }
+      
   //  \\------------------------------------------------------//  \\
   
    //---Function that redirects to a page if inputs are not empty---\\  \\
@@ -302,25 +318,25 @@
 
 
   // Alert message for invlaid inputs, to restyle using Jquery UI dialogue box
-  // function validateForm() {
-  //   let x = document.getElementById("reminder").value;
-  //   let y = document.getElementById("time").value;
-  //     if (!x) {
-  //     alert("Reminder must have a name.");
-  //     document.getElementById("set-reminder").disabled = false;
-  //     return false;
-  //     } 
-  //     if (!y) {
-  //     alert("Time of the reminder must be provided.");
-  //     document.getElementById("set-reminder").disabled = false;
-  //     return false;
-  //   }
+  function validateForm() {
+    let x = document.getElementById("reminder").value;
+    let y = document.getElementById("time").value;
+      if (!x) {
+      alert("Reminder must have a name.");
+      document.getElementById("set-reminder").disabled = false;
+      return false;
+      } 
+      if (!y) {
+      alert("Time of the reminder must be provided.");
+      document.getElementById("set-reminder").disabled = false;
+      return false;
+    }
 
-  //   if (x && y) {
-  //     redirect();
-  //   }
+    if (x && y) {
+      redirect();
+    }
 
-  // }
+  }
 
 
 
