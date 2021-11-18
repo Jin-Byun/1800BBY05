@@ -47,8 +47,8 @@
         width: 100%;
     }
     section {
-        margin-top: 10%;
-        height: 35vh;
+        margin: 0%;
+        height: 40vh;
         width: 100%;
         display: flex;
         align-items: center;
@@ -56,8 +56,8 @@
     }
 
     .clock {
-        height: 80vw;
-        width: 80vw;
+        height: 40vh;
+        width: 40vh;
         border-radius: 50%;
         border: 3px solid black;
         display: grid;
@@ -133,7 +133,11 @@
     </nav>
 
     <!-- welcome and main part of the page -->
-    <!-- Get started Button-->
+    
+    <div class="container text-center">
+        <h1 id="date-go-here"></h1>
+</div>
+    
     <br/>
     <section>
         <div class="clock">
@@ -142,35 +146,33 @@
             <div class="cap"></div>
         </div>
     </section>
-<br/><br/><br/>
-    <div class="container">
-        <h1>Details</h1>
-        <!-- Here is container for cards  -->
-        <div class="container">
-            <div id="details-go-here">
-            </div>
-        </div>
+<br/>  
+<div class="container mx-4 px-3">
+    <h4 id="to_do_date"></h4>
 </div>
 
 
-
     
-    <div class="fixed-bottom py-3 bg-secondary align-items-center">
-        <div class="container text-center py-0">
-            <footer class="navbar bg-secondary fixed-bottom py-0">
-                <i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></i>
-                <i class="bi bi-calendar-date" style="font-size: 2em; color: white;"></i>
-                <i class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></i>
-                <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
-                <i class="bi bi-person mx-3" style="font-size: 2em; color: white"></i>
+<div class="fixed-bottom py-3 bg-secondary align-items-center">
+    <div class="container text-center py-0">
+        <footer class="navbar bg-secondary fixed-bottom py-0">
+            <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 "
+                style="font-size:  2em; color: white"></a>
+            <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
+            <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
+            <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
+            <a href="profile_user2.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
 
-            </footer>       
-         </div>
-        </div>
+        </footer>
+    </div>
+</div>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
+            "October", "November", "December"
+        ]
         const ang2rad = (angle) => {
             return angle * (Math.PI/180); 
         };
@@ -212,17 +214,25 @@
             hrE1.style.transform = `rotate(${hrdeg}deg)`;
         },1000)
 
-//         function showDetails() {
-//       // create a URL object
-//       let params = new URL(window.location.href);
-//       let id = params.searchParams.get("id");                   //parse "id"
-//       let collection = params.searchParams.get("collection");   //parse "collection"
-
-//       let message = "Collection is: " + collection;        //build message to display
-//       message += "Document id is:  " + id;    
-//       document.getElementById("details-go-here").innerHTML = message;   
-//  }
-// showDetails();
+        function showDetails() {
+      // create a URL object
+      let params = new URL(window.location.href);
+      let data = params.searchParams.get("uid").split('?');                   //parse "id"
+      console.log(data[0]);
+      let message = data[1] + " " + data[2] + " " + data[3];    
+      document.getElementById("date-go-here").innerHTML = message;
+    let currentUser = db.collection("users").doc(data[0])
+    console.log(date.getDate(), date.getFullYear(), months[date.getMonth()]);
+    currentUser.get().then(userDoc => {
+        //get user name
+        fullName = userDoc.data().name.split(' ');
+        firstName = fullName[0];
+        let todoheading = firstName + ", for " + 
+        (date.getFullYear() == data[1] && months[date.getMonth()] == data[2] && date.getDate() == data[3] ? "today" : (data[2] + " " + data[3])) + ":";
+        document.getElementById("to_do_date").innerHTML = todoheading;
+    })   
+ }
+showDetails();
     </script>
 
 </body>
