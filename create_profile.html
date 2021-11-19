@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hej!</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap, firebase-auth-ui -->
+    <!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" /> -->
+    <!-- Bootstrap FirebaseUI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Optional styles and scripts of your own -->
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" 
+    rel="stylesheet">
+    <link rel="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">    
+    <link type="stylesheet" href="styles/my_style.css">
+
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.0/firebase-storage.js"></script>
+    
+
+<!-- Firebase 8 related CSS CDN -->
+<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+
+<!-- Link to the api keys for your Firebase project -->
+<script src="scripts/firebaseAPI.js"></script>
+
+
+<style>
+  body{
+    font-size: 16px;
+    color: #6f6f6f;
+    font-weight: 400;
+    letter-spacing: 0.7px;
+    
+}
+.font-size38 {
+    font-size: 38px;
+}
+.team-single-text .section-heading h4,
+.section-heading h5 {
+    font-size: 36px
+}
+
+.team-single-text .section-heading.half {
+    margin-bottom: 20px
+}
+
+@media screen and (max-width: 1199px) {
+    .team-single-text .section-heading h4,
+    .section-heading h5 {
+        font-size: 32px
+    }
+    .team-single-text .section-heading.half {
+        margin-bottom: 15px
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .team-single-text .section-heading h4,
+    .section-heading h5 {
+        font-size: 28px
+    }
+    .team-single-text .section-heading.half {
+        margin-bottom: 10px
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .team-single-text .section-heading h4,
+    .section-heading h5 {
+        font-size: 24px
+    }
+}
+
+
+.team-single-icons ul li {
+    display: inline-block;
+    border: 1px solid #02c2c7;
+    border-radius: 50%;
+    color: #86bc42;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    -webkit-transition-duration: .3s;
+    transition-duration: .3s
+}
+
+.team-single-icons ul li a {
+    color: #02c2c7;
+    display: block;
+    font-size: 14px;
+    height: 25px;
+    line-height: 26px;
+    text-align: center;
+    width: 25px
+}
+
+.team-single-icons ul li:hover {
+    background: #02c2c7;
+    border-color: #02c2c7
+}
+
+.team-single-icons ul li:hover a {
+    color: #fff
+}
+
+.team-social-icon li {
+    display: inline-block;
+    margin-right: 5px
+}
+
+.team-social-icon li:last-child {
+    margin-right: 0
+}
+
+.team-social-icon i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 15px;
+    border-radius: 50px
+}
+
+.padding-30px-all {
+    padding: 30px;
+}
+.bg-light-gray {
+    background-color: #f7f7f7;
+}
+.text-center {
+    text-align: center!important;
+}
+img {
+    max-width: 100%;
+    height: 100%;
+    width: auto;
+    padding-left: 15%;
+}
+
+
+.list-style9 {
+    list-style: none;
+    padding: 0
+}
+
+.list-style9 li {
+    position: relative;
+    padding: 0 0 15px 0;
+    margin: 0 0 15px 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1)
+}
+
+.list-style9 li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0
+}
+
+
+.text-sky {
+    color: #02c2c7
+}
+
+.text-orange {
+    color: #e95601
+}
+
+.text-green {
+    color: #5bbd2a
+}
+
+.text-yellow {
+    color: #f0d001
+}
+
+.text-pink {
+    color: #ff48a4
+}
+
+.text-purple {
+    color: #9d60ff
+}
+
+.text-lightred {
+    color: #ff5722
+}
+
+a.text-sky:hover {
+    opacity: 0.8;
+    color: #02c2c7
+}
+
+a.text-orange:hover {
+    opacity: 0.8;
+    color: #e95601
+}
+
+a.text-green:hover {
+    opacity: 0.8;
+    color: #5bbd2a
+}
+
+a.text-yellow:hover {
+    opacity: 0.8;
+    color: #f0d001
+}
+
+a.text-pink:hover {
+    opacity: 0.8;
+    color: #ff48a4
+}
+
+a.text-purple:hover {
+    opacity: 0.8;
+    color: #9d60ff
+}
+
+a.text-lightred:hover {
+    opacity: 0.8;
+    color: #ff5722
+}
+
+.custom-progress {
+    height: 10px;
+    border-radius: 50px;
+    box-shadow: none;
+    margin-bottom: 25px;
+}
+.progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: .25rem;
+}
+
+
+.bg-sky {
+    background-color: #02c2c7
+}
+
+.bg-orange {
+    background-color: #e95601
+}
+
+.bg-green {
+    background-color: #5bbd2a
+}
+
+.bg-yellow {
+    background-color: #f0d001
+}
+
+.bg-pink {
+    background-color: #ff48a4
+}
+
+.bg-purple {
+    background-color: #9d60ff
+}
+
+.bg-lightred {
+    background-color: #ff5722
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+    <!-------------------------------------->
+    <!-- The following is HTML for layout -->
+    <!-------------------------------------->
+    <!-- Header Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
+            <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="bi bi-search" style="color: white;"></i>
+                        </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <div style="float: right;">
+                        <input id="title" type="text">
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- welcome and main part of the page -->
+
+    <div id="firebaseui-auth-container"></div>
+    
+
+    <!-- hi team, we can add firebase functionality on the "update" button to save user profiles to the server. Things could also be renamed/adjusted.
+          Such as we may not need user addresses and such.  -->
+    <br><br>
+    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <div class="container">
+        <div class="team-single">
+            <div class="row">
+                <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
+            
+            </div>
+
+            <div class="team-single-img">
+                      
+              <div class="container py-3">
+                <div class="card">
+                    <div class="card-body">
+                        Profile
+                        <img id="avatar-photo" src="./images/avatar01.jpg" width="100" height="100" />
+                        <!-- <button onclick="document.getElementById('avatar-photo-file').click()">Upload Profile</button> -->
+                        <input type="file" id="avatar-photo-file" style="display:none">
+                    </div>
+                </div>
+                    
+                </div>
+                
+                      
+                    </div>
+                    <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
+                        <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Level 1 Habit User</h4>
+                        <p class="sm-width-95 sm-margin-auto">This user hasn't added a description.</p>
+                        <div class="margin-20px-top team-single-icons">
+                            <!-- <ul class="no-margin">
+                                <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+
+
+
+                
+
+                <div class="container">
+                    <h1></h1><span id="add-user-form"><h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
+                        Welcome! <span id="name-goes-here"></span> 
+                    <form>
+                        <fieldset class="mb-3" id="personalinfo">
+                            <div class="form-group">
+                                <label >Name</label>
+                                <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label >Age</label>
+                                <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
+                            </div>
+                            <!-- <div class="form-group">
+                                <label >Habits</label>
+                                <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
+                            </div> --><br>
+                        </fieldset>
+
+                            
+                            <form>
+                            <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                  <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Habit #1</label>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected id="habit1">Choose...</option>
+                                    <option value="1">Tidy up</option>
+                                    <option value="2">Walk the dog</option>
+                                    <option value="3">Meditate</option>
+                                    <option value="4">Exercise</option>
+                                    <option value="5">Cook healthy meal</option>
+                                    <option value="6">Take a nap</option>
+                                    <option value="7">Read a book</option>
+                                    <option value="7">Study homework</option>
+                                    <option value="8">Play instrument</option>
+                                  </select>
+                                </div>
+                                <div class="col-auto my-1">
+                                </div>
+                              </div>
+                            </form>
+                            
+                              <form>
+                              <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                  <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Habit #2</label>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
+                                    <option selected id="habit2">Choose...</option>
+                                    <option value="1">Tidy up</option>
+                                    <option value="2">Walk the dog</option>
+                                    <option value="3">Meditate</option>
+                                    <option value="4">Exercise</option>
+                                    <option value="5">Cook healthy meal</option>
+                                    <option value="6">Take a nap</option>
+                                    <option value="7">Read a book</option>
+                                    <option value="7">Study homework</option>
+                                    <option value="8">Play instrument</option>
+                                  </select>
+                                </div>
+                                <div class="col-auto my-1">
+                                </div>
+                              </div>
+
+                              <form>
+                              <div class="form-row align-items-center">
+                                <div class="col-auto my-1">
+                                  <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Habit #3</label>
+                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect3">
+                                    <option selected id="habit3">Choose...</option>
+                                    <option value="1">Tidy up</option>
+                                    <option value="2">Walk the dog</option>
+                                    <option value="3">Meditate</option>
+                                    <option value="4">Exercise</option>
+                                    <option value="5">Cook healthy meal</option>
+                                    <option value="6">Take a nap</option>
+                                    <option value="7">Read a book</option>
+                                    <option value="7">Study homework</option>
+                                    <option value="8">Play instrument</option>
+                                  </select>
+                                </div>
+                                <div class="col-auto my-1">
+                                </div>
+                              </div>
+                            </form>
+
+                    
+                        <div class="d-flex justify-content-end mt-5">
+                            <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
+                            <span style="width: 10px"></span>
+                            <button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button>
+                        </div>
+                    </form>
+                
+            <br> <br> 
+                    
+
+
+
+    <div class="fixed-bottom py-3 bg-secondary align-items-center">
+        <div class="container text-center py-0">
+            <footer class="navbar bg-secondary fixed-bottom py-0">
+                
+                <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
+                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
+                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
+                <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
+                <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
+              
+            </footer>       
+         </div>
+</div>
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
+    <!----------------------------------------------->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your o   wn JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+
+  <script>
+
+
+
+var currentUser;
+
+    function populateInfo() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            //get the data fields of the user
+                            var userName = userDoc.data().name;
+                            //console.log(userName);
+                            var userAge = userDoc.data().age;
+    
+                            //if the data fields are not empty, then write them in to the form.
+                            if (userName != null) {
+                                document.getElementById("nameInput").value = userName;
+                            }
+                            if (userAge != null) {
+                                document.getElementById("ageInput").value = userAge;
+                            }
+                            // if (userCity != null) {
+                            //     document.getElementById("emailInput").value = userCity;
+                            // }
+                        })
+                } else {
+                    // No user is signed in.
+                    console.log ("No user is signed in");
+                }
+            });
+        }
+
+    //call the function to run it 
+    populateInfo();
+
+
+
+        //
+        //
+        //
+
+
+
+        function editUserInfo() {
+            console.log("edit is clicked");
+            document.getElementById("personalinfo").disabled = false;
+            
+        }
+
+
+        function saveUserInfo() {
+            //console.log("save is clicked");
+            // grab values from the form that the user inserts in each field.
+            name = document.getElementById('nameInput').value;
+            age = document.getElementById('ageInput').value;
+            //email = document.getElementById('emailInput').value;
+            console.log("save is clicked");
+            //console.log("values are: ",name, school, city)
+
+
+            //write the value in the database:
+            currentUser.update({
+                //below means field of 'name' in firebase store - data from firestore
+                name: name,
+                age: age,
+                //email: email,
+            })
+            
+
+            
+        }
+
+
+
+        function insertName() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+                    // Do something for the current logged-in user here: 
+                    //console.log(user.uid);
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            var user_Name = userDoc.data().name;
+                            console.log(user_Name);
+                            //document.getElementById("username").innerText = n;                     
+                            //using javascript
+                            $("#name-goes-here").text(user_Name); //using jquery
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+        }
+        insertName();
+
+
+
+
+     </script>
+
+</body>
+
+</html>
