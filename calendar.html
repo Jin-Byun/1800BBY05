@@ -52,14 +52,13 @@
         }
 
         .block {
-            background-color: whitesmoke;
             border: black solid 1px;
             font-size: 12pt;
             height: 100%;
         }
 
         .xtrablock {
-            background-color: gray!important;
+            background-color: rgba(50, 50, 50, 0.4)!important;
             color: white;
             height: 100%;
         }
@@ -81,10 +80,10 @@
         }
 
         .today {
-            background-color: khaki;
             color: darkblue;
+            text-shadow: 0 0 5px green;
             font-weight: bold;
-            border: solid blue 1px;
+            border: solid green 2px;
         }
 
         .selected {
@@ -217,6 +216,7 @@
             }
         }
         // adding dates into db collection.
+        function addDate2db() {
         for (let i = 1; i <= monthdays[month]; i++) {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
@@ -241,8 +241,8 @@
                         })
                 } else {}
             })
-        }
-
+        }}
+        addDate2db();
         document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
             fulldays[day];
 
@@ -269,7 +269,7 @@
         for (let block = 1; block <= monthdays[month]; block++) {
         const weekend = isWeekend(block);
         const now = istoday(block);
-        calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month]}?${block}"><div class="${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div></a>`);}
+        calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month]}?${block}"><div id="${year+'_'+month+'_'+block}" class="day${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div></a>`);}
         if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
             for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
                     calendar.insertAdjacentHTML("beforeend", `<a class ="day" href="./day.html?uid=${userID}?${month + 1 == 12 ? year + 1 : year}?${months[(month+1)%12]}?${xtrablock - lastday.getDay()}"><div class="xtrablock block">${xtrablock - lastday.getDay()}</div></a>`);}
@@ -280,19 +280,36 @@
         //-------------------------
         //Get reminder
         //-------------------------
-//         firebase.auth().onAuthStateChanged(user => {
-//                 if (user) {
-//                     var activities = [];
-//                     let uid = user.uid;
-//                     console.log(uid);
-//                     var reminderRef = db.collection("reminders");
-//                     reminderRef.where("UserID", "==", user.uid).get()
-//     .then((querySnapshot) => {
-//         querySnapshot.forEach((doc) => {
-//             activities.push(doc.data());
+        firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    var activities = [];
+                    let uid = user.uid;
+                    var reminderRef = db.collection("reminders");
+                    reminderRef.where("UserID", "==", user.uid).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            activities.push(doc.data());
 //             // doc.data() is never undefined for query doc snapshots
-//         });
-//     }).then(() =>{
+        });
+           let dailies = [];
+           let weeklies = [];
+           let biweeklies = [];
+           let schedulemonth = [];
+           console.log(activities);
+        activities.forEach(element => {
+            if (element.Frequency == "daily") {
+                dailies.push(new Date(element.TimeStamp));
+            } else if (element.Frequency == "weekly") {
+                weeklies.push(new Date(element.TimeStamp));
+            } else {
+                biweeklies.push(new Date(element.TimeStamp));
+            }
+        });console.log(dailies, weeklies, biweeklies);
+        for(let i = 0; i<dailies.length();i++){
+
+        }
+    })
+    // .then(() =>{
 //         var dailyCount = 0;
 //         for (let i =0; i< activities.length ;i++) {
 //         if (activities[i].Frequncy == 'daily') {
@@ -303,11 +320,11 @@
 //     }).catch((error) => {
 //         console.log("Error getting documents: ", error);
 //     });
-//                 } else {
+                } else {
 //     // User is signed out
 //     // ...
-//   }
-// });
+  }
+});
 
         // --------------------------------------
         // set calendar toggle action
