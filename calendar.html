@@ -40,26 +40,29 @@
         }
 
         #app-calendar {
-            border: solid black 2px;
-            height: 35vh;
-            width: 80vw;
-            margin: 0 10%;
+            /* border: solid black 2px; */
+            width: 90vw;
+            margin: 0 auto;
             display: grid;
             overflow: hidden;
             text-align: center;
+            column-gap: 2px;
+            row-gap: 4px;
             grid-template-columns: repeat(7, 1fr);
             grid-template-rows: 9% repeat(6, 1fr);
         }
 
         .block {
-            border: black solid 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: rgba(0, 0, 0, 0.7) solid 2px;
+            border-radius: 50%;
             font-size: 12pt;
             height: 100%;
         }
 
         .xtrablock {
-            background-color: rgba(50, 50, 50, 0.4) !important;
-            color: white;
             height: 100%;
         }
 
@@ -74,15 +77,16 @@
             background-color: ivory;
             margin: auto 0;
             line-height: 100%;
+            border-radius: 10px;
             border: black solid 1px;
             font-size: 10pt;
+            font-weight: 800;
             height: 100%;
         }
 
         .today {
-            color: darkblue;
-            text-shadow: 0 0 5px green;
-            font-weight: bold;
+            text-shadow: 0 0 5px yellow;
+            text-decoration: underline;
             border: solid green 2px;
         }
 
@@ -96,35 +100,41 @@
             text-decoration: none;
         }
 
-        .rem1 {
-            background-color: rgba(255, 0 , 0, 0.1);
-        }
-
-        .rem2 {
-            background-color: rgba(255, 127, 0, 0.2);
+        .rem1, .rem2 {
+            background-color: rgba(0, 255, 0, 0.4);
         }
         
-        .rem3 {
-            background-color: rgba(255, 255, 0, 0.5);
+        .rem3, .rem4 {
+            background-color: rgba(255, 255, 0, 0.6);
         }
 
-        .rem4 {
-            background-color: rgba(0, 255, 0, 0.6);
-        }
-
-        .rem5 {
-            background-color: rgba(0, 0, 255, 0.7);
+        .rem5, .rem6 {
+            background-color: rgba(255, 0, 0, 0.8);
             color: yellow;
-        }
-
-        .rem6 {
-            background-color: rgba(75, 0, 130, 0.8);
-            color: rgb(255, 255, 134);
+            font-weight: bold;
+            border-color: black;
         }
 
         .rem7 {
-            background-color: rgba(148, 0, 211, 0.9);
-            color: white;
+            background-color: rgba(0, 0, 0, 1);
+            color: black;
+            border-color: gray;
+            text-shadow: 0 0 6px whitesmoke;
+        }
+        .toprow {
+            display: grid;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            margin-inline: 5.3%;
+            text-align: center;
+            grid-template-columns: 13.5% 73% 13.5%;
+        }
+
+        .btntop {
+            border: 1px solid; 
+            border-radius: 10px!important;
+            line-height: 0; 
+            padding-inline: 0;
         }
     </style>
 
@@ -158,8 +168,11 @@
     </nav>
 
     <!-- welcome and main part of the page -->
-    <br />
-    <div id="date" class="col" style="font-size: 4vw; font-weight: bold; margin-left: 10%; margin-bottom: 2%;"></div>
+    <div class="toprow">
+    <button type="button" class="btn btntop" style="grid-column: 1 / span 1;" onclick="go2PrevMonth()">&lt;prev</button>
+    <div id="date" class="col" style="grid-column: 2 / span 1; font-size: 4vw; font-weight: bold;"></div>
+    <button type="button" class="btn btntop" style="grid-column: 3 / span 1;" onclick="go2nextMonth()">next&gt;</button>
+</div>
 
     <div id="app-calendar"></div>
 
@@ -217,7 +230,11 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        var userID
+        //-------------
+        //const and var
+        //------------- 
+        var userID;
+        const calendar = document.querySelector("#app-calendar");
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December"
         ]
@@ -225,13 +242,13 @@
         const fulldays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
         const monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-        let today = new Date(Date.now());
-        let month = today.getMonth();
-        let date = today.getDate();
-        let year = today.getFullYear();
-        let day = today.getDay();
-        let firstday = new Date(year, month, 1);
-        let lastday = new Date(year, month + 1, 0);
+        var today = new Date(Date.now());
+        var month = today.getMonth();
+        var date = today.getDate();
+        var year = today.getFullYear();
+        var day = today.getDay();
+        var firstday = new Date(year, month, 1);
+        var lastday = new Date(year, month + 1, 0);
 
         const nth = function (d) {
             if (d > 3 && d < 21) return 'th';
@@ -246,66 +263,62 @@
                     return "th";
             }
         }
-        // adding dates into db collection.
-        function addDate2db() {
-            for (let i = 1; i <= monthdays[month]; i++) {
-                firebase.auth().onAuthStateChanged(user => {
-                    if (user) {
-                        var currentUser = db.collection("users").doc(user.uid)
-                        userID = user.uid;
-                        //get the document for current user.
-                        currentUser.get()
-                            .then(userDoc => {
-                                //get user name
-                                userName = userDoc.data().name;
-                                // Start a new collection and add all data in it.
-                                let docData = {
-                                    weekday: ((firstday.getDay() + i - 1) % 7),
-                                    activity: [],
-                                    name: userName
-                                };
-                                db.collection("dates").doc(userID)
-                                    .collection(months[month] + "_" + year)
-                                    .doc(i.toString()).set(docData).then(() => {
-                                        console.log("Document successfully written!");
-                                    });
-                            })
-                    } else {}
-                })
-            }
-        }
-        addDate2db();
-        document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
-            fulldays[day];
 
         const isWeekend = block => {
             return block % 7 === ((1 + (7 - firstday.getDay())) % 7) || block % 7 === (7 - firstday.getDay());
         }
 
         const istoday = block => {
-            return block === date;
+            return today.getFullYear() == year && today.getMonth() == month && block === date;
         }
 
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                fillCalendar();
+        //-------------------------------------------------
+        //---------------function and code-----------------
+        //-------------------------------------------------
+        getReminder();
+        displayDate();
+
+        function displayDate() {
+        if (year == today.getFullYear() && month == today.getMonth()) {
+        document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
+            fulldays[day];
+        } else {
+            document.getElementById("date").innerHTML = year + " " + months[month];
+        }}
+        function go2PrevMonth() {
+            month -= 1;
+            if (month < 0) {
+                month = 11;
+                year -= 1;
             }
-        })
+            firstday = new Date(year, month, 1);
+            displayDate();
+            document.getElementById("app-calendar").innerHTML = "";
+            getReminder();
+        }
+        
+        function go2nextMonth() {
+            month += 1;
+            if (month > 11) {
+                month = 0;
+                year += 1;
+            }
+            firstday = new Date(year, month, 1);
+            displayDate();
+            document.getElementById("app-calendar").innerHTML = "";
+            getReminder();
+        }
 
         // --------------------------------------
         // Making calendar
         // --------------------------------------
-        const calendar = document.querySelector("#app-calendar");
-
         function fillCalendar() {
             for (let i = 0; i < 7; i++) {
                 calendar.insertAdjacentHTML("beforeend",
                     `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
             }
             for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
-                calendar.insertAdjacentHTML("beforeend",
-                    `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month-1]}?${monthdays[month - 1] + (xtrablock - firstday.getDay())}"><div class="xtrablock block">${monthdays[month - 1] + (xtrablock - firstday.getDay())}</div></a>`
-                );
+                calendar.insertAdjacentHTML("beforeend", `<div class="xtrablock"></div>`);
             }
             for (let block = 1; block <= monthdays[month]; block++) {
                 const weekend = isWeekend(block);
@@ -315,28 +328,24 @@
                 );
             }
             if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
-                for (let xtrablock = lastday.getDay() + 1; xtrablock < 7; xtrablock++) {
-                    calendar.insertAdjacentHTML("beforeend",
-                        `<a class ="day" href="./day.html?uid=${userID}?${month + 1 == 12 ? year + 1 : year}?${months[(month+1)%12]}?${xtrablock - lastday.getDay()}"><div class="xtrablock block">${xtrablock - lastday.getDay()}</div></a>`
-                    );
-                }
+                document.getElementById('app-calendar').style.gridTemplateRows = `7.5% repeat(6, 1fr)`;
+                document.getElementById('app-calendar').style.height = `87vw`;
             } else {
-                for (let xtrablock = lastday.getDay() + 1; xtrablock < 14; xtrablock++) {
-                    calendar.insertAdjacentHTML("beforeend",
-                        `<a class ="day" href="./day.html?uid=${userID}?${month + 1 == 12 ? year + 1 : year}?${months[(month+1)%12]}?${xtrablock - lastday.getDay()}"><div class="xtrablock block">${xtrablock - lastday.getDay()}</div></a>`
-                    );
-                }
+                document.getElementById('app-calendar').style.gridTemplateRows = `9% repeat(5, 1fr)`;
+                document.getElementById('app-calendar').style.height = `73.7vw`;
             }
         }
         //-------------------------
         //Get reminder
         //-------------------------
+        function getReminder() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
+                userID = user.uid;
+                fillCalendar();
                 var activities = [];
-                let uid = user.uid;
                 var reminderRef = db.collection("reminders");
-                reminderRef.where("UserID", "==", user.uid).get()
+                reminderRef.where("UserID", "==", userID).get()
                     .then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
                             activities.push(doc.data());
@@ -354,7 +363,6 @@
                                 biweeklies.push(new Date(element.TimeStamp));
                             }
                         });
-                        console.log(dailies[0].getFullYear() == year);
                         for (let i = 0; i < dailies.length; i++) {
                             if (year > dailies[i].getFullYear() || (year == dailies[i].getFullYear() &&
                                     month > dailies[i].getMonth())) {
@@ -403,7 +411,7 @@
                                 for (let index = 0; index < dailychange.length; index++) {
                                     if (dailychange[index].classList.contains('day' + biweeklies[i]
                                     .getDay())) {
-                                        if ((Math.floor(new Date(year, month, index).getTime()/(3600*1000*24)) - Math.floor(biweeklies[i].getTime()/(3600*1000*24))) % 14 == 0){
+                                        if ((Math.floor(new Date(year, month, index+1)/(3600*1000*24)) - Math.floor(biweeklies[i].getTime()/(3600*1000*24))) % 14 == 0){
                                         addReminderClass(dailychange, index);
                                     }}
                                 }
@@ -415,7 +423,7 @@
                                         // console.log(dailychange[index].classList.contains('rem1'));
                                         if (dailychange[index].classList.contains('day' + biweeklies[i]
                                                 .getDay())) {
-                                                    if ((Math.floor(new Date(year, month, index).getTime()/(3600*1000*24)) - Math.floor(biweeklies[i].getTime()/(3600*1000*24))) % 14 == 0){
+                                                    if ((Math.floor(new Date(year, month, index+1)/(3600*1000*24)) - Math.floor(new Date(biweeklies[i].getFullYear(),biweeklies[i].getMonth(), biweeklies[i].getDate())/(3600*1000*24))) % 14 == 0){
                                             addReminderClass(dailychange, index);
                                         }
                                         }
@@ -424,24 +432,12 @@
                             }
                         }
                     })
-
-                // .then(() =>{
-                //         var dailyCount = 0;
-                //         for (let i =0; i< activities.length ;i++) {
-                //         if (activities[i].Frequncy == 'daily') {
-                //             dailyCount++;
-                //         }     console.log(dailyCount);
-
-                //     }
-                //     }).catch((error) => {
-                //         console.log("Error getting documents: ", error);
-                //     });
             } else {
                 //     // User is signed out
                 //     // ...
             }
         });
-
+    }
         function addReminderClass(classArr, index) {
             if (classArr[index].classList.contains('rem6')) {
                 classArr[index].classList.add('rem7');
@@ -460,14 +456,38 @@
             }
         }
 
-        // --------------------------------------
-        // set calendar toggle action
-        // --------------------------------------
-        // document.querySelectorAll("#app-calendar .block").forEach(block => {
-        //     block.addEventListener("click", e => {
-        //         e.currentTarget.classList.toggle("selected");
-        //     })
-        // })
+        // May not need area (temporary garbage can)
+                // addDate2db();
+
+
+        // adding dates into db collection.
+        // function addDate2db() {
+        //     for (let i = 1; i <= monthdays[month]; i++) {
+        //         firebase.auth().onAuthStateChanged(user => {
+        //             if (user) {
+        //                 var currentUser = db.collection("users").doc(user.uid)
+        //                 userID = user.uid;
+        //                 //get the document for current user.
+        //                 currentUser.get()
+        //                     .then(userDoc => {
+        //                         //get user name
+        //                         userName = userDoc.data().name;
+        //                         // Start a new collection and add all data in it.
+        //                         let docData = {
+        //                             weekday: ((firstday.getDay() + i - 1) % 7),
+        //                             activity: [],
+        //                             name: userName
+        //                         };
+        //                         db.collection("dates").doc(userID)
+        //                             .collection(months[month] + "_" + year)
+        //                             .doc(i.toString()).set(docData).then(() => {
+        //                                 console.log("Document successfully written!");
+        //                             });
+        //                     })
+        //             } else {}
+        //         })
+        //     }
+        // }
     </script>
 
 </body>
