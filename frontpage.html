@@ -42,14 +42,24 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
 <style>
 body{
 
-  background-color:#f5f9ff;
+  background-color:#fffaec;
 }
 
 .navbar {
-  background-color: steelblue !important;
+
+  background-color: #f5efdf  !important;
+        border-bottom: solid 2px #f37f5230;
 }
 
 
+#myChart {
+  background-color: #e9e9e9 !important;
+}
+
+.fixed-bottom {
+    background-color:#f5efdf !important;
+    border-top: solid 2px #f37f5230;
+}
 </style>
 
 <body>
@@ -88,7 +98,8 @@ body{
     </div>
   </div><br>
   
-  <div class="text-center">
+
+  <div class="text-center" style="border: solid 2px #f3a88a; " >
     <h2>You've completed <span id="counters"></span> habits this week!</h2>
   <a href="#"></a>
   </div><br>
@@ -257,7 +268,7 @@ function insertReview() {
 
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         datasets: [{
