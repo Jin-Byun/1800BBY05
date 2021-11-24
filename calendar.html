@@ -381,9 +381,9 @@
                         let weeklies = [];
                         let biweeklies = [];
                         activities.forEach(element => {
-                            if (element.Frequency == "daily") {
+                            if (element.Frequency == "Daily") {
                                 dailies.push(new Date(element.TimeStamp));
-                            } else if (element.Frequency == "weekly") {
+                            } else if (element.Frequency == "Weekly") {
                                 weeklies.push(new Date(element.TimeStamp));
                             } else {
                                 biweeklies.push(new Date(element.TimeStamp));
