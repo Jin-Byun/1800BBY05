@@ -100,7 +100,7 @@ body{
   
 
   <div class="text-center" style="border: solid 2px #f3a88a; " >
-    <h2>You've completed <span id="counters"></span> habits this week!</h2>
+    <h2>You've completed <span id="counter"></span> habits this week!</h2>
   <a href="#"></a>
   </div><br>
 
@@ -333,19 +333,22 @@ const myChart = new Chart(ctx, {
 }
 insertName();
 
-
+// 
 
 
 function insertCounter() {
      firebase.auth().onAuthStateChanged(user => {
          if (user) {                                                                 
-            
-               db.collection("counters").get().then(docs => {
-                 docs.forEach(eachComplete => {
-                   var complete = eachComplete.data().Completed;
-                   document.getElementById("counters").innerText = complete;
-                   //console.log(complete);
-                 })
+            console.log(user.uid);
+               db.collection("users").doc(user.uid).get().then(docs => {
+                 if (docs.exists) {
+                   console.log("data:", docs.data().counter)
+                 }
+                //  docs.forEach(eachComplete => {
+                //    var complete = eachComplete.data().Completed;
+                   document.getElementById("counter").innerText = docs.data().counter;
+                //    console.log(complete);
+                //  })
                }
                
 
