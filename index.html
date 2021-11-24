@@ -23,12 +23,67 @@
     <script src="scripts/firebaseAPI.js"></script>
 
     <!-- Optional styles and scripts of your own -->
+
+    
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" 
     rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">    
     <link rel="stylesheet" href="styles/my_style.css">
 
+<style>
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ripple {
+        background-color: green;
+        color: #fff;
+        border: 1px rgb(129, 145, 158);
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        padding: 20px 30px;
+        overflow: hidden;
+        margin: 10px 0;
+        position: relative;
+        margin-top: 100px;
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+    }
+
+    .ripple:focus {
+        outline: none;
+    }
+
+    .ripple .circle {
+        position: absolute;
+        background-color: #fff;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        animation: scale .5s ease-out;
+
+    }
+
+    @keyframes scale {
+        to {
+            transform: translate(-50%, -50%) scale(3);
+            opacity: 0;
+        }
+    }
+    
+</style>
 
 </head>
 
@@ -38,14 +93,14 @@
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
-                <!-- <button class="btn btn-outline-dark" type="button" style="color: white;">Home</button> -->
-            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="btn btn-outline-dark" type="button" style="color: white;">Home</button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-="false" aria-label="Toggle navigation">
                 <i class="bi bi-search" style="color: white;"></i>
-                        </button> -->
+                        </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -58,35 +113,19 @@
         </div>
     </nav>
 
+    <!-- welcome and main part of the page --expanded>
+    <-- Get started Button-->
 
+    <button class="ripple" onclick="goToLogin()">Get Started</button>
+    
 
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container text-center"><br>
-          <h1 class="display-4">Hej! <span id="name-goes-here"></span> <br/>Welcome to your new life!</h1>
-          <br>
-        </div>
-      </div>
-
-
-
-
-    <!-- welcome and main part of the page -->
-    <!-- Get started Button-->
-    <div class="position-absolute top-50 start-50 translate-middle">
-    <a href="login.html" type="button" class="btn btn-success" style="width: 150px; height: 150px; border-radius: 50%; font-size: 20px; line-height: 135px;">Get Started</a>
-    </div>
+    <!-- <div class="position-absolute top-50 start-50 translate-middle">
+    <a href="login.html" type="button" class="btn btn-secondary" style="width: 150px; height: 150px; border-radius: 50%; font-size: 20px; line-height: 135px;">Get Started</a>
 
     
-    
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          
-          <p class="lead my-3 text-center">
-              
-              Set your new habits today.       
-          </p>
-        </div>
-      </div>
+
+    </div> -->
+
     
 
 
@@ -102,9 +141,9 @@
 
             </footer>       
          </div>
-</div>
+    </div>
 
-    <!----------------------------------------------->
+    
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
     <!----------------------------------------------->
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -123,11 +162,41 @@
     <!--------------------------------------------------------------------->
 
 
-    <script>
+<script>
 
-    </script>
+    //Ripple effect for button
 
 
+   const buttons = document.querySelectorAll('.ripple')
+
+buttons.forEach(button => {
+    button.addEventListener('click', function (e) {
+        const x = e.clientX
+        const y = e.clientY
+
+        const buttonTop = e.target.offsetTop
+        const buttonLeft = e.target.offsetLeft
+
+        const xInside = x - buttonLeft
+        const yInside = y - buttonTop
+
+        const circle = document.createElement('span')
+        circle.classList.add('circle')
+        circle.style.top = yInside + 'px'
+        circle.style.left = xInside + 'px'
+
+        this.appendChild(circle)
+
+        setTimeout(() => circle.remove(), 500)
+
+    })
+})
+
+function goToLogin() {
+    setTimeout(() => window.location.href = "login.html?", 500)
+    
+}
+</script>
 
 </body>
 
