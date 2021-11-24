@@ -29,13 +29,13 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/8.10.0/firebase-ui-auth.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/ui/8.10.0/firebase-ui-auth.js"></script> -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     
     
 
 <!-- Firebase 8 related CSS CDN -->
-<link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/8.10.0/firebase-ui-auth.css" />
+<!-- <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/8.10.0/firebase-ui-auth.css" /> -->
 
 <!-- Link to the api keys for your Firebase project -->
 <script src="scripts/firebaseAPI.js"></script>
@@ -69,7 +69,7 @@
     margin-bottom: 20px
 }
 
-@media screen and (max-width: 1199px) {
+/* @media screen and (max-width: 1199px) {
     .team-single-text .section-heading h4,
     .section-heading h5 {
         font-size: 32px
@@ -93,8 +93,8 @@
     .team-single-text .section-heading h4,
     .section-heading h5 {
         font-size: 24px
-    }
-}
+    } */
+
 
 
 .team-single-icons ul li {
@@ -376,7 +376,7 @@ a.text-lightred:hover {
                 
 
                 <div class="container">
-                    <h1></h1><span id="add-user-form"><h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
+                    <h1></h1><span id="add-user-form"><h4 class="font-size38 sm-font-size32 xs-font-size30"></h4></span>
                         Create Profile <span id="name2-goes-here"></span> 
                     <form><br>
                         <fieldset class="mb-3" id="personalinfo">
@@ -420,7 +420,7 @@ a.text-lightred:hover {
                             
                             <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
                             <span style="width: 10px"></span>
-                            <a href="frontpage.html" button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button> </a>
+                            <a href="frontpage.html" button type="button" class="btn btn-primary" onclick="saveUserInfo()">Continue</button> </a>
                             
                         </div>
                     </form>
@@ -645,10 +645,10 @@ var currentUser;
                 var picUrl = doc.data().profilePic;           //extract pic url
 
 								// use this line if "mypicdiv" is a "div"
-                //$("#mypicdiv").append("<img src='" + picUrl + "'>")
+                //$("#profile-img").append("<img src='" + picUrl + "'>")
                 
 								// use this line if "mypic-goes-here" is an "img" 
-								$("profile-img").attr("src", picUrl);
+								$("#profile-img").attr("src", picUrl);
             })
     })
 }
