@@ -38,8 +38,12 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
 
 </head>
 
+<style>
+body{
 
-
+  background:#fff1ec;
+}
+</style>
 
 <body>
 
@@ -47,7 +51,7 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
   <!-- The following is HTML for layout -->
   <!-------------------------------------->
   <!-- Header Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" style="color: white;">Hej Home</a>
       <!-- <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a> -->
@@ -74,12 +78,12 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
       <p class="lead">
       </p>
     </div>
-  </div>
+  </div><br>
   
   <div class="text-center">
     <h2>You've completed <span id="counters"></span> habits this week! </h2>
   <a href="#"></a>
-  </div>
+  </div><br>
 
 
   <!-- <div class="container-fluid">1. Set up your Habits</div>
@@ -184,14 +188,14 @@ integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOn
 
 
 <div>
-<canvas id="myChart" width="250" height="50"></canvas>
+<canvas id="myChart" width="100" height="30"></canvas>
 </div>
 
 
 <br>
   <div class="fixed-bottom py-3 bg-success align-items-center">
     <div class="container text-center py-0">
-      <footer class="navbar bg-secondary fixed-bottom py-0">
+      <footer class="navbar bg-success fixed-bottom py-0">
         <a href="index.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
         <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
         <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
@@ -245,12 +249,12 @@ function insertReview() {
 
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
-    type: 'bar',
+    type: 'line',
     data: {
         labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         datasets: [{
             label: 'Daily Habits',
-            data: [5, 4, 5, 2, 4, 3, 6],
+            data: [1, 1, 1, 2, 2, 3, 2],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
