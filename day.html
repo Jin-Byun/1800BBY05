@@ -66,14 +66,17 @@
     }
 
     span {
-        background-color:seashell;
         position: absolute;
+        color: whitesmoke;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 50%;
+        text-shadow: 0 0 4px black;
         transform-origin: top left;
         grid-row: 1;
         grid-column: 1;
     }
 
-    .cap, .hour, .minute {
+    .clock > .cap, .hour, .minute {
         grid-column: 1;
         grid-row: 1;
         position: relative;
@@ -84,11 +87,19 @@
         background-color: black;
     }
 
+    .clock > canvas {
+        position: relative;
+        grid-column: 1;
+        grid-row: 1;
+        transform: rotate(1deg);
+        z-index: -1;
+    }
+
     .cap {
         top: 50.2%;
         width: 5px;
         height: 5px;
-        background-color: beige;
+        background-color: beige!important;
         border-radius: 50%;
     }
 
@@ -149,6 +160,7 @@
 <br/>  
 <div class="container mx-4 px-3">
     <h4 id="to_do_date"></h4>
+    <div id="reminder-go-here"></div>
 </div>
 
 
@@ -156,12 +168,12 @@
 <div class="fixed-bottom py-3 bg-secondary align-items-center">
     <div class="container text-center py-0">
         <footer class="navbar bg-secondary fixed-bottom py-0">
-            <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 "
+            <a href="calendar.html" i class="bi bi-arrow-left-circle mx-3 "
                 style="font-size:  2em; color: white"></a>
             <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
             <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
             <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
-            <a href="profile_user2.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
+            <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
 
         </footer>
     </div>
@@ -170,6 +182,9 @@
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
+        var userID;
+        var count = 0;
+        var reminderList = [];
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December"
         ]
@@ -179,7 +194,8 @@
         const diameter = document.querySelector(".clock").offsetWidth;
         const radius = diameter / 2;
         const clock = document.querySelector(".clock");
-        const time = ['00', '03', '06', '09', '12', '15', '18', '21'];
+        const time = ['00', '04', '08', '12', '16', '20'];
+        const collist = ["#00ff0080", "#00ff0080", "#ffff0080", "#ffff0080", "#ff000080", "#ff000080", "#00000080", "#00000080"]
 
         let angle = -89.8;
         const deltaAngle = 360 / time.length;
@@ -208,7 +224,7 @@
         hrE1.style.transform = `rotate(${hrdeg}deg)`;
         setInterval(()=>{
             date = new Date;
-            hrdeg = date.getHours()/24*360-90;
+            hrdeg = date.getHours()/24*360-90 + (date.getMinutes()/(24*60)*360);
             mindeg = date.getMinutes()/60*360-90;
             minE1.style.transform = `rotate(${mindeg}deg)`;
             hrE1.style.transform = `rotate(${hrdeg}deg)`;
@@ -222,17 +238,127 @@
       let message = data[1] + " " + data[2] + " " + data[3];    
       document.getElementById("date-go-here").innerHTML = message;
     let currentUser = db.collection("users").doc(data[0])
-    console.log(date.getDate(), date.getFullYear(), months[date.getMonth()]);
     currentUser.get().then(userDoc => {
         //get user name
         fullName = userDoc.data().name.split(' ');
         firstName = fullName[0];
-        let todoheading = firstName + ", for " + 
-        (date.getFullYear() == data[1] && months[date.getMonth()] == data[2] && date.getDate() == data[3] ? "today" : (data[2] + " " + data[3])) + ":";
+        let todoheading = firstName + ", " + 
+        (date.getFullYear() == data[1] && months[date.getMonth()] == data[2] && date.getDate() == data[3] ? "for today" : "on " + (data[1] + " " + data[2] + " " + data[3])) + ":";
         document.getElementById("to_do_date").innerHTML = todoheading;
     })   
  }
 showDetails();
+getReminder();
+
+function makeScheduleArc() {
+    for(let i = 0; i < count; i++) {
+    clock.insertAdjacentHTML("afterbegin", `<canvas id="reminder${i}" width="${diameter}" height="${diameter}"></canvas>`);
+    let timeSplit = reminderList[i].Time.split(':');
+    let startangle = (timeSplit[0]/24*360-90)*Math.PI/180 + (timeSplit[1]/(60*24)*2*Math.PI);
+    let endangle = startangle + 1/24*2*Math.PI;
+    console.log(reminderList[i].Time, startangle, endangle);
+    let c = document.getElementById("reminder" + i);
+    let ctx = c.getContext('2d');
+    ctx.fillStyle = collist[i];
+    ctx.beginPath();
+    ctx.moveTo(radius, radius);
+    ctx.arc(radius-3, radius-3, radius-1, startangle, endangle, false);
+    ctx.lineTo(radius, radius);
+    ctx.fill();
+    ctx.stroke();
+    ctx.closePath();
+    }
+}
+
+function getReminder() {
+    let params = new URL(window.location.href);
+      let datedata = params.searchParams.get("uid").split('?');
+      let year = datedata[1];
+      let month = months.indexOf(datedata[2]);
+      let date = datedata[3];
+      let message = "";
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                userID = user.uid;
+                var activities = [];
+                var reminderRef = db.collection("reminders");
+                reminderRef.where("UserID", "==", userID).get()
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+                            activities.push(doc.data());
+                            //             // doc.data() is never undefined for query doc snapshots
+                        });
+                        let dailies = [];
+                        let weeklies = [];
+                        let biweeklies = [];
+                        activities.forEach(element => {
+                            if (element.Frequency == "daily") {
+                                dailies.push(element);
+                            } else if (element.Frequency == "weekly") {
+                                weeklies.push(element);
+                            } else {
+                                biweeklies.push(element);
+                            }
+                        });
+                        // console.log(new Date(dailies[0].TimeStamp).getDay(), new Date(year, month, date).getDay());
+                        for (let i = 0; i < dailies.length; i++) {
+                            if (year > new Date(dailies[i].TimeStamp).getFullYear() || (year == new Date(dailies[i].TimeStamp).getFullYear() &&
+                                    month > new Date(dailies[i].TimeStamp).getMonth())) {
+                                        count++;
+                                        reminderList.push(dailies[i]);
+                                message += dailies[i].Name + ' @ ' + dailies[i].Time + "\r\n";
+                            } else if (year == new Date(dailies[i].TimeStamp).getFullYear() && month == new Date(dailies[i].TimeStamp).getMonth()) {
+                                count++;
+                                reminderList.push(dailies[i]);
+                                message += dailies[i].Name + ' @ ' + dailies[i].Time + "\r\n";
+                                    }
+                                }
+                        for (let i = 0; i < weeklies.length; i++) {
+                            if (year > new Date(weeklies[i].TimeStamp).getFullYear() || (year == new Date(weeklies[i].TimeStamp).getFullYear() &&
+                                    month > new Date(weeklies[i].TimeStamp).getMonth())) {
+                                        if (new Date(year, month, date).getDay() == new Date(weeklies[i].TimeStamp).getDay()) {
+                                            count++;
+                                            reminderList.push(weeklies[i]);
+                                        message += weeklies[i].Name + ' @ ' + weeklies[i].Time + "\r\n";
+                                        }
+                            } else
+                            if (year == new Date(weeklies[i].TimeStamp).getFullYear() && month == new Date(weeklies[i].TimeStamp).getMonth()) {
+                                if (new Date(year, month, date).getDay() == new Date(weeklies[i].TimeStamp).getDay()) {
+                                    count++;
+                                    reminderList.push(weeklies[i]);
+                                message += weeklies[i].Name + ' @ ' + weeklies[i].Time + "\r\n";
+                                }
+                            }
+                        }
+                        for (let i = 0; i < biweeklies.length; i++) {
+                            if (year > new Date(biweeklies[i].TimeStamp).getFullYear() || (year == new Date(biweeklies[i].TimeStamp).getFullYear() &&
+                                    month > new Date(biweeklies[i].TimeStamp).getMonth())) {
+                                        if (new Date(year, month, date).getDay() == new Date(biweeklies[i].TimeStamp).getDay()) {
+                                        if (((Math.floor(new Date(year, month, date))) - Math.floor(new Date(new Date(biweeklies[i].TimeStamp).getFullYear(), new Date(biweeklies[i].TimeStamp).getMonth(), new Date(biweeklies[i].TimeStamp).getDate()))) % 14 == 0){
+                                            count++;
+                                            reminderList.push(biweeklies[i]);
+                                            message += biweeklies[i].Name + ' @ ' + biweeklies[i].Time + "\r\n";                                    }
+                                }
+                            } else
+                            if (year == new Date(biweeklies[i].TimeStamp).getFullYear() && month == new Date(biweeklies[i].TimeStamp).getMonth()) {
+                                if (new Date(year, month, date).getDay() == new Date(biweeklies[i].TimeStamp).getDay()) {
+                                        if ((Math.floor(new Date(year, month, date)) - Math.floor(new Date(new Date(biweeklies[i].TimeStamp).getFullYear(), new Date(biweeklies[i].TimeStamp).getMonth(), new Date(biweeklies[i].TimeStamp).getDate()))) % 14 == 0){
+                                            count++;
+                                            reminderList.push(biweeklies[i]);
+                                            message += biweeklies[i].Name + ' @ ' + biweeklies[i].Time + "\r\n";   
+                                    }
+                                }
+                            }
+                        }
+                        document.getElementById("reminder-go-here").innerText = message;
+                        makeScheduleArc();
+    })
+            } else {
+                //     // User is signed out
+                //     // ...
+            }
+        });
+    }
     </script>
 
 </body>
