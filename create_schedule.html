@@ -61,7 +61,7 @@
 
 body {
     background-color: #fffaec;
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-family: 'Muli', sans-serif;
     display: flex;
     flex-direction: column;
@@ -85,7 +85,7 @@ body {
 }
 
 .container {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: #f37f5230;
     padding: 20px 40px;
     border-radius: 5px;
     justify-content: center;
@@ -102,14 +102,14 @@ body {
     cursor: pointer;
     display: inline-block;
     width: 50%;
-    background: lightblue;
+    background: #ffec82;
     padding: 15px;
     margin: 5rem;
     margin-bottom: 0.5rem;
     font-family: inherit;
     font-size: 16px;
-    border: 0;
-    border-radius: 5px;
+    border: 1px solid #f37f5230;
+    border-radius: 5%;
 }
 
 .bttn:focus {
@@ -141,26 +141,26 @@ body {
 .form-control input {
     background-color: transparent !important;
     border: 0;
-    border-bottom: 2px #fff solid;
+    border-bottom: 2px rgb(0, 0, 0) solid;
     display: block;
     width: 100%;
     padding: 18px;
     font-size: 18px;
-    color: #fff;
+    color: rgb(0, 0, 0);
     
     margin: 0px;
 }
 
 .form-control input:focus, .form-control input:valid {
     outline: 0;
-    border-bottom-color: lightblue;
+    border-bottom-color: black;
 }
 
 .form-control label {
     position: absolute;
     top: 10px;
     left: 0;
-    color: #fff;
+    color: rgb(0, 0, 0);
 }
 
 .form-control label span {
@@ -172,7 +172,7 @@ body {
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
-    color: lightblue;
+    color: black;
     transform: translateY(-30px);
 }
    </style>
@@ -185,12 +185,12 @@ body {
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary fixed-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#" style="color: white"><span id="logo">HEJ!</span></a>
+        <a class="navbar-brand" href="#" style="color: rgb(0, 0, 0)"><span id="logo">HEJ!</span></a>
         <a
           href="frontpage.html"
           type="button"
           class="btn btn-outline-dark"
-          style="color: white"
+          style="color: rgb(0, 0, 0)"
           >Home</a
         >
         <button
@@ -202,7 +202,7 @@ body {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i class="bi bi-search" style="color: white"></i>
+          <i class="bi bi-search" style="color: rgb(0, 0, 0)"></i>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
@@ -287,24 +287,24 @@ body {
             href="frontpage.html"
             i
             class="bi bi-arrow-left-circle mx-3"
-            style="font-size: 2em; color: white"
+            style="font-size: 2em; color: rgb(0, 0, 0)"
           ></a>
           <a
             href="calendar.html"
             class="bi bi-calendar-date"
-            style="font-size: 2em; color: white"
+            style="font-size: 2em; color: rgb(0, 0, 0)"
           ></a>
           <a
             href="create_schedule.html"
             class="bi bi-plus-circle mx-3"
-            style="font-size: 3em; color: white"
+            style="font-size: 3em; color: rgb(0, 0, 0)"
           ></a>
-          <i class="bi bi-trophy" style="font-size: 2em; color: white"></i>
+          <i class="bi bi-trophy" style="font-size: 2em; color: rgb(0, 0, 0)"></i>
           <a
             href="profile_user.html"
             i
             class="bi bi-person mx-3"
-            style="font-size: 2em; color: white"
+            style="font-size: 2em; color: rgb(0, 0, 0)"
           ></a>
         </footer>
       </div>
@@ -391,7 +391,7 @@ body {
                 Time: Time,
                 Frequency: Frequency,
                 TimeStamp: time(),
-                
+                Active: true 
               })
               .then(() => {
                 validateForm();
