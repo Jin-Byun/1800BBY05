@@ -42,7 +42,7 @@
 
         #app-calendar {
             /* border: solid black 2px; */
-            width: 90vw;
+            width: 43vh;
             margin: 0 auto;
             display: grid;
             overflow: hidden;
@@ -330,10 +330,10 @@
             }
             if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
                 document.getElementById('app-calendar').style.gridTemplateRows = `7.5% repeat(6, 1fr)`;
-                document.getElementById('app-calendar').style.height = `87vw`;
+                document.getElementById('app-calendar').style.height = `41.65vh`;
             } else {
                 document.getElementById('app-calendar').style.gridTemplateRows = `9% repeat(5, 1fr)`;
-                document.getElementById('app-calendar').style.height = `73.7vw`;
+                document.getElementById('app-calendar').style.height = `35.25vh`;
             }
         }
         //-------------------------
@@ -349,6 +349,14 @@
                 reminderRef.where("UserID", "==", userID).get()
                     .then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
+                            // if(!doc.active){
+                            //     console.log(doc);
+                            //     reminderRef.doc.update({
+                            //         active: true
+                            //     }).then(() => {
+                            //         console.log("active field written");
+                            //     });
+                            // }
                             activities.push(doc.data());
                             //             // doc.data() is never undefined for query doc snapshots
                         });
@@ -420,7 +428,7 @@
                             if (year == biweeklies[i].getFullYear() && month == biweeklies[i].getMonth()) {
                                 let dailychange = document.querySelectorAll("#app-calendar .block");
                                 for (let index = 0; index < dailychange.length; index++) {
-                                    if (dailychange[index].innerHTML >= dailies[i].getDate()) {
+                                    if (dailychange[index].innerHTML >= biweeklies[i].getDate()) {
                                         // console.log(dailychange[index].classList.contains('rem1'));
                                         if (dailychange[index].classList.contains('day' + biweeklies[i]
                                                 .getDay())) {
