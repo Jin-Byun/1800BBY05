@@ -521,22 +521,14 @@ var currentUser;
         }
 
         function saveUserInfo() {
-            //console.log("save is clicked");
-            // grab values from the form that the user inserts in each field.
             name = document.getElementById('nameInput').value;
             age = document.getElementById('ageInput').value;
-            //email = document.getElementById('emailInput').value;
-            //console.log("save is clicked");
-            //console.log("values are: ",name, school, city)
-
-
-
+  
             //write the value in the database:
             currentUser.update({
                 //below means field of 'name' in firebase store - data from firestore
                 name: name,
                 age: age,
-                //email: email,
             })
             
 
@@ -594,22 +586,22 @@ var currentUser;
 
     
       
-        // function showUploadedPicture(){
-        //     const fileInput = document.getElementById("profile-img-file");   // pointer #1
-        //     const image = document.getElementById("profile-img");   // pointer #2
+        function showUploadedPicture(){
+            const fileInput = document.getElementById("profile-img-file");   // pointer #1
+            const image = document.getElementById("profile-img");   // pointer #2
 
-        //     //attach listener to input file
-        //     //when this file changes, do something
-        //     fileInput.addEventListener('change', function(e){
+            //attach listener to input file
+            //when this file changes, do something
+            fileInput.addEventListener('change', function(e){
 
-        //         //the change event returns a file "e.target.files[0]"
-        //         var blob = URL.createObjectURL(e.target.files[0]);
+                //the change event returns a file "e.target.files[0]"
+                var blob = URL.createObjectURL(e.target.files[0]);
 
-        //         //change the DOM img element source to point to this file
-        //         image.src = blob;    //assign the "src" property of the "img" tag
-        //     })
-        // }
-        // showUploadedPicture();
+                //change the DOM img element source to point to this file
+                image.src = blob;    //assign the "src" property of the "img" tag
+            })
+        }
+        showUploadedPicture();
 
 
         function uploadUserProfilePic() {
