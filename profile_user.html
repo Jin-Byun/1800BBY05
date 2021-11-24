@@ -30,6 +30,8 @@ rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+
 
 <!-- Firebase 8 related CSS CDN -->
 <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
@@ -40,7 +42,7 @@ rel="stylesheet">
 <style>
   body{
     /* margin-top:20px; */
-    background:#f3f3f3;
+    background:#F6F5AE;
 }
 
 .card.user-card {
@@ -232,7 +234,7 @@ rel="stylesheet">
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
             <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
@@ -268,17 +270,17 @@ rel="stylesheet">
         <div class="col-md-4">
             <div class="card user-card">
                 <div class="card-header">
-                    <h5>Profile</h5>
+                    <h5></h5>
                 </div>
                 <div class="card-block">
                     <div class="user-image">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" 
                         class="img-radius" alt="User-Profile-Image">
                     </div>
-                    <h6 class="f-w-600 m-t-25 m-b-10 "><span id="name-goes-here"></span></h6>
-                    <p class="text-muted">Hej | 3 Habits | Born 23.05.1992</p>
+                    <h6 class="f-w-600 m-t-25 m-b-10 "></h6>
+                    <p class="text-muted"><span id="name-goes-here"></span> | <span id="email-goes-here"></span></p>
                     <hr>
-                    <p class="text-muted m-t-15">Progress Level: 87%</p>
+                    <p class="text-muted m-t-15">Progress Level:</p>
                     <ul class="list-unstyled activity-leval">
                         <li class="active"></li>
                         <li class="active"></li>
@@ -289,26 +291,25 @@ rel="stylesheet">
                     <div class="bg-c-blue counter-block m-t-10 p-20">
                         <div class="row">
                             <div class="col-4">
-                                <i class="fa fa-comment"></i>
-                                <p>1256</p>
+                                <!-- <i class="fa fa-comment"></i>
+                                <p>3</p> -->
                             </div>
                             <div class="col-4">
-                                <i class="fa fa-user"></i>
-                                <p>8562</p>
+                                <!-- <i class="fa fa-user"></i>
+                                <p>4</p> -->
                             </div>
                             <div class="col-4">
-                                <i class="fa fa-suitcase"></i>
-                                <p>189</p>
+                                <!-- <i class="fa fa-suitcase"></i>
+                                <p>2</p> -->
                             </div>
                         </div>
                     </div>
                     <p class="m-t-15 text-muted">This user hasn't added a description</p>
                     <hr>
-                    <!-- <div class="row justify-content-center user-social-link">
-                        <div class="col-auto"><a href="#!"><i class="fa fa-facebook text-facebook"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-twitter text-twitter"></i></a></div>
-                        <div class="col-auto"><a href="#!"><i class="fa fa-dribbble text-dribbble"></i></a></div>
-                    </div> -->
+
+                    <div>        
+                        <canvas id="myChart" width="200" height="200"></canvas>
+                        </div>
                 </div>
             </div>
         </div>
@@ -319,12 +320,11 @@ rel="stylesheet">
 
 
 
-        
 
 
-    <div class="fixed-bottom py-3 bg-secondary align-items-center">
+    <div class="fixed-bottom py-3 bg-success align-items-center">
         <div class="container text-center py-0">
-            <footer class="navbar bg-secondary fixed-bottom py-0">
+            <footer class="navbar bg-success fixed-bottom py-0">
                 
                 <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
                 <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
@@ -355,30 +355,135 @@ rel="stylesheet">
 
 <script>
 
-function insertName() {
-    firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
-        if (user) {                                                                 
-            // Do something for the current logged-in user here: 
-            console.log(user.uid);
-            //go to the correct user document by referencing to the user uid
-            currentUser = db.collection("users").doc(user.uid);
-            //get the document for current user.
-            currentUser.get()
-            .then(userDoc => {
-               var user_Name = userDoc.data().name;
-               console.log(user_Name);
-               //method #1:  insert with html only
-               document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
-               //method #2:  insert using jquery
-            //    $("#name-goes-here").text(user_Name);                         //using jquery
-            })
-        } else {
-            // No user is signed in.
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        datasets: [{
+            label: 'Daily Habits',
+            data: [1, 2, 1, 2, 3, 3, 6],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(25, 135, 150, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(25, 155, 155, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         }
-    });
-}
-insertName();
+    }
+});
+
+
+
+var currentUser;
+
+    function populateInfo() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            //get the data fields of the user
+                            var userName = userDoc.data().name;
+                            //console.log(userName);
+                            var userAge = userDoc.data().age;
+    
+                            //if the data fields are not empty, then write them in to the form.
+                            // if (userName != null) {
+                            //     document.getElementById("nameInput").value = userName;
+                            // }
+                            // if (userAge != null) {
+                            //     document.getElementById("ageInput").value = userAge;
+                            // }
+                            // if (userCity != null) {
+                            //     document.getElementById("emailInput").value = userCity;
+                            // }
+                        })
+                } else {
+                    // No user is signed in.
+                    console.log ("No user is signed in");
+                }
+            });
+        }
+
+    //call the function to run it 
+    populateInfo();
+
+        function insertName() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+                    // Do something for the current logged-in user here: 
+                    //console.log(user.uid);
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            var user_Name = userDoc.data().name;
+                            //console.log(user_Name);
+                            //document.getElementById("username").innerText = n;                     
+                            //using javascript
+                            $("#name-goes-here").text(user_Name); //using jquery
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+        }
+        insertName();
+
+        function insertEmail() {
+            firebase.auth().onAuthStateChanged(user => {
+                // Check if user is signed in:
+                if (user) {
+                    // Do something for the current logged-in user here: 
+                    //console.log(user.uid);
+                    //go to the correct user document by referencing to the user uid
+                    currentUser = db.collection("users").doc(user.uid)
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            var user_Email = userDoc.data().email;
+                            //console.log(user_Name);
+                            //document.getElementById("username").innerText = n;                     
+                            //using javascript
+                            $("#email-goes-here").text(user_Email); //using jquery
+                        })
+                } else {
+                    // No user is signed in.
+                }
+            });
+        }
+        insertEmail();
+
+
+
+
 
 </script>
 

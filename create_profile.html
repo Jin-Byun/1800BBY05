@@ -46,7 +46,7 @@
     color: #6f6f6f;
     font-weight: 400;
     letter-spacing: 0.7px;
-    
+    background-color: #fffff5;
 }
 .font-size38 {
     font-size: 38px;
@@ -295,7 +295,7 @@ a.text-lightred:hover {
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
-            <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
+            <!-- <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="bi bi-search" style="color: white;"></i>
@@ -304,7 +304,7 @@ a.text-lightred:hover {
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <div style="float: right;">
-                        <input id="title" type="text">
+                        <!-- <input id="title" type="text"> -->
                     </div>
                     </li>
                 </ul>
@@ -335,20 +335,24 @@ a.text-lightred:hover {
               <div class="container py-3">
                 <div class="card">
                     <div class="card-body">
-                        Profile
-                        <img id="avatar-photo" src="./images/avatar01.jpg" width="100" height="100" />
-                        <!-- <button onclick="document.getElementById('avatar-photo-file').click()">Upload Profile</button> -->
+                        
+                     
+                        <img id="avatar-photo" src="./images/avatar01.jpg" width="100" height="100"  />
+                        Welcome <span id="name-goes-here"></span>
+                         
                         <input type="file" id="avatar-photo-file" style="display:none">
+                        
                     </div>
-                </div>
                     
+                </div>
+                <button onclick="document.getElementById('avatar-photo-file').click()">Upload Photo</button>
                 </div>
                 
                       
                     </div>
                     <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
-                        <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Level 1 Habit User</h4>
-                        <p class="sm-width-95 sm-margin-auto">This user hasn't added a description.</p>
+                        <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Level 1 Hej User</h4>
+                        <p class="sm-width-95 sm-margin-auto" id="description">This user hasn't added a description.</p>
                         <div class="margin-20px-top team-single-icons">
                             <!-- <ul class="no-margin">
                                 <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
@@ -366,8 +370,8 @@ a.text-lightred:hover {
 
                 <div class="container">
                     <h1></h1><span id="add-user-form"><h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
-                        Welcome! <span id="name-goes-here"></span> 
-                    <form>
+                        Create Profile <span id="name2-goes-here"></span> 
+                    <form><br>
                         <fieldset class="mb-3" id="personalinfo">
                             <div class="form-group">
                                 <label >Name</label>
@@ -377,14 +381,12 @@ a.text-lightred:hover {
                                 <label >Age</label>
                                 <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
                             </div>
-                            <!-- <div class="form-group">
-                                <label >Habits</label>
-                                <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
-                            </div> --><br>
+                            
+                            <br>
                         </fieldset>
 
                             
-                            <form>
+                            <!-- <form>
                             <div class="form-row align-items-center">
                                 <div class="col-auto my-1">
                                   <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Habit #1</label>
@@ -405,55 +407,14 @@ a.text-lightred:hover {
                                 </div>
                               </div>
                             </form>
-                            
-                              <form>
-                              <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                  <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Habit #2</label>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
-                                    <option selected id="habit2">Choose...</option>
-                                    <option value="1">Tidy up</option>
-                                    <option value="2">Walk the dog</option>
-                                    <option value="3">Meditate</option>
-                                    <option value="4">Exercise</option>
-                                    <option value="5">Cook healthy meal</option>
-                                    <option value="6">Take a nap</option>
-                                    <option value="7">Read a book</option>
-                                    <option value="7">Study homework</option>
-                                    <option value="8">Play instrument</option>
-                                  </select>
-                                </div>
-                                <div class="col-auto my-1">
-                                </div>
-                              </div>
-
-                              <form>
-                              <div class="form-row align-items-center">
-                                <div class="col-auto my-1">
-                                  <label class="mr-sm-2" for="inlineFormCustomSelect">Choose Habit #3</label>
-                                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect3">
-                                    <option selected id="habit3">Choose...</option>
-                                    <option value="1">Tidy up</option>
-                                    <option value="2">Walk the dog</option>
-                                    <option value="3">Meditate</option>
-                                    <option value="4">Exercise</option>
-                                    <option value="5">Cook healthy meal</option>
-                                    <option value="6">Take a nap</option>
-                                    <option value="7">Read a book</option>
-                                    <option value="7">Study homework</option>
-                                    <option value="8">Play instrument</option>
-                                  </select>
-                                </div>
-                                <div class="col-auto my-1">
-                                </div>
-                              </div>
-                            </form>
-
-                    
+                        -->
+                                        
                         <div class="d-flex justify-content-end mt-5">
+                            
                             <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
                             <span style="width: 10px"></span>
-                            <button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button>
+                            <a href="frontpage.html" button type="button" class="btn btn-primary" onclick="saveUserInfo()">Save</button> </a>
+                            
                         </div>
                     </form>
                 
@@ -461,17 +422,16 @@ a.text-lightred:hover {
                     
 
 
+            
 
     <div class="fixed-bottom py-3 bg-secondary align-items-center">
         <div class="container text-center py-0">
             <footer class="navbar bg-secondary fixed-bottom py-0">
-                
                 <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
                 <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
                 <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
                 <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
                 <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
-              
             </footer>       
          </div>
 </div>
@@ -534,20 +494,11 @@ var currentUser;
     //call the function to run it 
     populateInfo();
 
-
-
-        //
-        //
-        //
-
-
-
         function editUserInfo() {
-            console.log("edit is clicked");
+            //console.log("edit is clicked");
             document.getElementById("personalinfo").disabled = false;
             
         }
-
 
         function saveUserInfo() {
             //console.log("save is clicked");
@@ -555,8 +506,9 @@ var currentUser;
             name = document.getElementById('nameInput').value;
             age = document.getElementById('ageInput').value;
             //email = document.getElementById('emailInput').value;
-            console.log("save is clicked");
+            //console.log("save is clicked");
             //console.log("values are: ",name, school, city)
+
 
 
             //write the value in the database:
@@ -571,8 +523,6 @@ var currentUser;
             
         }
 
-
-
         function insertName() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -585,7 +535,7 @@ var currentUser;
                     currentUser.get()
                         .then(userDoc => {
                             var user_Name = userDoc.data().name;
-                            console.log(user_Name);
+                            //console.log(user_Name);
                             //document.getElementById("username").innerText = n;                     
                             //using javascript
                             $("#name-goes-here").text(user_Name); //using jquery
@@ -598,6 +548,10 @@ var currentUser;
         insertName();
 
 
+
+    
+      
+      
 
 
      </script>
