@@ -1,5 +1,10 @@
 ## My Web Application (Title)
 
+
+Hej! Welcome to our scheduler reminder web dev application. More to come. 
+
+
+
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
