@@ -514,18 +514,13 @@ var currentUser;
                  if (docs.exists) {
                    //console.log("data:", docs.data().counter)
                  }
-                //  docs.forEach(eachComplete => {
-                //    var complete = eachComplete.data().Completed;
-                   document.getElementById("#age-goes-here").innerText = docs.data().age;
-                   console.log(age);
-                //  })
-               }
-               
-
+                   document.getElementById("age-goes-here").innerText = docs.data().age;
+                   //console.log(age);
+                }
                )}
-                });
-            }
-            insertAge();
+            });
+        }
+        insertAge();
 
 
 

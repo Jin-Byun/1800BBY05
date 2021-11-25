@@ -309,7 +309,7 @@ insertName();
 function insertCounter() {
      firebase.auth().onAuthStateChanged(user => {
          if (user) {                                                                 
-            console.log(user.uid);
+            //console.log(user.uid);
                db.collection("users").doc(user.uid).get().then(docs => {
                  if (docs.exists) {
                    //console.log("data:", docs.data().counter)
