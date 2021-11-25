@@ -51,7 +51,17 @@
             border-bottom: solid 2px #f37f5230;
         }
 
-
+        .navbar-brand {
+        font-size: 5vh;
+        font-weight: bold;
+         color: #f37f52 !important;
+         word-spacing: -1vh;
+         line-height: 0;
+         padding-top: 1.4vh;
+         padding-bottom: 2.3vh;
+         text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
+    }
+    
         .fixed-bottom {
         background-color:#f5efdf !important;
         border-top: solid 2px #f37f5230;
@@ -141,18 +151,37 @@
         }
         .toprow {
             display: grid;
+            width: 43vh;
             margin-top: 2%;
             margin-bottom: 2%;
-            margin-inline: 5.3%;
+            margin-inline: auto;
             text-align: center;
-            grid-template-columns: 13.5% 73% 13.5%;
+            grid-template-columns: 6% 88% 6%;
         }
 
         .btntop {
-            border: 1px solid; 
-            border-radius: 10px!important;
             line-height: 0; 
+            padding-top: 0.4vh;
+            font-size: 2vh;
+            font-weight: 800;
             padding-inline: 0;
+        }
+
+        #date {
+            line-height: 1.5;
+            padding-bottom: 0;
+            font-size: 2.35vh;
+            font-weight: 700;
+        }
+
+        #prev {
+            grid-column: 1 / span 1; 
+            margin-right: auto;
+        }
+
+        #next {
+            grid-column: 3 / span 1;
+            margin-left: auto;
         }
     </style>
 
@@ -167,29 +196,15 @@
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="color: white;">HEJ!</a>
-            <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-search" style="color: white;"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div style="float: right;">
-                            <input id="title" type="text">
-                        </div>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="./frontpage.html">HE J!</a>
         </div>
     </nav>
 
     <!-- welcome and main part of the page -->
     <div class="toprow">
-    <button type="button" class="btn btntop" style="grid-column: 1 / span 1;" onclick="go2PrevMonth()">&lt;prev</button>
-    <div id="date" class="col" style="grid-column: 2 / span 1; font-size: 4vw; font-weight: bold;"></div>
-    <button type="button" class="btn btntop" style="grid-column: 3 / span 1;" onclick="go2nextMonth()">next&gt;</button>
+    <button type="button" class="btn btntop" id="prev" onclick="go2PrevMonth()">&lt;</button>
+    <div id="date" class="col"></div>
+    <button type="button" class="btn btntop" id="next" onclick="go2nextMonth()">&gt;</button>
 </div>
 
     <div id="app-calendar"></div>
