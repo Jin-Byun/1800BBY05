@@ -55,7 +55,16 @@ background-color: #f5efdf  !important;
       border-bottom: solid 2px #f37f5230;
 }
 
-
+.navbar-brand {
+        font-size: 5vh;
+        font-weight: bold;
+         color: #f37f52 !important;
+         word-spacing: -1vh;
+         line-height: 0;
+         padding-top: 1.4vh;
+         padding-bottom: 2.3vh;
+         text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
+    }
 
 .fixed-bottom {
   background-color:#f5efdf !important;
@@ -316,21 +325,7 @@ a.text-lightred:hover {
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html" style="color: white;">Hej!</a>
-            <!-- <a href="frontpage.html" type="button" class="btn btn-outline-dark" style="color: white;">Home</a> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-search" style="color: white;"></i>
-                        </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div style="float: right;">
-                        <!-- <input id="title" type="text"> -->
-                    </div>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="./index.html">HE J!</a>
         </div>
     </nav>
 
@@ -352,18 +347,16 @@ a.text-lightred:hover {
             
             </div>
 
-            <div class="team-single-img">
-                      
+            <div class="team-single-img">              
               <div class="container py-3">
                 <div class="card">
                     <div class="card-body">
 
+                        
                         <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100"  />
                         Welcome <span id="name-goes-here"></span>
-                        
                         <input type="file" id="profile-img-file" style="display:none" accept="image/*" >
                     </div>
-                    
                 </div>
                 <button onclick="document.getElementById('profile-img-file').click()">Upload Photo</button>
                 </div>
@@ -584,25 +577,6 @@ var currentUser;
         }
         insertName();
 
-    
-      
-        function showUploadedPicture(){
-            const fileInput = document.getElementById("profile-img-file");   // pointer #1
-            const image = document.getElementById("profile-img");   // pointer #2
-
-            //attach listener to input file
-            //when this file changes, do something
-            fileInput.addEventListener('change', function(e){
-
-                //the change event returns a file "e.target.files[0]"
-                var blob = URL.createObjectURL(e.target.files[0]);
-
-                //change the DOM img element source to point to this file
-                image.src = blob;    //assign the "src" property of the "img" tag
-            })
-        }
-        showUploadedPicture();
-
 
         function uploadUserProfilePic() {
 
@@ -639,6 +613,23 @@ var currentUser;
         }
         uploadUserProfilePic();
 
+
+        function showUploadedPicture(){
+            const fileInput = document.getElementById("profile-img-file");   // pointer #1
+            const image = document.getElementById("profile-img");   // pointer #2
+
+            //attach listener to input file
+            //when this file changes, do something
+            fileInput.addEventListener('change', function(e){
+
+                //the change event returns a file "e.target.files[0]"
+                var blob = URL.createObjectURL(e.target.files[0]);
+
+                //change the DOM img element source to point to this file
+                image.src = blob;    //assign the "src" property of the "img" tag
+            })
+        }
+        showUploadedPicture();
 
 
         function displayUserProfilePic() {

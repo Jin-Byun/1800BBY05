@@ -53,11 +53,14 @@
     }
 
     .navbar-brand {
-        font-size: 2rem;
+        font-size: 5vh;
         font-weight: bold;
          color: #f37f52 !important;
-         line-height: 0.6;
-         text-shadow: 2px 2px 1px yellow;
+         word-spacing: -1vh;
+         line-height: 0;
+         padding-top: 1.4vh;
+         padding-bottom: 2.3vh;
+         text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
     }
 
     .fixed-bottom {
@@ -117,7 +120,7 @@
         position: relative;
         grid-column: 1;
         grid-row: 1;
-        transform: rotate(1deg);
+        transform: rotate(0.5deg);
         z-index: -1;
     }
 
@@ -144,6 +147,9 @@
         text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
     }
 
+    #reminderContainer {
+        margin-bottom: 4%;
+    }
 </style>
 
 </head>
@@ -156,16 +162,7 @@
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="./frontpage.html">HEJ!</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <div style="float: right;">
-                        <input id="title" type="text">
-                    </div>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="./frontpage.html">HE J!</a>
         </div>
     </nav>
 
@@ -186,24 +183,29 @@
 
     <!-- Templates for general use, not displayed -->
     <template id=CardTemplate>
-        <div class="card py-2 mx-2" style="width: 18rem;">
-            <div class="card-body">
+        <!-- <div class="card py-2 mx-2" style="width: 18rem;"> -->
+            <tr>
+                <td class="card-title"></td>
+                <td class="card-text"></td>
+                <td><button type="button" class="btn btn-primary" onclick="ToggleCounter()">&lt;done&gt;</button></td>
+            </tr>
+            <!-- <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                     card's content.</p>
                     <button type="button" class="btn btn-primary" onclick="ToggleCounter()">&lt;done&gt;</button>
-                </div>
-        </div>
+                </div> -->
+        <!-- </div> -->
     </template>
 
 <br/>  
 
-<div class="container">
+<div class="container" id="reminderContainer">
     <h3 id="to_do_date" style="margin-left: 5%;"></h3>
         <!-- Here is container for cards  -->
     <div class="container">
-        <div id="reminders-go-here" class="row row-cols-auto">
-        </div>
+        <table id="reminders-go-here" class="row row-cols-auto">
+        </table>
     </div>
 </div>
 
@@ -285,7 +287,6 @@
                 })
                 
         }
-displayRems();
         //-------------------------
         //the hands of the clock
         //-------------------------
@@ -320,8 +321,9 @@ displayRems();
         document.getElementById("to_do_date").innerHTML = todoheading;
     })   
  }
-showDetails();
-getReminder();
+//  displayRems();
+// showDetails();
+// getReminder();
 
 function makeScheduleArc() {
     for(let i = 0; i < count; i++) {
@@ -335,7 +337,7 @@ function makeScheduleArc() {
     ctx.fillStyle = collist[i];
     ctx.beginPath();
     ctx.moveTo(radius, radius);
-    ctx.arc(radius-4, radius-6, radius-2, startangle, endangle, false);
+    ctx.arc(radius-6, radius-6, radius-2, startangle, endangle, false);
     ctx.lineTo(radius, radius);
     ctx.fill();
     ctx.stroke();
