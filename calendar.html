@@ -45,6 +45,82 @@
         background-color:#fffaec;
         }
 
+        table{
+            width: 100%;
+            margin-inline: 0;
+            padding-inline: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p:nth-child(1) {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        th {
+            font-size: 1.1rem;
+            border-bottom: 2px solid orangered;
+        }
+        th:nth-child(1) {
+            width: 56%;
+        }
+
+        th:nth-child(2) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        th:nth-child(3) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+        
+        td:nth-child(1) {
+            width: 56%;
+            /* margin-inline: auto; */
+        }
+
+        td:nth-child(2) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        td:nth-child(3) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        #reminders-go-here {
+            margin-top: 2%;
+        }
+
+        .bttn {
+    cursor: pointer;
+    display: inline-block;
+    width: 50%;
+    background: rgba(255, 0, 0, 0.5);
+    font-family: inherit;
+    font-size: 16px;
+    border: 1px solid #f37f5230;
+    border-radius: 5%;
+}
+
+.bttn:focus {
+    outline: 0;
+
+} 
+
+.bttn:active {
+    transform: scale(0.98);
+}
+
         .navbar {
 
         background-color: #f5efdf  !important;
@@ -210,24 +286,38 @@
     <div id="app-calendar"></div>
 
     <br />
-    <div class="row mx-5">
-        <div class="col">
-            <h1>Today's TO DO</h1>
+    <<!-- Templates for general use, not displayed -->
+    <template id=CardTemplate>
+        <tr>
+            <td class="card-title"></td>
+            <td>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="counterUp(this.id)">
+            </td>
+            <td>
+                <button class="bttn" onclick="removeReminder(this.id)">X</button>
+            </td>
+        </tr>
+
+    </template>
+
+    <br />
+
+    <div class="container" id="reminderContainer">
+        <h1 style="margin-left: 0.7rem;">Today's TO DO</h1>
+        <!-- Here is container for cards  -->
+        <div class="container">
+            <table>
+                <tr>
+                <th>Reminders</th>
+                <th>Done</th>
+                <th>Remove</th>
+            </tr>
+            </table>
+            <table id="reminders-go-here">
+            </table>
         </div>
     </div>
-    <div class="row mx-5">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-7">
-            <ul>
-                <li>Eat lunch</li>
-                <li>Walk the Dog</li>
-                <li>Finish Assignment(due tmrw)</li>
-            </ul>
-        </div>
-        <div class="col-sm-4 py-2"><input type="radio" class="btn-check a" name="btnradio" id="btnradio1"
-                autocomplete="off" checked>
-            <label class="btn btn-outline-secondary align-items-center" for="btnradio1">All Done</label></div>
-    </div>
+        
     <br />
     <div class="row mx-5">
         <div class="col">
@@ -267,6 +357,7 @@
         //const and var
         //------------- 
         var userID;
+        var reminderList = [];
         const calendar = document.querySelector("#app-calendar");
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
             "October", "November", "December"
@@ -309,6 +400,7 @@
         //---------------function and code-----------------
         //-------------------------------------------------
         getReminder();
+        getReminderCalendar();
         displayDate();
 
         function displayDate() {
@@ -327,7 +419,7 @@
             firstday = new Date(year, month, 1);
             displayDate();
             document.getElementById("app-calendar").innerHTML = "";
-            getReminder();
+            getReminderCalendar();
         }
         
         function go2nextMonth() {
@@ -339,7 +431,7 @@
             firstday = new Date(year, month, 1);
             displayDate();
             document.getElementById("app-calendar").innerHTML = "";
-            getReminder();
+            getReminderCalendar();
         }
 
         // --------------------------------------
@@ -371,7 +463,7 @@
         //-------------------------
         //Get reminder
         //-------------------------
-        function getReminder() {
+        function getReminderCalendar() {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
                 userID = user.uid;
@@ -471,6 +563,124 @@
             }
         });
     }
+
+    function getReminder() {
+            let year = today.getFullYear();
+            let month = today.getMonth();
+            let date = today.getDate();
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    userID = user.uid;
+                    var activities = [];
+                    var reminderRef = db.collection("reminders");
+                    reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
+                        .then((querySnapshot) => {
+                            querySnapshot.forEach((doc) => {
+                                activities.push(doc.data());
+                                //             // doc.data() is never undefined for query doc snapshots
+                            });
+                            let dailies = [];
+                            let weeklies = [];
+                            let biweeklies = [];
+                            activities.forEach(element => {
+                                if (element.Frequency == "Daily") {
+                                    dailies.push(element);
+                                } else if (element.Frequency == "Weekly") {
+                                    weeklies.push(element);
+                                } else {
+                                    biweeklies.push(element);
+                                }
+                            });
+                            // console.log(dailies);
+                            for (let i = 0; i < dailies.length; i++) {
+                                if (year > new Date(dailies[i].TimeStamp).getFullYear() || (year ==
+                                        new Date(dailies[i].TimeStamp).getFullYear() &&
+                                        month > new Date(dailies[i].TimeStamp).getMonth())) {
+                                    reminderList.push(dailies[i]);
+                                    
+                                } else if (year == new Date(dailies[i].TimeStamp).getFullYear() && month ==
+                                    new Date(dailies[i].TimeStamp).getMonth()) {
+                                    reminderList.push(dailies[i]);
+                                    }
+                            }
+                            for (let i = 0; i < weeklies.length; i++) {
+                                if (year > new Date(weeklies[i].TimeStamp).getFullYear() || (year ==
+                                        new Date(weeklies[i].TimeStamp).getFullYear() &&
+                                        month > new Date(weeklies[i].TimeStamp).getMonth())) {
+                                    if (new Date(year, month, date).getDay() == new Date(weeklies[i]
+                                            .TimeStamp).getDay()) {
+                                        reminderList.push(weeklies[i]);
+                                        }
+                                } else
+                                if (year == new Date(weeklies[i].TimeStamp).getFullYear() && month ==
+                                    new Date(weeklies[i].TimeStamp).getMonth()) {
+                                    if (new Date(year, month, date).getDay() == new Date(weeklies[i]
+                                            .TimeStamp).getDay()) {
+                                        reminderList.push(weeklies[i]);
+                                        }
+                                }
+                            }
+                            for (let i = 0; i < biweeklies.length; i++) {
+                                if (year > new Date(biweeklies[i].TimeStamp).getFullYear() || (year ==
+                                        new Date(biweeklies[i].TimeStamp).getFullYear() &&
+                                        month > new Date(biweeklies[i].TimeStamp).getMonth())) {
+                                    if (new Date(year, month, date).getDay() == new Date(biweeklies[i]
+                                            .TimeStamp).getDay()) {
+                                        if (((Math.floor(new Date(year, month, date))) - Math.floor(
+                                                new Date(new Date(biweeklies[i].TimeStamp)
+                                                .getFullYear(), new Date(biweeklies[i].TimeStamp)
+                                                    .getMonth(), new Date(biweeklies[i].TimeStamp)
+                                                    .getDate()))) % 14 == 0) {
+                                            reminderList.push(biweeklies[i]);
+                                            }
+                                    }
+                                } else
+                                if (year == new Date(biweeklies[i].TimeStamp).getFullYear() && month ==
+                                    new Date(biweeklies[i].TimeStamp).getMonth()) {
+                                    if (new Date(year, month, date).getDay() == new Date(biweeklies[i]
+                                            .TimeStamp).getDay()) {
+                                        if ((Math.floor(new Date(year, month, date)) - Math.floor(new Date(
+                                                new Date(biweeklies[i].TimeStamp).getFullYear(),
+                                                new Date(biweeklies[i].TimeStamp).getMonth(),
+                                                new Date(biweeklies[i].TimeStamp).getDate()))) % 14 == 0) {
+                                            reminderList.push(biweeklies[i]);
+                                            
+                                        }
+                                    }
+                                }
+                            }
+                            displayRems(reminderList);
+                        })
+                        
+                } else {
+                    //     // User is signed out
+                    //     // ...
+                }
+                // console.log(reminderList);
+            });
+        }
+
+        function displayRems(list) {
+                    for (let i = 0; i < list.length; i++) {//iterate thru each doc
+                        
+                        let reminder = list[i].Name;
+                        let startTime = list[i].Time;
+                        let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime.split(':')[0]) + 1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' + startTime.split(':')[1];
+                        let newcard = CardTemplate.content.cloneNode(true);
+
+                        // //update title and text and image
+                        newcard.querySelector('.card-title').innerHTML = `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
+                        // //updates href, so we can click.
+                        
+                        // //give unique ids to all elements for future use
+                        newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+                        newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
+                        newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
+                        //attach to gallery
+                        document.getElementById("reminders-go-here").appendChild(newcard);
+                    }
+                }
+
         function addReminderClass(classArr, index) {
             if (classArr[index].classList.contains('rem6')) {
                 classArr[index].classList.add('rem7');
