@@ -54,10 +54,20 @@ background-color: #f5efdf  !important;
          text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
     }
 
-.fixed-bottom {
-background-color:#f5efdf !important;
-border-top: solid 2px #f37f5230;
+    .fixed-bottom {
+    background-color:#f5efdf !important;
+    border-top: solid 2px #f37f5230;
+    border-left: solid 2px #f37f5230;
+    border-right: solid 2px #f37f5230;
+    justify-content: space-evenly;
+    margin-left: 10rem;
+    margin-right: 10rem;
 }
+
+footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
+    }
 
 </style>
 
@@ -78,11 +88,11 @@ border-top: solid 2px #f37f5230;
     <!-- welcome and main part of the page -->
    
     <div class="position-absolute top-50 start-50 translate-middle">
-        <div class="container-fluid bg-light-gray text-light p-5" style="width: 100%; font-size: medium; margin-right: 5rem; background-color: #ABE188; border-radius: 2%;">
+        <div class="container-fluid bg-light-gray text-light p-5" style="width: 100%; font-size: medium; margin-right: 5rem; background-color: #f5efdf; border-radius: 2%;">
             <div class="container p-5">
-                <h2 class="display-4" style= "color: #5D675B;">Nice!</h2>
-                <hr style="color: #5D675B; height: 0.5rem;">
-                <h2 style="color: #5D675B;">You set a reminder for <span id="reminder-here"></span>.</h2>
+                <h2 class="display-4" style= "color: #f37f52;">Nice!</h2>
+                <hr style="color:#f37f52; height: 0.5rem;">
+                <h2 style="color: #f37f52;">You set a reminder for <span id="reminder-here"></span>.</h2>
 
             </div>
         </div>
@@ -95,16 +105,14 @@ border-top: solid 2px #f37f5230;
         <div class="container text-center py-0">
             <footer class="navbar bg-secondary fixed-bottom py-0">
                 
-                <a href="frontpage.html" i class="bi bi-arrow-left-circle mx-3 " style="font-size:  2em; color: white"></a>
-                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; color: white;"></a>
-                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em; color: white;"></a>
-                <i class="bi bi-trophy" style="font-size: 2em; color: white;"></i>
-                <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em; color: white"></a>
-              
-            </footer>       
-         </div>
-</div>
-
+                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+                
+                <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
+    
+            </footer>
+        </div>
+    </div>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
     <!----------------------------------------------->
