@@ -160,6 +160,7 @@ body {
                                 name: user.displayName,                    //"users" collection
                                 email: user.email,                         //with authenticated user's ID (user.uid)
                                 counter: 0
+                                
                             }).then(function () {
                                 console.log("New user added to firestore");
                                 window.location.assign("create_profile.html");       //re-direct to main.html after signup

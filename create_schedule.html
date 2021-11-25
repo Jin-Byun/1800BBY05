@@ -455,6 +455,15 @@ body {
     }
   }
 
+  function rewardForReminder() {
+    db.collection('reminders').get().then(snap => {
+  size = snap.size // will return the collection size
+  if (size / 5 == 0) {
+    
+  }
+    });
+  }
+
   
 
 
