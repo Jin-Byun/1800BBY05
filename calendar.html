@@ -381,14 +381,6 @@
                 reminderRef.where("UserID", "==", userID).get()
                     .then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
-                            // if(!doc.active){
-                            //     console.log(doc);
-                            //     reminderRef.doc.update({
-                            //         active: true
-                            //     }).then(() => {
-                            //         console.log("active field written");
-                            //     });
-                            // }
                             activities.push(doc.data());
                             //             // doc.data() is never undefined for query doc snapshots
                         });
@@ -515,13 +507,12 @@
         //                         userName = userDoc.data().name;
         //                         // Start a new collection and add all data in it.
         //                         let docData = {
-        //                             weekday: ((firstday.getDay() + i - 1) % 7),
-        //                             activity: [],
+        //                             reminder: "",
         //                             name: userName
         //                         };
         //                         db.collection("dates").doc(userID)
         //                             .collection(months[month] + "_" + year)
-        //                             .doc(i.toString()).set(docData).then(() => {
+        //                             .doc(i.toString()).collection("todo").set(docData).then(() => {
         //                                 console.log("Document successfully written!");
         //                             });
         //                     })
