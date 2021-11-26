@@ -250,6 +250,52 @@
             color: #f37f52;
             text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
         }
+
+        .custom-progress {
+            height: 10px;
+            border-radius: 50px;
+            box-shadow: none;
+            margin-bottom: 25px;
+        }
+
+        .progress {
+            display: -ms-flexbox;
+            display: flex;
+            height: 1rem;
+            overflow: hidden;
+            font-size: .75rem;
+            background-color: #e9ecef;
+            border-radius: .25rem;
+        }
+
+
+        .bg-sky {
+            background-color: #ffaf2e
+        }
+
+        .bg-orange {
+            background-color: #e95601
+        }
+
+        .bg-green {
+            background-color: #97d877
+        }
+
+        .bg-yellow {
+            background-color: #f0d001
+        }
+
+        .bg-pink {
+            background-color: #ff48a4
+        }
+
+        .bg-purple {
+            background-color: #9d60ff
+        }
+
+        .bg-lightred {
+            background-color: #ff5722
+        }
     </style>
 
 </head>
@@ -285,12 +331,12 @@
                     </div>
                     <div class="card-block">
                         <div class="user-img">
-                            <div id="user-img">
+                            <div id="profile-img">
                                 <img src="https://i.imgur.com/Fp8TW5v.png" class="profile-img" alt="profile">
 
-                                    <!-- Testing -->
-                                    <input type="file" id="profile-img-file" style="display:none" accept="image/*">
-                                    <img onclick="document.getElementById('profile-img-file').click()">
+                                <!-- Testing -->
+                                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
+                                <img onclick="document.getElementById('profile-img-file').click()">
 
                             </div>
                         </div>
@@ -593,7 +639,57 @@
             })
         }
         showUploadedPicture();
-        
+
+
+
+
+        displayRems();
+
+function displayRems() {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      userID = user.uid;
+      var activities = [];
+      var reminderRef = db.collection("reminders");
+      reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            activities.push(doc.data());
+          });
+          if (activities.length == 0) {
+            let newcard = CardTemplate.content.cloneNode(true);
+            newcard.querySelector('.card-isEmpty').innerText = "No active reminder!";
+            document.getElementById("isEmpty-go-here").appendChild(newcard);
+          } else {
+            activities.forEach(element => { //iterate thru each activity
+
+              let reminder = element.Name;
+              let startTime = element.Time;
+              let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime
+                  .split(':')[0]) + 1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' +
+                startTime.split(':')[1];
+              let freq = element.Frequency;
+              let isAlive = (element.Active ? "Active!" : "Not Active...");
+              let newcard = CardTemplate.content.cloneNode(true);
+
+              // // //update title and text and image
+              newcard.querySelector('.card-title').innerHTML =
+                `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
+              newcard.querySelector('.card-freq').innerHTML = freq;
+              // // //give unique ids to all elements for future use
+              // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+              // newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
+              // newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
+              // //attach to gallery
+
+              document.getElementById("reminders-go-here").appendChild(newcard);
+            })
+          }
+        })
+    }
+  });
+}
+
     </script>
 
 
