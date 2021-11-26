@@ -591,6 +591,11 @@ var currentUser;
             image.src = blob;  // display this image
 
             //store using this name
+
+            //*****************************************************
+            //*********************************************************
+            //JIn's opinion: The storageRef is referencing to a file that does not exists with in the storage.
+            //try copying a file in the storage to have the same name, and then put the new Item in to it.
             var storageRef = storage.ref("images/" + user.uid + ".jpg"); 
             
             storageRef.put(file) 
