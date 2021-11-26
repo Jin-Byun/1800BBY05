@@ -485,7 +485,7 @@ footer > a {
                 fillCalendar();
                 var activities = [];
                 var reminderRef = db.collection("reminders");
-                reminderRef.where("UserID", "==", userID).get()
+                reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
                     .then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
                             activities.push(doc.data());
@@ -534,7 +534,7 @@ footer > a {
                             if (year == weeklies[i].getFullYear() && month == weeklies[i].getMonth()) {
                                 let dailychange = document.querySelectorAll("#app-calendar .block");
                                 for (let index = 0; index < dailychange.length; index++) {
-                                    if (dailychange[index].innerHTML >= dailies[i].getDate()) {
+                                    if (dailychange[index].innerHTML >= weeklies[i].getDate()) {
                                         // console.log(dailychange[index].classList.contains('rem1'));
                                         if (dailychange[index].classList.contains('day' + weeklies[i]
                                                 .getDay())) {
@@ -579,6 +579,37 @@ footer > a {
         });
     }
 
+    function counterUp(clickedid) {
+            console.log(userID);
+            let disable = document.createAttribute("disabled");
+            document.getElementById(clickedid).setAttributeNode(disable);
+            db.collection("users").doc(userID).get().then(query => {
+                let thing = query.data();
+                // let tmp = thing.data();
+                console.log(thing);
+                thing.counter += 1;
+                console.log(thing);
+                query.ref.update(thing);
+            });
+        }
+
+        function removeReminder(clickedid) {
+            let remNum = clickedid.substring('cremove'.length);
+            let remID = document.getElementById('ctitle' + remNum);
+            let remContent = remID.innerHTML.split('</p>')[0].substring('<p>'.length);
+            db.collection("reminders").where("Name", "==", remContent).limit(1).get().then(query => {
+                let thing = query.docs[0];
+                let tmp = thing.data();
+                tmp.Active = false;
+                // console.log(tmp);
+                thing.ref.update(tmp);
+                document.getElementById("reminders-go-here").innerHTML = "";
+                document.getElementById("app-calendar").innerHTML = "";
+                getReminder();
+                getReminderCalendar();
+                });
+        }
+
     function getReminder() {
             let year = today.getFullYear();
             let month = today.getMonth();
@@ -597,6 +628,7 @@ footer > a {
                             let dailies = [];
                             let weeklies = [];
                             let biweeklies = [];
+                            reminderList = [];
                             activities.forEach(element => {
                                 if (element.Frequency == "Daily") {
                                     dailies.push(element);
