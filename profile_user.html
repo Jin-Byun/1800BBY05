@@ -284,13 +284,12 @@
                     <div class="card-block">
                         <div class="user-image">
                             <div id="profile-img">
-                                <img src="https://i.imgur.com/Nptamwx.png" class="img-radius"
-                                    alt="User-Profile-Image">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-radius"
+                                    alt="profile">
 
                                     <!-- Testing -->
                                     <input type="file" id="profile-img-file" style="display:none" accept="image/*">
                                     <img onclick="document.getElementById('profile-img-file').click()">
-
 
                             </div>
                         </div>
@@ -363,6 +362,7 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+
 
     <script>
         function displayUserProfilePic() {
@@ -543,25 +543,7 @@
             })
         }
         showUploadedPicture();
-
-
-        function displayUserProfilePic() {
-            console.log("hi");
-            firebase.auth().onAuthStateChanged(function (user) { //get user object
-                db.collection("users").doc(user.uid) //use user's uid
-                    .get() //READ the doc
-                    .then(function (doc) {
-                        var picUrl = doc.data().profilePic; //extract pic url
-
-                        // use this line if "mypicdiv" is a "div"
-                        //$("#profile-img").append("<img src='" + picUrl + "'>")
-
-                        // use this line if "mypic-goes-here" is an "img" 
-                        $("#profile-img").attr("src", picUrl);
-                    })
-            })
-        }
-        displayUserProfilePic();
+        
     </script>
 
 
