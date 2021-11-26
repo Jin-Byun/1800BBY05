@@ -563,6 +563,22 @@
             })
         }
         displayUserProfilePic();
+
+        function insertDescription() {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+    
+                    db.collection("users").doc(user.uid).get().then(docs => {
+                        if (docs.exists) {
+                        }
+                        document.getElementById("description").innerText = docs.data().description;
+                        console.log(description);
+
+                    })
+                }
+            });
+        }
+        insertDescription();
     </script>
 
 

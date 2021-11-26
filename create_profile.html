@@ -420,7 +420,7 @@
                             //document.getElementById("username").innerText = n;                     
                             //using javascript
                             $("#descriptionInput").text(user_Description); //using jquery
-                            $("#description-goes-here").text(user_Description);
+                            //$("#description-goes-here").text(user_Description);
                         })
                 } else {
                     // No user is signed in.
@@ -511,13 +511,13 @@
         function insertDescription() {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
-                    //console.log(user.uid);
+
                     db.collection("users").doc(user.uid).get().then(docs => {
                         if (docs.exists) {
                         }
                         document.getElementById("description").innerText = docs.data().description;
                         //    console.log(complete);
-                        //  })
+
                     })
                 }
             });
