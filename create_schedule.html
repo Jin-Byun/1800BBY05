@@ -62,7 +62,6 @@
 body {
     background-color: #fffaec;
     color: rgb(0, 0, 0);
-    font-family: 'Muli', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -233,7 +232,7 @@ footer > a {
                 <div class="radio-button-form">
 
                   <label>Frequency of Reminder</label>
-              
+               <br>
                   <input
                   type="radio"
                   name="options"
@@ -437,8 +436,8 @@ footer > a {
 
   function rewardForReminder() {
     db.collection('reminders').get().then(snap => {
-  size = snap.size // will return the collection size
-  if (size / 5 == 0) {
+    size = snap.size // will return the collection size
+    if (size % 5 == 0) {
     
   }
     });
