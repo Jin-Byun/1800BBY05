@@ -471,21 +471,21 @@
         }
         insertAge();
 
-        function insertAge() {
+        function insertDescription() {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
-                    //console.log(user.uid);
+    
                     db.collection("users").doc(user.uid).get().then(docs => {
                         if (docs.exists) {
-                            //console.log("data:", docs.data().counter)
                         }
-                        document.getElementById("description-goes-here").innerText = docs.data().age;
-                        //console.log(age);
+                        document.getElementById("description-goes-here").innerText = docs.data().description;
+                        console.log(description);
+
                     })
                 }
             });
         }
-        insertAge();
+        insertDescription();
 
         function uploadUserProfilePic() {
 
@@ -564,21 +564,7 @@
         }
         displayUserProfilePic();
 
-        function insertDescription() {
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-    
-                    db.collection("users").doc(user.uid).get().then(docs => {
-                        if (docs.exists) {
-                        }
-                        document.getElementById("description").innerText = docs.data().description;
-                        console.log(description);
-
-                    })
-                }
-            });
-        }
-        insertDescription();
+        
     </script>
 
 
