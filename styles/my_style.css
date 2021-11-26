@@ -1,16 +1,16 @@
 @font-face {
     font-family: logo;
-    src: url(fonts\Righteous-Regular.ttf)
+    src: url(\fonts\Righteous-Regular.ttf)
 }
 
 @font-face {
     font-family: heading;
-    src: url(fonts\Oxygen-Regular.ttf)
+    src: url(\fonts\Oxygen-Regular.ttf)
 }
 
 @font-face {
     font-family: body;
-    src: url(fonts\Sanchez-Regular.ttf);
+    src: url(\fonts\Sanchez-Regular.ttf);
 }
 
 #logo {

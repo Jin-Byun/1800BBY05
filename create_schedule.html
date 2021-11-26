@@ -326,11 +326,6 @@ footer > a {
         console.log("TimeStamp works");
         return +new Date;
       };
-      
-      let counter = 0;
-
-      let clicks = document.getElementById("button");
-
      
 
 
@@ -405,13 +400,7 @@ footer > a {
       
       }
 
-    // function setNum()
-    // {
-    //   var value = parseInt(document.getElementById('num').value, 10);
-    //   value = isNan(value) ? 0 : value;
-    //   value++;
-    //   document.getElementById('num').value = value;
-    // }
+   
 
 
   // Alert message for invalid inputs, to restyle using Jquery UI dialogue box
@@ -434,19 +423,12 @@ footer > a {
     }
   }
 
-  function rewardForReminder() {
-    db.collection('reminders').get().then(snap => {
-    size = snap.size // will return the collection size
-    if (size % 5 == 0) {
-    
-  }
-    });
-  }
+  
 
   
 
-
-  //
+  
+  
   
 
 

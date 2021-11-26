@@ -131,6 +131,8 @@ footer > a {
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
 <script>
+
+goToFrontpage();
    var queryString = decodeURIComponent(window.location.search);
    var queries = queryString.split("?");
    var Name = queries[1];
@@ -142,6 +144,15 @@ footer > a {
    var node = document.createTextNode(Name);
    para.appendChild(node);
    
+
+
+   function goToFrontpage() {
+    setTimeout(() => window.location.href = "frontpage.html?", 2000)
+    
+}
+
+
+
 </script>
 </body>
 
