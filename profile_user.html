@@ -322,7 +322,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="m-t-15 text-muted">This user hasn't added a description</p>
+                        <p class="m-t-15 text-muted"><span id="description-goes-here"></span></p>
                         <hr>
 
 
@@ -464,6 +464,22 @@
                             //console.log("data:", docs.data().counter)
                         }
                         document.getElementById("age-goes-here").innerText = docs.data().age;
+                        //console.log(age);
+                    })
+                }
+            });
+        }
+        insertAge();
+
+        function insertAge() {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    //console.log(user.uid);
+                    db.collection("users").doc(user.uid).get().then(docs => {
+                        if (docs.exists) {
+                            //console.log("data:", docs.data().counter)
+                        }
+                        document.getElementById("description-goes-here").innerText = docs.data().age;
                         //console.log(age);
                     })
                 }

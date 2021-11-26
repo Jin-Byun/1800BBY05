@@ -86,7 +86,7 @@
             margin-bottom: 20px
         }
 
-            /* @media screen and (max-width: 1199px) {
+        /* @media screen and (max-width: 1199px) {
         .team-single-text .section-heading h4,
         .section-heading h5 {
             font-size: 32px
@@ -179,10 +179,8 @@
             width: 110px;
             height: 110px;
             border-radius: 50%;
-            
-        }
-        
 
+        }
     </style>
 
 </head>
@@ -231,7 +229,7 @@
             <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
                 <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Level 1 Hej
                     User</h4>
-                <p class="sm-width-95 sm-margin-auto" id="description">This user hasn't added a description.</p>
+                <p class="sm-width-95 sm-margin-auto"><span id="description-goes-here"></span></p>
                 <div class="margin-20px-top team-single-icons">
                     <!-- <ul class="no-margin">
                                 <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
@@ -261,7 +259,8 @@
                 </div>
                 <div class="form-group">
                     <label>Description</label>
-                    <input type="text" id="descriptionInput" class="form-control" placeholder="Add a description about yourself">
+                    <input type="text" id="descriptionInput" class="form-control"
+                        placeholder="Add a description about yourself">
                 </div>
 
                 <br>
@@ -314,10 +313,7 @@
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
-
-                    //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
                             //get the data fields of the user
@@ -325,7 +321,7 @@
                             //console.log(userName);
                             var userAge = userDoc.data().age;
                             var userDescription = userDoc.data().description;
-                            
+
                             //if the data fields are not empty, then write them in to the form.
                             if (userName != null) {
                                 document.getElementById("nameInput").value = userName;
@@ -346,14 +342,11 @@
                 }
             });
         }
-
-        //call the function to run it 
         populateInfo();
 
         function editUserInfo() {
-            //console.log("edit is clicked");
             document.getElementById("personalinfo").disabled = false;
-            
+
         }
 
         function saveUserInfo() {
@@ -376,18 +369,14 @@
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
-                    // Do something for the current logged-in user here: 
-                    //console.log(user.uid);
-                    //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
                             var user_Name = userDoc.data().name;
                             //console.log(user_Name);
                             //document.getElementById("username").innerText = n;                     
                             //using javascript
-                            $("#name-goes-here").text(user_Name); //using jquery
+                            $("#nameInput").text(user_Name); //using jquery
                         })
                 } else {
                     // No user is signed in.
@@ -401,9 +390,6 @@
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
-                    // Do something for the current logged-in user here: 
-                    //console.log(user.uid);
-                    //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
                     //get the document for current user.
                     currentUser.get()
@@ -412,7 +398,7 @@
                             //console.log(user_Name);
                             //document.getElementById("username").innerText = n;                     
                             //using javascript
-                            $("#age-goes-here").text(user_Age); //using jquery
+                            $("#ageInput").text(user_Age); //using jquery
                         })
                 } else {
                     // No user is signed in.
@@ -434,6 +420,7 @@
                             //document.getElementById("username").innerText = n;                     
                             //using javascript
                             $("#descriptionInput").text(user_Description); //using jquery
+                            $("#description-goes-here").text(user_Description);
                         })
                 } else {
                     // No user is signed in.
@@ -519,6 +506,23 @@
             })
         }
         displayUserProfilePic();
+
+
+        function insertDescription() {
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    //console.log(user.uid);
+                    db.collection("users").doc(user.uid).get().then(docs => {
+                        if (docs.exists) {
+                        }
+                        document.getElementById("description").innerText = docs.data().description;
+                        //    console.log(complete);
+                        //  })
+                    })
+                }
+            });
+        }
+        insertDescription();
     </script>
 
 </body>
