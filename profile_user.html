@@ -276,6 +276,44 @@
             text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
         }
 
+
+        #badges {
+            display: grid;
+            grid-template-columns: 10% 20% 20% 20% 20% 10%;
+
+        }
+
+        .circles {
+            border-radius: 50%;
+            height: 50px;
+            width: 50px;
+            background-color: #f37f52 !important;
+            z-index: 20 !important;
+        }
+
+        #circle-one {
+            grid-column: 2;
+            margin: 1rem;
+        }
+
+        #circle-two {
+            grid-column: 3;
+            margin: 1rem;
+
+        }
+
+        #circle-three {
+            grid-column: 4;
+            margin: 1rem;
+        }
+
+        #circle-four {
+            grid-column: 5;
+            margin: 1rem;
+        }
+
+
+        
         
     </style>
 
@@ -352,6 +390,31 @@
                         <p class="m-t-15 text-muted"><span id="description-goes-here"></span></p>
                         <hr>
 
+                        <div id="badges">
+                      
+
+                        <div class="circles" id="circle-one"><span id="badge-one"></span></div>
+                        <div class="circles" id="circle-two"><span id="badge-two"></span></div>
+                        <div class="circles" id="circle-three"><span id ="badge-three"></span></div>
+                        <div class="circles" id="circle-four"><span id="badge-four"></span></div>
+
+                        
+
+
+                        </div>
+
+                        <br>
+                        
+                        <br>
+
+
+
+
+
+
+
+
+
 
 
                     </div>
@@ -392,7 +455,9 @@
 
     <script>
         var currentUser;
-
+        var count;
+        countReminders();
+        reward();
         function populateInfo() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -500,7 +565,7 @@
                         if (docs.exists) {
                         }
                         document.getElementById("description-goes-here").innerText = docs.data().description;
-                        console.log(description);
+                      
 
                     })
                 }
@@ -584,8 +649,48 @@
             })
         }
         displayUserProfilePic();
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        
+
+
+function countReminders() {
+    count = 0;
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            userID = user.uid;
+            var reminders = [];
+            var reminderRef = db.collection("reminders");
+            reminderRef.where("UserID", "==", userID).get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    reminders.push(doc.data());
+                    ++count;
+                    console.log(count);
+                });
+
+                   
+            })
+        }
+    })
+}
+
+
+
+function reward() {
+    if (count % 5 == 0) {
+        var img = document.createElement("img");
+        img.src = "images/badge1.png";
+        var circleBadge = document.getElementById("badge-one");
+        circleBadge.appendChild(img);
+        img.style.cssText = `
+            border-radius: 50%;
+            border: 2px solid yellow;
+            height: 50px;
+            width: 50px;
+        `;
+    }
+
+}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////        
     </script>
 
 
