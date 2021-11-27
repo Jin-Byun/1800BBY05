@@ -100,6 +100,13 @@
 
         #reminders-go-here {
             margin-top: 2%;
+            border-bottom: 2px solid orangered;
+        }
+
+        .textblock {
+            border: 2px solid orangered;
+            margin-bottom: 4%;
+            padding: 2%;
         }
 
         .bttn {
@@ -300,8 +307,10 @@
             color: #f37f52;
             text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
         }
- 
 
+        #history {
+            padding-bottom: 80px;
+        }
     </style>
 
 </head>
@@ -363,17 +372,26 @@
     </div>
 
     <br />
-    <div class="container">
+    <div id="history" class="container">
         <div class="col"  style="margin-inline: 0.7rem;">
-            <h3>Quote of the day</h3>
+            <h1 style="margin-bottom: 4%;">In history, today:</h1>
+            <div class="container">
+                <div class="textblock">
+                <h6>EVENT</h6>
         <div id="quote-goes-here"></div>
             <div id="author-goes-here" style="text-align: right; font-style: italic;"></div>
+            </div>
+            <div class="textblock">
+            <h6>BIRTH</h6>
+            <div id="birth-goes-here"></div>
+        </div>
+            <div class="textblock">
+            <h6>DEATH</h6>
+            <div id="death-goes-here"></div>
+            </div>
     </div>
 </div>
-
-
-    <div style="height: 80px"></div>
-
+</div>
 
 
     <footer class="navbar-bottom bg-secondary fixed-bottom py-0">
@@ -439,6 +457,7 @@
         getReminder();
         getReminderCalendar();
         displayDate();
+        addHistory(); 
 
         function displayDate() {
             if (year == today.getFullYear() && month == today.getMonth()) {
@@ -740,20 +759,29 @@
                 // console.log(reminderList);
             });
         }
-
-        addQuote();
  
-        function addQuote() {
-        fetch("https://type.fit/api/quotes").then(function(response) {
+function addHistory() {
+    fetch("https://history.muffinlabs.com/date").then(function(response) {
     return response.json();
-  }).then(function(data) {
-    let todayQ = data[today.getMonth() * today.getDate()].text;
-    let todayA = data[today.getMonth() * today.getDate()].author;
+  }).then(function(history) {
+    todayInfo = history.data;
+    console.log(todayInfo);
+    let Event_Num = Math.floor(Math.random() * todayInfo.Events.length);
+    let Birth_Num = Math.floor(Math.random() * todayInfo.Births.length);
+    let Death_Num = Math.floor(Math.random() * todayInfo.Deaths.length);
+    let todayEvent = todayInfo.Events[Event_Num];
+    let todayEvent_Year = todayEvent.year;
+    let todayEvent_text = todayEvent.text;
+    console.log(todayEvent_text);
+    let todayBirth = todayInfo.Births[Birth_Num];
+    let todayDeath = todayInfo.Deaths[Death_Num];
+    console.log(todayBirth);
+    document.getElementById("quote-goes-here").innerHTML = todayEvent_text;
+    document.getElementById("author-goes-here").innerHTML = todayEvent_Year;
+    document.getElementById("birth-goes-here").innerText = todayBirth.text + " was born. (" + todayBirth.year + ")";
+    document.getElementById("death-goes-here").innerHTML = todayDeath.text + " passed away. (" + todayDeath.year + ")";
 
-    document.getElementById("quote-goes-here").innerHTML = todayQ;
-    document.getElementById("author-goes-here").innerHTML = todayA;
-
-  });
+});
 }
 
         function displayRems(list) {
