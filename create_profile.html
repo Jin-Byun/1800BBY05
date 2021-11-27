@@ -286,17 +286,15 @@
         <div class="team-single">
             <div class="row">
                 <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
-
                 </div>
-
+                <span id="create_prof">Create Profile</span> <span id="name2-goes-here"></span>
+                <br>
                 <div class="team-single-img">
-                    <div class="container py-3 text-center d-flex align-items-center">
-                        <div class="card ">
+                    <div class="container text-center col-md-4 col-md-offset-4">
+                        <div class="card">
                             <div class="card-body">
-
-
                                 <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
-                                Welcome <span id="name-goes-here"></span>
+                                <!-- Welcome <span id="name-goes-here"></span> -->
                                 <input type="file" id="profile-img-file" style="display:none" accept="image/*">
                             </div>
                         </div>
@@ -307,58 +305,65 @@
                     </div>
                 </div>
             </div>
-            <div id="levelborder">
+            <!-- <div id="levelborder">
                 <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
                     <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600"><span
                             id="userlevel">Level 1 Habit User</span></h4>
                     <p class="sm-width-95 sm-margin-auto"><span class="description-goes-here"></span></p>
                     <div class="margin-20px-top team-single-icons">
-                    </div>
-                    <!-- <ul class="no-margin">
-                                <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
-                            </ul> -->
-                </div>
-            </div>
+                    </div> -->
+                      
         </div>
     </div>
+
 
     <div class="container">
         <h1></h1><span id="add-user-form">
             <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
-        </span><span id="create_prof">Create Profile</span> <span id="name2-goes-here"></span>
-        <form><br>
-            <fieldset class="mb-3" id="personalinfo">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+
+            <form><br>
+                <fieldset class="mb-3" id="personalinfo">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="descriptionInput" class="form-control"
+                            placeholder="Add a description about yourself">
+                    </div>
+
+                </fieldset>
+
+                <div class="d-flex justify-content-end mt-5">
+
+                    <button type="button" class="btn btn-danger" onclick="editUserInfo()">Edit</button>
+                    <span style="width: 10px"></span>
+                    <a href="frontpage.html" button type="button" class="btn btn-danger" onclick="saveUserInfo()">Save &
+                        Continue</a>
+
+<<<<<<< HEAD
                 </div>
-                <div class="form-group">
-                    <label>Age</label>
-                    <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
+            </form>
+
+            <br> <br>
+
+            <div class="fixed-bottom py-3 bg-secondary align-items-center">
+                <div class="container text-center py-0">
+                    <footer class="navbar bg-secondary fixed-bottom py-0">
+
+                        <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+                        <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+                        <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
+
+                    </footer>
                 </div>
-                <div class="form-group">
-                    <label>Description</label>
-                    <input type="text" id="descriptionInput" class="form-control"
-                        placeholder="Add a description about yourself">
-                </div>
-
-            </fieldset>
-
-            <div class="d-flex justify-content-end mt-5">
-
-                <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
-                <span style="width: 10px"></span>
-                <a href="frontpage.html" button type="button" class="btn btn-secondary" onclick="saveUserInfo()">Save &
-                    Continue</a>
-
             </div>
-        </form>
-    </div>
-    <br> <br>
-
+=======
 
             <footer class="navbar bg-secondary fixed-bottom py-0">
 
@@ -367,11 +372,12 @@
                 <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
 
             </footer>
+>>>>>>> ad0bed7433f2bd96e4f2614eb1aa99120a0e15b7
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
-    <!----------------------------------------------->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <!----------------------------------------------->
+            <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
+            <!----------------------------------------------->
+            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
     </script>
@@ -380,221 +386,204 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your o   wn JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
+            <!--------------------------------------------------------------------->
+            <!-- JS files: Your o   wn JavaScript functions included here    -->
+            <!--------------------------------------------------------------------->
 
-    <script>
-        var currentUser;
+            <script>
+                var currentUser;
 
-        function populateInfo() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-                    currentUser = db.collection("users").doc(user.uid)
-                    currentUser.get()
-                        .then(userDoc => {
-                            //get the data fields of the user
-                            var userName = userDoc.data().name;
-                            var userAge = userDoc.data().age;
-                            var userDescription = userDoc.data().description;
+                function populateInfo() {
+                    firebase.auth().onAuthStateChanged(user => {
+                        // Check if user is signed in:
+                        if (user) {
+                            currentUser = db.collection("users").doc(user.uid)
+                            currentUser.get()
+                                .then(userDoc => {
+                                    //get the data fields of the user
+                                    var userName = userDoc.data().name;
+                                    var userAge = userDoc.data().age;
+                                    var userDescription = userDoc.data().description;
 
-                            //if the data fields are not empty, then write them in to the form.
-                            if (userName != null) {
-                                document.getElementById("nameInput").value = userName;
-                            }
-                            if (userAge != null) {
-                                document.getElementById("ageInput").value = userAge;
-                            }
-                            if (userDescription != null) {
-                                document.getElementById("descriptionInput").value = userDescription;
-                            }
-                        })
-                } else {
-                    // No user is signed in.
-                    console.log("No user is signed in");
-                }
-            });
-        }
-        populateInfo();
-
-        function editUserInfo() {
-            document.getElementById("personalinfo").disabled = false;
-
-        }
-
-        function saveUserInfo() {
-            name = document.getElementById('nameInput').value;
-            age = document.getElementById('ageInput').value;
-            description = document.getElementById('descriptionInput').value;
-            profilePic = profilePic.getElementById('profile-img').value;
-            //write the value in the database:
-            currentUser.update({
-                //below means field of 'name' in firebase store - data from firestore
-                name: name,
-                age: age,
-                description: description,
-                profilePic: profilePic
-            })
-        }
-
-        function insertName() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-                    currentUser = db.collection("users").doc(user.uid)
-                    currentUser.get()
-                        .then(userDoc => {
-                            var user_Name = userDoc.data().name;
-                            //console.log(user_Name);
-                            //document.getElementById("username").innerText = n;                     
-                            //using javascript
-                            //$("#name-goes-here").text(user_Name); //using jquery
-                        })
-                } else {
-                    // No user is signed in.
-                }
-            });
-        }
-        insertName();
-
-
-        function insertAge() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-                    currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
-                    currentUser.get()
-                        .then(userDoc => {
-                            var user_Age = userDoc.data().age;
-                            //console.log(user_Name);
-                            //document.getElementById("username").innerText = n;                     
-                            //using javascript
-                            $("#age-goes-here").text(user_Age); //using jquery
-                        })
-                } else {
-                    // No user is signed in.
-                }
-            });
-        }
-        insertAge();
-
-        function insertDescription() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-                    currentUser = db.collection("users").doc(user.uid)
-                    currentUser.get()
-                        .then(userDoc => {
-                            var user_Description = userDoc.data().description;
-                            
-                            //document.getElementById("username").innerText = n;                     
-                            //using javascript
-                            $("#description-goes-here").text(user_Description); //using jquery
-                            
-                        })
-                } else {
-                    // No user is signed in.
-                }
-            });
-        }
-        insertDescription();
-
-
-        // function populateDescription() {
-        //     firebase.auth().onAuthStateChanged(user => {
-        //         if (user) {
-        //             currentUser.collection("users").doc(user.uid).get().then(docs => {
-        //                 if (docs.exists) {
-        //                 }
-        //                     document.getElementById("descriptionInput").innerText = docs.data().description;
-        //                 }
-        //             )}
-        //     });
-        // }
-        // populateDescription();
-
-
-
-        function uploadUserProfilePic() {
-
-            firebase.auth().onAuthStateChanged(function (user) {
-                var fileInput = document.getElementById("profile-img-file"); // pointer #1
-                const image = document.getElementById("profile-img"); // pointer #2
-
-                // listen for file selection
-                fileInput.addEventListener('change', function (e) {
-                    var file = e.target.files[0];
-                    var blob = URL.createObjectURL(file);
-                    image.src = blob; // display this image
-
-                    //store using this name
-
-                    //*****************************************************
-                    //*********************************************************
-                    //JIn's opinion: The storageRef is referencing to a file that does not exists with in the storage.
-                    //try copying a file in the storage to have the same name, and then put the new Item in to it.
-                    var storageRef = storage.ref("images/" + user.uid + ".jpg");
-
-                    storageRef.put(file)
-                        .then(function () {
-                            console.log('Uploaded to Cloud Storage.');
-                        })
-
-                    storageRef.getDownloadURL()
-                        .then(function (url) { // Get URL of the uploaded file
-                            console.log(url); // Save the URL into users collection
-                            db.collection("users").doc(user.uid).update({
-                                    "profilePic": url
+                                    //if the data fields are not empty, then write them in to the form.
+                                    if (userName != null) {
+                                        document.getElementById("nameInput").value = userName;
+                                    }
+                                    if (userAge != null) {
+                                        document.getElementById("ageInput").value = userAge;
+                                    }
+                                    if (userDescription != null) {
+                                        document.getElementById("descriptionInput").value = userDescription;
+                                    }
                                 })
-                                .then(function () {
-                                    console.log('Added Profile Pic URL to Firestore.');
-                                })
-                        })
-                })
-            })
-        }
-        uploadUserProfilePic();
+                        } else {
+                            // No user is signed in.
+                            console.log("No user is signed in");
+                        }
+                    });
+                }
+                populateInfo();
 
+                function editUserInfo() {
+                    document.getElementById("personalinfo").disabled = false;
+                }
 
-        function showUploadedPicture() {
-            const fileInput = document.getElementById("profile-img-file"); // pointer #1
-            const image = document.getElementById("profile-img"); // pointer #2
-
-            //attach listener to input file
-            //when this file changes, do something
-            fileInput.addEventListener('change', function (e) {
-
-                //the change event returns a file "e.target.files[0]"
-                var img_file = URL.createObjectURL(e.target.files[0]);
-
-                //change the DOM img element source to point to this file
-                //assign the "src" property of the "img" tag
-                image.src = img_file;
-            })
-        }
-        showUploadedPicture();
-
-
-        function displayUserProfilePic() {
-            //console.log("hi");
-            firebase.auth().onAuthStateChanged(function (user) { //get user object
-                db.collection("users").doc(user.uid) //use user's uid
-                    .get() //READ the doc
-                    .then(function (doc) {
-                        var picUrl = doc.data().profilePic; //extract pic url
-
-                        // use this line if "mypicdiv" is a "div"
-                        //$("#profile-img").append("<img src='" + picUrl + "'>")
-
-                        // use this line if "mypic-goes-here" is an "img" 
-                        $("#profile-img").attr("src", picUrl);
+                function saveUserInfo() {
+                    name = document.getElementById('nameInput').value;
+                    age = document.getElementById('ageInput').value;
+                    description = document.getElementById('descriptionInput').value;
+                    //profilePic = document.getElementById('profile-img').value;
+                    //write the value in the database:
+                    currentUser.update({
+                        //below means field of 'name' in firebase store - data from firestore
+                        name: name,
+                        age: age,
+                        description: description,
+                        //profilePic: profilePic
                     })
-            })
-        }
-        displayUserProfilePic();
-    </script>
+                }
+
+                function insertName() {
+                    firebase.auth().onAuthStateChanged(user => {
+                        // Check if user is signed in:
+                        if (user) {
+                            currentUser = db.collection("users").doc(user.uid)
+                            currentUser.get()
+                                .then(userDoc => {
+                                    var user_Name = userDoc.data().name;
+                                    //console.log(user_Name);
+                                    //document.getElementById("username").innerText = n;                     
+                                    //using javascript
+                                    //$("#name-goes-here").text(userName); //using jquery
+                                })
+                        } else {
+                            // No user is signed in.
+                        }
+                    });
+                }
+                insertName();
+
+
+                function insertAge() {
+                    firebase.auth().onAuthStateChanged(user => {
+                        // Check if user is signed in:
+                        if (user) {
+                            currentUser = db.collection("users").doc(user.uid)
+                            //get the document for current user.
+                            currentUser.get()
+                                .then(userDoc => {
+                                    var user_Age = userDoc.data().age;
+                                    //console.log(user_Name);
+                                    //document.getElementById("username").innerText = n;                     
+                                    //using javascript
+                                    $("#age-goes-here").text(user_Age); //using jquery
+                                })
+                        } else {
+                            // No user is signed in.
+                        }
+                    });
+                }
+                insertAge();
+
+                function insertDescription() {
+                    firebase.auth().onAuthStateChanged(user => {
+                        // Check if user is signed in:
+                        if (user) {
+                            currentUser = db.collection("users").doc(user.uid)
+                            currentUser.get()
+                                .then(userDoc => {
+                                    var user_Description = userDoc.data().description;
+
+                                    //document.getElementById("description-goes-here").innerText = n;                     
+                                    //using javascript
+                                    $("#description-goes-here").text(user_Description); //using jquery
+
+                                })
+                        } else {
+                            // No user is signed in.
+                        }
+                    });
+                }
+                insertDescription();
+
+                function uploadUserProfilePic() {
+
+                    firebase.auth().onAuthStateChanged(function (user) {
+                        var fileInput = document.getElementById("profile-img-file"); // pointer #1
+                        const image = document.getElementById("profile-img"); // pointer #2
+
+                        // listen for file selection
+                        fileInput.addEventListener('change', function (e) {
+                            var file = e.target.files[0];
+                            var blob = URL.createObjectURL(file);
+                            image.src = blob; // display this image
+
+                            //store using this name
+
+                            //*****************************************************
+                            //*********************************************************
+                            //JIn's opinion: The storageRef is referencing to a file that does not exists with in the storage.
+                            //try copying a file in the storage to have the same name, and then put the new Item in to it.
+                            var storageRef = storage.ref("images/" + user.uid + ".jpg");
+
+                            storageRef.put(file)
+                                .then(function () {
+                                    console.log('Uploaded to Cloud Storage.');
+                                })
+
+                            storageRef.getDownloadURL()
+                                .then(function (url) { // Get URL of the uploaded file
+                                    console.log(url); // Save the URL into users collection
+                                    db.collection("users").doc(user.uid).update({
+                                            "profilePic": url
+                                        })
+                                        .then(function () {
+                                            console.log('Added Profile Pic URL to Firestore.');
+                                        })
+                                })
+                        })
+                    })
+                }
+                uploadUserProfilePic();
+
+
+                function showUploadedPicture() {
+                    const fileInput = document.getElementById("profile-img-file"); // pointer #1
+                    const image = document.getElementById("profile-img"); // pointer #2
+
+                    //attach listener to input file
+                    //when this file changes, do something
+                    fileInput.addEventListener('change', function (e) {
+
+                        //the change event returns a file "e.target.files[0]"
+                        var img_file = URL.createObjectURL(e.target.files[0]);
+
+                        //change the DOM img element source to point to this file
+                        //assign the "src" property of the "img" tag
+                        image.src = img_file;
+                    })
+                }
+                showUploadedPicture();
+
+
+                function displayUserProfilePic() {
+                    //console.log("hi");
+                    firebase.auth().onAuthStateChanged(function (user) { //get user object
+                        db.collection("users").doc(user.uid) //use user's uid
+                            .get() //READ the doc
+                            .then(function (doc) {
+                                var picUrl = doc.data().profilePic; //extract pic url
+
+                                // use this line if "mypicdiv" is a "div"
+                                //$("#profile-img").append("<img src='" + picUrl + "'>")
+
+                                // use this line if "mypic-goes-here" is an "img" 
+                                $("#profile-img").attr("src", picUrl);
+                            })
+                    })
+                }
+                displayUserProfilePic();
+            </script>
 
 </body>
 
