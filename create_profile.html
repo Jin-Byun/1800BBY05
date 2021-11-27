@@ -62,9 +62,13 @@
         }
 
         .fixed-bottom {
-            background-color: #f5efdf !important;
-            border-top: solid 2px #f37f5230;
-        }
+    background-color:#f5efdf !important;
+    border-top: solid 2px #f37f5230;
+    border-left: solid 2px #f37f5230;
+    border-right: solid 2px #f37f5230;
+    
+
+}
 
         body {
             font-size: 16px;
@@ -135,15 +139,7 @@
             margin-bottom: 0
         }
 
-        .fixed-bottom {
-            background-color: #f5efdf !important;
-            border-top: solid 2px #f37f5230;
-            border-left: solid 2px #f37f5230;
-            border-right: solid 2px #f37f5230;
-            justify-content: space-evenly;
-            margin-left: 10rem;
-            margin-right: 10rem;
-        }
+       
 
         .card-body img {
             position: relative;
@@ -227,6 +223,42 @@
             text-align: center;
             justify-content: center;
             text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 1px 1px yellow, 1px 1px yellow, 2px 2px yellow, 2px 2px 1px #f37f52, 2px 0.5px 2px #f37f52;
+        }
+
+
+
+        .navbar-bottom {
+            display: grid;
+            grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            border-left: solid 2px #f37f5230;
+            border-right: solid 2px #f37f5230;
+            justify-content: space-evenly;
+  
+
+}
+
+#first-icon {
+    grid-column: 2;
+  
+}
+
+#second-icon {
+  grid-column: 6;
+  
+}
+
+#third-icon {
+  grid-column: 9;
+ 
+}
+
+
+
+        footer>a {
+            color: #f37f52;
+            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
         }
 
 
@@ -330,17 +362,14 @@
     </div>
     <br> <br>
 
-    <div class="fixed-bottom py-3 bg-secondary align-items-center">
-        <div class="container text-center py-0">
+
             <footer class="navbar bg-secondary fixed-bottom py-0">
 
                 <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 2em;"></a>
                 <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
 
             </footer>
-        </div>
-    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
