@@ -95,11 +95,13 @@ body {
 .container {
     
     background-color: #f37f5230;
-    padding: 20px 40px;
+  
     border-radius: 5px;
     justify-content: center;
     height: 80%;
-    width: 70%;
+    min-height: 80%;
+    min-width: 80%;
+    width: 80%;
     align-items: center;
     margin-bottom: 5rem;
     /* display: grid;
@@ -108,7 +110,15 @@ body {
 }
 
 
+fieldset {
+  margin: 10% 10%;
+  height: 80%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
 
+  
+}
 
 /* h1 {
   grid-column: 2;
@@ -124,7 +134,7 @@ fieldset {
     width: 50%;
     height: 20%;
     background: #ffec82;
-   
+   margin-top: 5%;
     
     font-family: inherit;
     font-size: 16px;
@@ -143,9 +153,10 @@ fieldset {
 
 
 .form-control {
-    
+    display: flex;
+    margin: 1% 1%;
     position: relative;
-    margin: 20px 0 40px;
+    margin-top: 5%;
     width: 300px;
     background-color: transparent !important;
     text-decoration: none;
@@ -196,43 +207,45 @@ fieldset {
     transform: translateY(-30px);
 }
 
+.fixed-bottom {
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        position: fixed;
+      }
 
-.navbar-bottom {
-  display: grid;
-  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
-  background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
-    
-  justify-content: space-evenly;
-}
+      .navbar-bottom {
+        display: grid;
 
-#first-icon {
-    grid-column: 2;
-   
-}
+        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
 
-#second-icon {
-  grid-column: 6;
- 
-}
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        border-left: solid 2px #f37f5230;
+        border-right: solid 2px #f37f5230;
+      }
 
-#third-icon {
-  grid-column: 9;
- 
-}
+      #first-icon {
+        grid-column: 2;
+      }
 
+      #second-icon {
+        grid-column: 4;
+      }
 
+      #third-icon {
+        grid-column: 6;
+      }
 
-        footer>a {
-            color: #f37f52;
-            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-        }
+      footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
+          0px -1px #f37f52;
+      }
+
 
   hr {
   width: 50%;
-
+  max-width: 50%;
   }
 
 
@@ -305,9 +318,9 @@ fieldset {
                 />
                 <label>Bi-Weekly</label>
                 
-                  <br>
+                <br>
                 <button class="bttn" onclick="saveReminderInfo()">Submit</button>
-
+                
               </div>
 
             </fieldset>
@@ -316,8 +329,8 @@ fieldset {
         </div>
     <!-- The following is the fixed bottom nav bar -->
 
-    
-          <footer class="navbar-bottom bg-secondary fixed-bottom py-0">
+    <div class="fixed-bottom">
+          <footer class="navbar-bottom">
             
               <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
               <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
@@ -325,7 +338,7 @@ fieldset {
   
 
           </footer>
-
+    </div>
 
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->

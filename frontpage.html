@@ -125,31 +125,7 @@ html, body {
         width: 100%;
     }
 
-    .navbar-bottom {
-  display: grid;
-  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
-  background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
-    
 
-}
-
-#first-icon {
-    grid-column: 2;
-
-}
-
-#second-icon {
-  grid-column: 6;
-
-}
-
-#third-icon {
-  grid-column: 9;
-  
-}
    
   body {
 
@@ -222,15 +198,40 @@ html, body {
   }
 
   .fixed-bottom {
-    background-color: #f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
-    justify-content: space-evenly;
-    margin-left: 10rem;
-    margin-right: 10rem;
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        position: fixed;
+      }
 
-  }
+      .navbar-bottom {
+        display: grid;
+
+        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
+
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        border-left: solid 2px #f37f5230;
+        border-right: solid 2px #f37f5230;
+      }
+
+      #first-icon {
+        grid-column: 2;
+      }
+
+      #second-icon {
+        grid-column: 4;
+      }
+
+      #third-icon {
+        grid-column: 6;
+      }
+
+      footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
+          0px -1px #f37f52;
+      }
+
 
   #quote {
     border: 2px solid #f37f52;
@@ -243,10 +244,7 @@ html, body {
   }
 
 
-        footer>a {
-            color: #f37f52;
-            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-        }
+        
 
 </style>
 
@@ -317,8 +315,8 @@ html, body {
     </div>
   </div>
 
-
-<footer class="navbar-bottom bg-secondary fixed-bottom py-0">
+<div class="fixed-bottom">
+<footer class="navbar-bottom ">
             
   <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
   <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
@@ -327,7 +325,7 @@ html, body {
 
 </footer>
 
-
+</div>
 
   <!----------------------------------------------->
   <!-- JS: Boostrap, Firebase, API related, add Jquery    -->

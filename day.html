@@ -64,10 +64,7 @@
             text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
         }
 
-        .fixed-bottom {
-            background-color: #f5efdf !important;
-            border-top: solid 2px #f37f5230;
-        }
+
 
 
         html,
@@ -147,10 +144,6 @@
             height: 3px;
         }
 
-        footer>a {
-            color: #f37f52;
-            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-        }
 
         #reminderContainer {
             margin-bottom: 15%;
@@ -232,39 +225,41 @@
     transform: scale(0.98);
 }
 
-.navbar-bottom {
-  display: grid;
-  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
- 
-  background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
+.fixed-bottom {
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        position: fixed;
+      }
 
-}
+      .navbar-bottom {
+        display: grid;
 
-#first-icon {
-    grid-column: 2;
- 
-    
-}
+        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
 
-#second-icon {
-  grid-column: 6;
- 
-}
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        border-left: solid 2px #f37f5230;
+        border-right: solid 2px #f37f5230;
+      }
 
-#third-icon {
-  grid-column: 9;
- 
-}
+      #first-icon {
+        grid-column: 2;
+      }
 
+      #second-icon {
+        grid-column: 4;
+      }
 
+      #third-icon {
+        grid-column: 6;
+      }
 
-        footer>a {
-            color: #f37f52;
-            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-        }
+      footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
+          0px -1px #f37f52;
+      }
+
  
     </style>
 
@@ -330,15 +325,16 @@
     </div>
 
 
-          
-    <footer class="navbar-bottom bg-secondary fixed-bottom py-0">
+          <div class="fixed-bottom">
+    <footer class="navbar-bottom">
             
-        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date mx-3" style="font-size: 2em; "></a>
-        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 2em;"></a>
-        <a id="third-icon" href="profile_user.html" class="bi bi-person mx-3" style="font-size: 2em;"></a>
+        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
+        <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
 
 
     </footer>
+    </div>
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->

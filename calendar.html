@@ -1,338 +1,360 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="comp1800 boilerplate code" content="my bcit project" />
+    <meta name="author" content="BCIT" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap, firebase-auth-ui -->
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
 
     <!-- Bootstrap FirebaseUI CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
 
     <!-- Firebase 8 CDNs-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-
 
     <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
 
     <!-- Optional styles and scripts of your own -->
     <!-- Google Icons (Material Design)-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles/my_style.css">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="styles/my_style.css" />
 
     <style>
-        * {
-            box-sizing: border-box;
-        }
+      * {
+        box-sizing: border-box;
+      }
 
-        body {
+      body {
+        background-color: #fffaec;
+      }
 
-            background-color: #fffaec;
-        }
+      table {
+        width: 100%;
+        margin-inline: 0;
+        padding-inline: 0;
+      }
 
-        table {
-            width: 100%;
-            margin-inline: 0;
-            padding-inline: 0;
-        }
+      p {
+        margin: 0;
+      }
 
-        p {
-            margin: 0;
-        }
+      p:nth-child(1) {
+        font-weight: bold;
+        font-size: 1rem;
+      }
 
-        p:nth-child(1) {
-            font-weight: bold;
-            font-size: 1rem;
-        }
+      th {
+        font-size: 1.1rem;
+        border-bottom: 2px solid orangered;
+      }
 
-        th {
-            font-size: 1.1rem;
-            border-bottom: 2px solid orangered;
-        }
+      th:nth-child(1) {
+        width: 56%;
+      }
 
-        th:nth-child(1) {
-            width: 56%;
-        }
+      th:nth-child(2) {
+        width: 22%;
+        text-align: center;
+        /* margin-inline: auto; */
+      }
 
-        th:nth-child(2) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
+      th:nth-child(3) {
+        width: 22%;
+        text-align: center;
+        /* margin-inline: auto; */
+      }
 
-        th:nth-child(3) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
+      td:nth-child(1) {
+        width: 56%;
+        /* margin-inline: auto; */
+      }
 
-        td:nth-child(1) {
-            width: 56%;
-            /* margin-inline: auto; */
-        }
+      td:nth-child(2) {
+        width: 22%;
+        text-align: center;
+        /* margin-inline: auto; */
+      }
 
-        td:nth-child(2) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
+      td:nth-child(3) {
+        width: 22%;
+        text-align: center;
+        /* margin-inline: auto; */
+      }
 
-        td:nth-child(3) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
+      #reminders-go-here {
+        margin-top: 2%;
+        border-bottom: 2px solid orangered;
+      }
 
-        #reminders-go-here {
-            margin-top: 2%;
-            border-bottom: 2px solid orangered;
-        }
+      .textblock {
+        border: 2px solid orangered;
+        margin-bottom: 4%;
+        padding: 2%;
+      }
 
-        .textblock {
-            border: 2px solid orangered;
-            margin-bottom: 4%;
-            padding: 2%;
-        }
+      .bttn {
+        cursor: pointer;
+        display: inline-block;
+        width: 50%;
+        background: rgba(255, 0, 0, 0.5);
+        font-family: inherit;
+        font-size: 16px;
+        border: 1px solid #f37f5230;
+        border-radius: 5%;
+      }
 
-        .bttn {
-            cursor: pointer;
-            display: inline-block;
-            width: 50%;
-            background: rgba(255, 0, 0, 0.5);
-            font-family: inherit;
-            font-size: 16px;
-            border: 1px solid #f37f5230;
-            border-radius: 5%;
-        }
+      .bttn:focus {
+        outline: 0;
+      }
 
-        .bttn:focus {
-            outline: 0;
+      .bttn:active {
+        transform: scale(0.98);
+      }
 
-        }
+      .navbar {
+        background-color: #f5efdf !important;
+        border-bottom: solid 2px #f37f5230;
+      }
 
-        .bttn:active {
-            transform: scale(0.98);
-        }
+      .navbar-brand {
+        font-size: 5vh;
+        font-weight: bold;
+        color: #f37f52 !important;
+        word-spacing: -1vh;
+        line-height: 0;
+        padding-top: 1.4vh;
+        padding-bottom: 2.3vh;
+        text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow,
+          1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52,
+          3px 0.5px 2px #f37f52;
+      }
 
-        .navbar {
+      #app-calendar {
+        /* border: solid black 2px; */
+        width: 43vh;
+        margin: 0 auto;
+        display: grid;
+        overflow: hidden;
+        text-align: center;
+        column-gap: 2px;
+        row-gap: 4px;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: 9% repeat(6, 1fr);
+      }
 
-            background-color: #f5efdf !important;
-            border-bottom: solid 2px #f37f5230;
-        }
+      .block {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: rgba(0, 0, 0, 0.7) solid 2px;
+        border-radius: 50%;
+        font-size: 12pt;
+        height: 100%;
+      }
 
-        .navbar-brand {
-            font-size: 5vh;
-            font-weight: bold;
-            color: #f37f52 !important;
-            word-spacing: -1vh;
-            line-height: 0;
-            padding-top: 1.4vh;
-            padding-bottom: 2.3vh;
-            text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
-        }
+      .xtrablock {
+        height: 100%;
+      }
 
-        .fixed-bottom {
-            background-color: #f5efdf !important;
-            border-top: solid 2px #f37f5230;
-        }
+      .weekend {
+        color: red;
+      }
 
-        #app-calendar {
-            /* border: solid black 2px; */
-            width: 43vh;
-            margin: 0 auto;
-            display: grid;
-            overflow: hidden;
-            text-align: center;
-            column-gap: 2px;
-            row-gap: 4px;
-            grid-template-columns: repeat(7, 1fr);
-            grid-template-rows: 9% repeat(6, 1fr);
-        }
+      .date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: ivory;
+        margin: auto 0;
+        line-height: 100%;
+        border-radius: 10px;
+        border: black solid 1px;
+        font-size: 10pt;
+        font-weight: 800;
+        height: 100%;
+      }
 
-        .block {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: rgba(0, 0, 0, 0.7) solid 2px;
-            border-radius: 50%;
-            font-size: 12pt;
-            height: 100%;
-        }
+      .today {
+        text-shadow: 0 0 5px yellow;
+        text-decoration: underline;
+        border: solid green 2px;
+      }
 
-        .xtrablock {
-            height: 100%;
-        }
+      .selected {
+        background-color: brown;
+      }
 
-        .weekend {
-            color: red;
-        }
+      .day {
+        display: block;
+        height: 100%;
+        text-decoration: none;
+      }
 
-        .date {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: ivory;
-            margin: auto 0;
-            line-height: 100%;
-            border-radius: 10px;
-            border: black solid 1px;
-            font-size: 10pt;
-            font-weight: 800;
-            height: 100%;
-        }
+      .rem1,
+      .rem2 {
+        background-color: rgba(0, 255, 0, 0.4);
+      }
 
-        .today {
-            text-shadow: 0 0 5px yellow;
-            text-decoration: underline;
-            border: solid green 2px;
-        }
+      .rem3,
+      .rem4 {
+        background-color: rgba(255, 255, 0, 0.6);
+      }
 
-        .selected {
-            background-color: brown;
-        }
+      .rem5,
+      .rem6 {
+        background-color: rgba(255, 0, 0, 0.8);
+        color: yellow;
+        font-weight: bold;
+        border-color: black;
+      }
 
-        .day {
-            display: block;
-            height: 100%;
-            text-decoration: none;
-        }
+      .rem7 {
+        background-color: rgba(0, 0, 0, 1);
+        color: black;
+        border-color: gray;
+        text-shadow: 0 0 6px whitesmoke;
+      }
 
-        .rem1,
-        .rem2 {
-            background-color: rgba(0, 255, 0, 0.4);
-        }
+      .toprow {
+        display: grid;
+        width: 43vh;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        margin-inline: auto;
+        text-align: center;
+        grid-template-columns: 6% 88% 6%;
+      }
 
-        .rem3,
-        .rem4 {
-            background-color: rgba(255, 255, 0, 0.6);
-        }
+      .btntop {
+        line-height: 0;
+        padding-top: 0.4vh;
+        font-size: 2vh;
+        font-weight: 800;
+        padding-inline: 0;
+      }
 
-        .rem5,
-        .rem6 {
-            background-color: rgba(255, 0, 0, 0.8);
-            color: yellow;
-            font-weight: bold;
-            border-color: black;
-        }
+      #date {
+        line-height: 1.5;
+        padding-bottom: 0;
+        font-size: 2.35vh;
+        font-weight: 700;
+      }
 
-        .rem7 {
-            background-color: rgba(0, 0, 0, 1);
-            color: black;
-            border-color: gray;
-            text-shadow: 0 0 6px whitesmoke;
-        }
+      #prev {
+        grid-column: 1 / span 1;
+        margin-right: auto;
+      }
 
-        .toprow {
-            display: grid;
-            width: 43vh;
-            margin-top: 2%;
-            margin-bottom: 2%;
-            margin-inline: auto;
-            text-align: center;
-            grid-template-columns: 6% 88% 6%;
-        }
+      #next {
+        grid-column: 3 / span 1;
+        margin-left: auto;
+      }
 
-        .btntop {
-            line-height: 0;
-            padding-top: 0.4vh;
-            font-size: 2vh;
-            font-weight: 800;
-            padding-inline: 0;
-        }
+      .fixed-bottom {
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        position: fixed;
+      }
 
-        #date {
-            line-height: 1.5;
-            padding-bottom: 0;
-            font-size: 2.35vh;
-            font-weight: 700;
-        }
+      .navbar-bottom {
+        display: grid;
 
-        #prev {
-            grid-column: 1 / span 1;
-            margin-right: auto;
-        }
+        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
 
-        #next {
-            grid-column: 3 / span 1;
-            margin-left: auto;
-        }
-      
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        border-left: solid 2px #f37f5230;
+        border-right: solid 2px #f37f5230;
+      }
 
+      #first-icon {
+        grid-column: 2;
+      }
 
-.navbar-bottom {
-  display: grid;
-  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
+      #second-icon {
+        grid-column: 4;
+      }
 
-  background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
+      #third-icon {
+        grid-column: 6;
+      }
 
-}
+      footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
+          0px -1px #f37f52;
+      }
 
-#first-icon {
-    grid-column: 2;
- 
-    
-}
-
-#second-icon {
-  grid-column: 6;
- 
-}
-
-#third-icon {
-  grid-column: 9;
- 
-}
-
-
-
-        footer>a {
-            color: #f37f52;
-            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-        }
-
-        #history {
-            padding-bottom: 80px;
-        }
+      #history {
+        padding-bottom: 80px;
+      }
     </style>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <!-------------------------------------->
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
     <!-- Header Navigation Bar -->
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./frontpage.html">HE J!</a>
-        </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="./frontpage.html">HE J!</a>
+      </div>
     </nav>
 
     <!-- welcome and main part of the page -->
     <div class="toprow">
-        <button type="button" class="btn btntop" id="prev" onclick="go2PrevMonth()">&lt;</button>
-        <div id="date" class="col"></div>
-        <button type="button" class="btn btntop" id="next" onclick="go2nextMonth()">&gt;</button>
+      <button
+        type="button"
+        class="btn btntop"
+        id="prev"
+        onclick="go2PrevMonth()"
+      >
+        &lt;
+      </button>
+      <div id="date" class="col"></div>
+      <button
+        type="button"
+        class="btn btntop"
+        id="next"
+        onclick="go2nextMonth()"
+      >
+        &gt;
+      </button>
     </div>
 
     <div id="app-calendar"></div>
@@ -340,524 +362,716 @@
     <br />
     <!-- Templates for general use, not displayed -->
     <template id="CardTemplate">
-        <tr>
-            <td class="card-title"></td>
-            <td>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                    onclick="counterUp(this.id)">
-            </td>
-            <td>
-                <button class="bttn" onclick="removeReminder(this.id)">X</button>
-            </td>
-        </tr>
-
+      <tr>
+        <td class="card-title"></td>
+        <td>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckDefault"
+            onclick="counterUp(this.id)"
+          />
+        </td>
+        <td>
+          <button class="bttn" onclick="removeReminder(this.id)">X</button>
+        </td>
+      </tr>
     </template>
 
     <br />
 
     <div class="container" id="reminderContainer">
-        <h1 style="margin-left: 0.7rem;">Today's TO DO</h1>
-        <!-- Here is container for cards  -->
-        <div class="container">
-            <table>
-                <tr>
-                    <th>Reminders</th>
-                    <th>Done</th>
-                    <th>Remove</th>
-                </tr>
-            </table>
-            <table id="reminders-go-here">
-            </table>
-        </div>
+      <h1 style="margin-left: 0.7rem">Today's TO DO</h1>
+      <!-- Here is container for cards  -->
+      <div class="container">
+        <table>
+          <tr>
+            <th>Reminders</th>
+            <th>Done</th>
+            <th>Remove</th>
+          </tr>
+        </table>
+        <table id="reminders-go-here"></table>
+      </div>
     </div>
 
     <br />
     <div id="history" class="container">
-        <div class="col"  style="margin-inline: 0.7rem;">
-            <h1 style="margin-bottom: 4%;">In history, today:</h1>
-            <div class="container">
-                <div class="textblock">
-                <h6>EVENT</h6>
-        <div id="quote-goes-here"></div>
-            <div id="author-goes-here" style="text-align: right; font-style: italic;"></div>
-            </div>
-            <div class="textblock">
+      <div class="col" style="margin-inline: 0.7rem">
+        <h1 style="margin-bottom: 4%">In history, today:</h1>
+        <div class="container">
+          <div class="textblock">
+            <h6>EVENT</h6>
+            <div id="quote-goes-here"></div>
+            <div
+              id="author-goes-here"
+              style="text-align: right; font-style: italic"
+            ></div>
+          </div>
+          <div class="textblock">
             <h6>BIRTH</h6>
             <div id="birth-goes-here"></div>
-        </div>
-            <div class="textblock">
+          </div>
+          <div class="textblock">
             <h6>DEATH</h6>
             <div id="death-goes-here"></div>
-            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
 
-
-    <footer class="navbar-bottom bg-secondary fixed-bottom py-0">
-            
-        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2rem; "></a>
-        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2rem;"></a>
-        <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2rem;"></a>
-
-
-    </footer>
-  
+    <div class="fixed-bottom">
+      <footer class="navbar-bottom">
+        <a
+          id="first-icon"
+          href="calendar.html"
+          class="bi bi-calendar-date"
+          style="font-size: 2rem"
+        ></a>
+        <a
+          id="second-icon"
+          href="create_schedule.html"
+          class="bi bi-plus-circle"
+          style="font-size: 2rem"
+        ></a>
+        <a
+          id="third-icon"
+          href="profile_user.html"
+          class="bi bi-person"
+          style="font-size: 2rem"
+        ></a>
+      </footer>
+    </div>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
     <script>
-        //-------------
-        //const and var
-        //------------- 
-        var userID;
-        var reminderList = [];
-        const calendar = document.querySelector("#app-calendar");
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-            "October", "November", "December"
-        ]
-        const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        const fulldays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-        const monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+      //-------------
+      //const and var
+      //-------------
+      var userID;
+      var reminderList = [];
+      const calendar = document.querySelector("#app-calendar");
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+      const fulldays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const monthdays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-        var today = new Date(Date.now());
-        var month = today.getMonth();
-        var date = today.getDate();
-        var year = today.getFullYear();
-        var day = today.getDay();
-        var firstday = new Date(year, month, 1);
-        var lastday = new Date(year, month + 1, 0);
+      var today = new Date(Date.now());
+      var month = today.getMonth();
+      var date = today.getDate();
+      var year = today.getFullYear();
+      var day = today.getDay();
+      var firstday = new Date(year, month, 1);
+      var lastday = new Date(year, month + 1, 0);
 
-        const nth = function (d) {
-            if (d > 3 && d < 21) return 'th';
-            switch (d % 10) {
-                case 1:
-                    return "st";
-                case 2:
-                    return "nd";
-                case 3:
-                    return "rd";
-                default:
-                    return "th";
-            }
+      const nth = function (d) {
+        if (d > 3 && d < 21) return "th";
+        switch (d % 10) {
+          case 1:
+            return "st";
+          case 2:
+            return "nd";
+          case 3:
+            return "rd";
+          default:
+            return "th";
         }
+      };
 
-        const isWeekend = block => {
-            return block % 7 === ((1 + (7 - firstday.getDay())) % 7) || block % 7 === (7 - firstday.getDay());
+      const isWeekend = (block) => {
+        return (
+          block % 7 === (1 + (7 - firstday.getDay())) % 7 ||
+          block % 7 === 7 - firstday.getDay()
+        );
+      };
+
+      const istoday = (block) => {
+        return (
+          today.getFullYear() == year &&
+          today.getMonth() == month &&
+          block === date
+        );
+      };
+
+      //-------------------------------------------------
+      //---------------function and code-----------------
+      //-------------------------------------------------
+      getReminder();
+      getReminderCalendar();
+      displayDate();
+      addHistory();
+
+      function displayDate() {
+        if (year == today.getFullYear() && month == today.getMonth()) {
+          document.getElementById("date").innerHTML =
+            year +
+            " " +
+            months[month] +
+            " " +
+            date +
+            nth(date) +
+            ", " +
+            fulldays[day];
+        } else {
+          document.getElementById("date").innerHTML =
+            year + " " + months[month];
         }
+      }
 
-        const istoday = block => {
-            return today.getFullYear() == year && today.getMonth() == month && block === date;
+      function go2PrevMonth() {
+        month -= 1;
+        if (month < 0) {
+          month = 11;
+          year -= 1;
         }
-
-        //-------------------------------------------------
-        //---------------function and code-----------------
-        //-------------------------------------------------
-        getReminder();
-        getReminderCalendar();
+        firstday = new Date(year, month, 1);
         displayDate();
-        addHistory(); 
+        document.getElementById("app-calendar").innerHTML = "";
+        getReminderCalendar();
+      }
 
-        function displayDate() {
-            if (year == today.getFullYear() && month == today.getMonth()) {
-                document.getElementById("date").innerHTML = year + " " + months[month] + " " + date + nth(date) + ", " +
-                    fulldays[day];
-            } else {
-                document.getElementById("date").innerHTML = year + " " + months[month];
-            }
+      function go2nextMonth() {
+        month += 1;
+        if (month > 11) {
+          month = 0;
+          year += 1;
         }
+        firstday = new Date(year, month, 1);
+        displayDate();
+        document.getElementById("app-calendar").innerHTML = "";
+        getReminderCalendar();
+      }
 
-        function go2PrevMonth() {
-            month -= 1;
-            if (month < 0) {
-                month = 11;
-                year -= 1;
-            }
-            firstday = new Date(year, month, 1);
-            displayDate();
-            document.getElementById("app-calendar").innerHTML = "";
-            getReminderCalendar();
+      // --------------------------------------
+      // Making calendar
+      // --------------------------------------
+      function fillCalendar() {
+        for (let i = 0; i < 7; i++) {
+          calendar.insertAdjacentHTML(
+            "beforeend",
+            `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${
+              days[i]
+            }</div>`
+          );
         }
-
-        function go2nextMonth() {
-            month += 1;
-            if (month > 11) {
-                month = 0;
-                year += 1;
-            }
-            firstday = new Date(year, month, 1);
-            displayDate();
-            document.getElementById("app-calendar").innerHTML = "";
-            getReminderCalendar();
+        for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
+          calendar.insertAdjacentHTML(
+            "beforeend",
+            `<div class="xtrablock"></div>`
+          );
         }
-
-        // --------------------------------------
-        // Making calendar
-        // --------------------------------------
-        function fillCalendar() {
-            for (let i = 0; i < 7; i++) {
-                calendar.insertAdjacentHTML("beforeend",
-                    `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
-            }
-            for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
-                calendar.insertAdjacentHTML("beforeend", `<div class="xtrablock"></div>`);
-            }
-            for (let block = 1; block <= monthdays[month]; block++) {
-                const weekend = isWeekend(block);
-                const now = istoday(block);
-                calendar.insertAdjacentHTML("beforeend",
-                    `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month]}?${block}"><div id="${year+'_'+month+'_'+block}" class="day${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div></a>`
-                );
-            }
-            if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
-                document.getElementById('app-calendar').style.gridTemplateRows = `7.5% repeat(6, 1fr)`;
-                document.getElementById('app-calendar').style.height = `41.65vh`;
-            } else {
-                document.getElementById('app-calendar').style.gridTemplateRows = `9% repeat(5, 1fr)`;
-                document.getElementById('app-calendar').style.height = `35.25vh`;
-            }
+        for (let block = 1; block <= monthdays[month]; block++) {
+          const weekend = isWeekend(block);
+          const now = istoday(block);
+          calendar.insertAdjacentHTML(
+            "beforeend",
+            `<a class ="day" href="./day.html?uid=${userID}?${year}?${
+              months[month]
+            }?${block}"><div id="${
+              year + "_" + month + "_" + block
+            }" class="day${(firstday.getDay() + block - 1) % 7} block ${
+              weekend ? "weekend" : ""
+            } ${now ? "today" : ""}">${block}</div></a>`
+          );
         }
-        //-------------------------
-        //Get reminder
-        //-------------------------
-        function getReminderCalendar() {
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    userID = user.uid;
-                    fillCalendar();
-                    var activities = [];
-                    var reminderRef = db.collection("reminders");
-                    reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
-                        .then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
-                                activities.push(doc.data());
-                                //             // doc.data() is never undefined for query doc snapshots
-                            });
-                            let dailies = [];
-                            let weeklies = [];
-                            let biweeklies = [];
-                            activities.forEach(element => {
-                                if (element.Frequency == "Daily") {
-                                    dailies.push(new Date(element.TimeStamp));
-                                } else if (element.Frequency == "Weekly") {
-                                    weeklies.push(new Date(element.TimeStamp));
-                                } else {
-                                    biweeklies.push(new Date(element.TimeStamp));
-                                }
-                            });
-                            for (let i = 0; i < dailies.length; i++) {
-                                if (year > dailies[i].getFullYear() || (year == dailies[i].getFullYear() &&
-                                        month > dailies[i].getMonth())) {
-                                    let dailychange = document.querySelectorAll("#app-calendar .block");
-                                    for (let index = 0; index < dailychange.length; index++) {
-                                        addReminderClass(dailychange, index);
-                                    }
-                                } else
-                                if (year == dailies[i].getFullYear() && month == dailies[i].getMonth()) {
-                                    let dailychange = document.querySelectorAll("#app-calendar .block");
-                                    for (let index = 0; index < dailychange.length; index++) {
-                                        if (dailychange[index].innerHTML >= dailies[i].getDate()) {
-                                            addReminderClass(dailychange, index);
-                                        }
-                                    }
-                                }
-                            }
-                            for (let i = 0; i < weeklies.length; i++) {
-                                if (year > weeklies[i].getFullYear() || (year == weeklies[i]
-                                    .getFullYear() &&
-                                        month > weeklies[i].getMonth())) {
-                                    let dailychange = document.querySelectorAll("#app-calendar .block");
-                                    for (let index = 0; index < dailychange.length; index++) {
-                                        if (dailychange[index].classList.contains('day' + weeklies[i]
-                                                .getDay())) {
-                                            addReminderClass(dailychange, index);
-                                        }
-                                    }
-                                } else
-                                if (year == weeklies[i].getFullYear() && month == weeklies[i].getMonth()) {
-                                    let dailychange = document.querySelectorAll("#app-calendar .block");
-                                    for (let index = 0; index < dailychange.length; index++) {
-                                        if (dailychange[index].innerHTML >= weeklies[i].getDate()) {
-                                            // console.log(dailychange[index].classList.contains('rem1'));
-                                            if (dailychange[index].classList.contains('day' + weeklies[i]
-                                                    .getDay())) {
-                                                addReminderClass(dailychange, index);
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            for (let i = 0; i < biweeklies.length; i++) {
-                                if (year > biweeklies[i].getFullYear() || (year == biweeklies[i]
-                                        .getFullYear() &&
-                                        month > biweeklies[i].getMonth())) {
-                                    let dailychange = document.querySelectorAll("#app-calendar .block");
-                                    for (let index = 0; index < dailychange.length; index++) {
-                                        if (dailychange[index].classList.contains('day' + biweeklies[i]
-                                                .getDay())) {
-                                            if ((Math.floor(new Date(year, month, index + 1) / (3600 *
-                                                    1000 * 24)) - Math.floor(biweeklies[i].getTime() / (
-                                                    3600 * 1000 * 24))) % 14 == 0) {
-                                                addReminderClass(dailychange, index);
-                                            }
-                                        }
-                                    }
-                                } else
-                                if (year == biweeklies[i].getFullYear() && month == biweeklies[i]
-                                .getMonth()) {
-                                    let dailychange = document.querySelectorAll("#app-calendar .block");
-                                    for (let index = 0; index < dailychange.length; index++) {
-                                        if (dailychange[index].innerHTML >= biweeklies[i].getDate()) {
-                                            // console.log(dailychange[index].classList.contains('rem1'));
-                                            if (dailychange[index].classList.contains('day' + biweeklies[i]
-                                                    .getDay())) {
-                                                if ((Math.floor(new Date(year, month, index + 1) / (3600 *
-                                                        1000 * 24)) - Math.floor(new Date(biweeklies[i]
-                                                        .getFullYear(), biweeklies[i].getMonth(),
-                                                        biweeklies[i].getDate()) / (3600 * 1000 *
-                                                        24))) % 14 == 0) {
-                                                    addReminderClass(dailychange, index);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        })
-                } else {
-                    //     // User is signed out
-                    //     // ...
+        if (
+          (firstday.getDay() == 5 && monthdays[month] > 30) ||
+          (firstday.getDay() == 6 && monthdays[month] >= 30)
+        ) {
+          document.getElementById(
+            "app-calendar"
+          ).style.gridTemplateRows = `7.5% repeat(6, 1fr)`;
+          document.getElementById("app-calendar").style.height = `41.65vh`;
+        } else {
+          document.getElementById(
+            "app-calendar"
+          ).style.gridTemplateRows = `9% repeat(5, 1fr)`;
+          document.getElementById("app-calendar").style.height = `35.25vh`;
+        }
+      }
+      //-------------------------
+      //Get reminder
+      //-------------------------
+      function getReminderCalendar() {
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            userID = user.uid;
+            fillCalendar();
+            var activities = [];
+            var reminderRef = db.collection("reminders");
+            reminderRef
+              .where("UserID", "==", userID)
+              .where("Active", "==", true)
+              .get()
+              .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                  activities.push(doc.data());
+                  //             // doc.data() is never undefined for query doc snapshots
+                });
+                let dailies = [];
+                let weeklies = [];
+                let biweeklies = [];
+                activities.forEach((element) => {
+                  if (element.Frequency == "Daily") {
+                    dailies.push(new Date(element.TimeStamp));
+                  } else if (element.Frequency == "Weekly") {
+                    weeklies.push(new Date(element.TimeStamp));
+                  } else {
+                    biweeklies.push(new Date(element.TimeStamp));
+                  }
+                });
+                for (let i = 0; i < dailies.length; i++) {
+                  if (
+                    year > dailies[i].getFullYear() ||
+                    (year == dailies[i].getFullYear() &&
+                      month > dailies[i].getMonth())
+                  ) {
+                    let dailychange = document.querySelectorAll(
+                      "#app-calendar .block"
+                    );
+                    for (let index = 0; index < dailychange.length; index++) {
+                      addReminderClass(dailychange, index);
+                    }
+                  } else if (
+                    year == dailies[i].getFullYear() &&
+                    month == dailies[i].getMonth()
+                  ) {
+                    let dailychange = document.querySelectorAll(
+                      "#app-calendar .block"
+                    );
+                    for (let index = 0; index < dailychange.length; index++) {
+                      if (
+                        dailychange[index].innerHTML >= dailies[i].getDate()
+                      ) {
+                        addReminderClass(dailychange, index);
+                      }
+                    }
+                  }
                 }
-            });
-        }
-
-        function counterUp(clickedid) {
-            console.log(userID);
-            let disable = document.createAttribute("disabled");
-            document.getElementById(clickedid).setAttributeNode(disable);
-            db.collection("users").doc(userID).get().then(query => {
-                let thing = query.data();
-                // let tmp = thing.data();
-                console.log(thing);
-                thing.counter += 1;
-                console.log(thing);
-                query.ref.update(thing);
-            });
-        }
-
-        function removeReminder(clickedid) {
-            let remNum = clickedid.substring('cremove'.length);
-            let remID = document.getElementById('ctitle' + remNum);
-            let remContent = remID.innerHTML.split('</p>')[0].substring('<p>'.length);
-            db.collection("reminders").where("Name", "==", remContent).limit(1).get().then(query => {
-                let thing = query.docs[0];
-                let tmp = thing.data();
-                tmp.Active = false;
-                // console.log(tmp);
-                thing.ref.update(tmp);
-                document.getElementById("reminders-go-here").innerHTML = "";
-                document.getElementById("app-calendar").innerHTML = "";
-                getReminder();
-                getReminderCalendar();
-            });
-        }
-
-        function getReminder() {
-            let year = today.getFullYear();
-            let month = today.getMonth();
-            let date = today.getDate();
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    userID = user.uid;
-                    var activities = [];
-                    var reminderRef = db.collection("reminders");
-                    reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
-                        .then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
-                                activities.push(doc.data());
-                                //             // doc.data() is never undefined for query doc snapshots
-                            });
-                            let dailies = [];
-                            let weeklies = [];
-                            let biweeklies = [];
-                            reminderList = [];
-                            activities.forEach(element => {
-                                if (element.Frequency == "Daily") {
-                                    dailies.push(element);
-                                } else if (element.Frequency == "Weekly") {
-                                    weeklies.push(element);
-                                } else {
-                                    biweeklies.push(element);
-                                }
-                            });
-                            // console.log(dailies);
-                            for (let i = 0; i < dailies.length; i++) {
-                                if (year > new Date(dailies[i].TimeStamp).getFullYear() || (year ==
-                                        new Date(dailies[i].TimeStamp).getFullYear() &&
-                                        month > new Date(dailies[i].TimeStamp).getMonth())) {
-                                    reminderList.push(dailies[i]);
-
-                                } else if (year == new Date(dailies[i].TimeStamp).getFullYear() && month ==
-                                    new Date(dailies[i].TimeStamp).getMonth()) {
-                                    reminderList.push(dailies[i]);
-                                }
-                            }
-                            for (let i = 0; i < weeklies.length; i++) {
-                                if (year > new Date(weeklies[i].TimeStamp).getFullYear() || (year ==
-                                        new Date(weeklies[i].TimeStamp).getFullYear() &&
-                                        month > new Date(weeklies[i].TimeStamp).getMonth())) {
-                                    if (new Date(year, month, date).getDay() == new Date(weeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        reminderList.push(weeklies[i]);
-                                    }
-                                } else
-                                if (year == new Date(weeklies[i].TimeStamp).getFullYear() && month ==
-                                    new Date(weeklies[i].TimeStamp).getMonth()) {
-                                    if (new Date(year, month, date).getDay() == new Date(weeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        reminderList.push(weeklies[i]);
-                                    }
-                                }
-                            }
-                            for (let i = 0; i < biweeklies.length; i++) {
-                                if (year > new Date(biweeklies[i].TimeStamp).getFullYear() || (year ==
-                                        new Date(biweeklies[i].TimeStamp).getFullYear() &&
-                                        month > new Date(biweeklies[i].TimeStamp).getMonth())) {
-                                    if (new Date(year, month, date).getDay() == new Date(biweeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        if (((Math.floor(new Date(year, month, date))) - Math.floor(
-                                                new Date(new Date(biweeklies[i].TimeStamp)
-                                                    .getFullYear(), new Date(biweeklies[i].TimeStamp)
-                                                    .getMonth(), new Date(biweeklies[i].TimeStamp)
-                                                    .getDate()))) % 14 == 0) {
-                                            reminderList.push(biweeklies[i]);
-                                        }
-                                    }
-                                } else
-                                if (year == new Date(biweeklies[i].TimeStamp).getFullYear() && month ==
-                                    new Date(biweeklies[i].TimeStamp).getMonth()) {
-                                    if (new Date(year, month, date).getDay() == new Date(biweeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        if ((Math.floor(new Date(year, month, date)) - Math.floor(new Date(
-                                                new Date(biweeklies[i].TimeStamp).getFullYear(),
-                                                new Date(biweeklies[i].TimeStamp).getMonth(),
-                                                new Date(biweeklies[i].TimeStamp).getDate()))) % 14 == 0) {
-                                            reminderList.push(biweeklies[i]);
-
-                                        }
-                                    }
-                                }
-                            }
-                            displayRems(reminderList);
-                        })
-
-                } else {
-                    //     // User is signed out
-                    //     // ...
+                for (let i = 0; i < weeklies.length; i++) {
+                  if (
+                    year > weeklies[i].getFullYear() ||
+                    (year == weeklies[i].getFullYear() &&
+                      month > weeklies[i].getMonth())
+                  ) {
+                    let dailychange = document.querySelectorAll(
+                      "#app-calendar .block"
+                    );
+                    for (let index = 0; index < dailychange.length; index++) {
+                      if (
+                        dailychange[index].classList.contains(
+                          "day" + weeklies[i].getDay()
+                        )
+                      ) {
+                        addReminderClass(dailychange, index);
+                      }
+                    }
+                  } else if (
+                    year == weeklies[i].getFullYear() &&
+                    month == weeklies[i].getMonth()
+                  ) {
+                    let dailychange = document.querySelectorAll(
+                      "#app-calendar .block"
+                    );
+                    for (let index = 0; index < dailychange.length; index++) {
+                      if (
+                        dailychange[index].innerHTML >= weeklies[i].getDate()
+                      ) {
+                        // console.log(dailychange[index].classList.contains('rem1'));
+                        if (
+                          dailychange[index].classList.contains(
+                            "day" + weeklies[i].getDay()
+                          )
+                        ) {
+                          addReminderClass(dailychange, index);
+                        }
+                      }
+                    }
+                  }
                 }
-                // console.log(reminderList);
-            });
+                for (let i = 0; i < biweeklies.length; i++) {
+                  if (
+                    year > biweeklies[i].getFullYear() ||
+                    (year == biweeklies[i].getFullYear() &&
+                      month > biweeklies[i].getMonth())
+                  ) {
+                    let dailychange = document.querySelectorAll(
+                      "#app-calendar .block"
+                    );
+                    for (let index = 0; index < dailychange.length; index++) {
+                      if (
+                        dailychange[index].classList.contains(
+                          "day" + biweeklies[i].getDay()
+                        )
+                      ) {
+                        if (
+                          (Math.floor(
+                            new Date(year, month, index + 1) /
+                              (3600 * 1000 * 24)
+                          ) -
+                            Math.floor(
+                              biweeklies[i].getTime() / (3600 * 1000 * 24)
+                            )) %
+                            14 ==
+                          0
+                        ) {
+                          addReminderClass(dailychange, index);
+                        }
+                      }
+                    }
+                  } else if (
+                    year == biweeklies[i].getFullYear() &&
+                    month == biweeklies[i].getMonth()
+                  ) {
+                    let dailychange = document.querySelectorAll(
+                      "#app-calendar .block"
+                    );
+                    for (let index = 0; index < dailychange.length; index++) {
+                      if (
+                        dailychange[index].innerHTML >= biweeklies[i].getDate()
+                      ) {
+                        // console.log(dailychange[index].classList.contains('rem1'));
+                        if (
+                          dailychange[index].classList.contains(
+                            "day" + biweeklies[i].getDay()
+                          )
+                        ) {
+                          if (
+                            (Math.floor(
+                              new Date(year, month, index + 1) /
+                                (3600 * 1000 * 24)
+                            ) -
+                              Math.floor(
+                                new Date(
+                                  biweeklies[i].getFullYear(),
+                                  biweeklies[i].getMonth(),
+                                  biweeklies[i].getDate()
+                                ) /
+                                  (3600 * 1000 * 24)
+                              )) %
+                              14 ==
+                            0
+                          ) {
+                            addReminderClass(dailychange, index);
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              });
+          } else {
+            //     // User is signed out
+            //     // ...
+          }
+        });
+      }
+
+      function counterUp(clickedid) {
+        console.log(userID);
+        let disable = document.createAttribute("disabled");
+        document.getElementById(clickedid).setAttributeNode(disable);
+        db.collection("users")
+          .doc(userID)
+          .get()
+          .then((query) => {
+            let thing = query.data();
+            // let tmp = thing.data();
+            console.log(thing);
+            thing.counter += 1;
+            console.log(thing);
+            query.ref.update(thing);
+          });
+      }
+
+      function removeReminder(clickedid) {
+        let remNum = clickedid.substring("cremove".length);
+        let remID = document.getElementById("ctitle" + remNum);
+        let remContent = remID.innerHTML
+          .split("</p>")[0]
+          .substring("<p>".length);
+        db.collection("reminders")
+          .where("Name", "==", remContent)
+          .limit(1)
+          .get()
+          .then((query) => {
+            let thing = query.docs[0];
+            let tmp = thing.data();
+            tmp.Active = false;
+            // console.log(tmp);
+            thing.ref.update(tmp);
+            document.getElementById("reminders-go-here").innerHTML = "";
+            document.getElementById("app-calendar").innerHTML = "";
+            getReminder();
+            getReminderCalendar();
+          });
+      }
+
+      function getReminder() {
+        let year = today.getFullYear();
+        let month = today.getMonth();
+        let date = today.getDate();
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            userID = user.uid;
+            var activities = [];
+            var reminderRef = db.collection("reminders");
+            reminderRef
+              .where("UserID", "==", userID)
+              .where("Active", "==", true)
+              .get()
+              .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                  activities.push(doc.data());
+                  //             // doc.data() is never undefined for query doc snapshots
+                });
+                let dailies = [];
+                let weeklies = [];
+                let biweeklies = [];
+                reminderList = [];
+                activities.forEach((element) => {
+                  if (element.Frequency == "Daily") {
+                    dailies.push(element);
+                  } else if (element.Frequency == "Weekly") {
+                    weeklies.push(element);
+                  } else {
+                    biweeklies.push(element);
+                  }
+                });
+                // console.log(dailies);
+                for (let i = 0; i < dailies.length; i++) {
+                  if (
+                    year > new Date(dailies[i].TimeStamp).getFullYear() ||
+                    (year == new Date(dailies[i].TimeStamp).getFullYear() &&
+                      month > new Date(dailies[i].TimeStamp).getMonth())
+                  ) {
+                    reminderList.push(dailies[i]);
+                  } else if (
+                    year == new Date(dailies[i].TimeStamp).getFullYear() &&
+                    month == new Date(dailies[i].TimeStamp).getMonth()
+                  ) {
+                    reminderList.push(dailies[i]);
+                  }
+                }
+                for (let i = 0; i < weeklies.length; i++) {
+                  if (
+                    year > new Date(weeklies[i].TimeStamp).getFullYear() ||
+                    (year == new Date(weeklies[i].TimeStamp).getFullYear() &&
+                      month > new Date(weeklies[i].TimeStamp).getMonth())
+                  ) {
+                    if (
+                      new Date(year, month, date).getDay() ==
+                      new Date(weeklies[i].TimeStamp).getDay()
+                    ) {
+                      reminderList.push(weeklies[i]);
+                    }
+                  } else if (
+                    year == new Date(weeklies[i].TimeStamp).getFullYear() &&
+                    month == new Date(weeklies[i].TimeStamp).getMonth()
+                  ) {
+                    if (
+                      new Date(year, month, date).getDay() ==
+                      new Date(weeklies[i].TimeStamp).getDay()
+                    ) {
+                      reminderList.push(weeklies[i]);
+                    }
+                  }
+                }
+                for (let i = 0; i < biweeklies.length; i++) {
+                  if (
+                    year > new Date(biweeklies[i].TimeStamp).getFullYear() ||
+                    (year == new Date(biweeklies[i].TimeStamp).getFullYear() &&
+                      month > new Date(biweeklies[i].TimeStamp).getMonth())
+                  ) {
+                    if (
+                      new Date(year, month, date).getDay() ==
+                      new Date(biweeklies[i].TimeStamp).getDay()
+                    ) {
+                      if (
+                        (Math.floor(new Date(year, month, date)) -
+                          Math.floor(
+                            new Date(
+                              new Date(biweeklies[i].TimeStamp).getFullYear(),
+                              new Date(biweeklies[i].TimeStamp).getMonth(),
+                              new Date(biweeklies[i].TimeStamp).getDate()
+                            )
+                          )) %
+                          14 ==
+                        0
+                      ) {
+                        reminderList.push(biweeklies[i]);
+                      }
+                    }
+                  } else if (
+                    year == new Date(biweeklies[i].TimeStamp).getFullYear() &&
+                    month == new Date(biweeklies[i].TimeStamp).getMonth()
+                  ) {
+                    if (
+                      new Date(year, month, date).getDay() ==
+                      new Date(biweeklies[i].TimeStamp).getDay()
+                    ) {
+                      if (
+                        (Math.floor(new Date(year, month, date)) -
+                          Math.floor(
+                            new Date(
+                              new Date(biweeklies[i].TimeStamp).getFullYear(),
+                              new Date(biweeklies[i].TimeStamp).getMonth(),
+                              new Date(biweeklies[i].TimeStamp).getDate()
+                            )
+                          )) %
+                          14 ==
+                        0
+                      ) {
+                        reminderList.push(biweeklies[i]);
+                      }
+                    }
+                  }
+                }
+                displayRems(reminderList);
+              });
+          } else {
+            //     // User is signed out
+            //     // ...
+          }
+          // console.log(reminderList);
+        });
+      }
+
+      function addHistory() {
+        fetch("https://history.muffinlabs.com/date")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (history) {
+            todayInfo = history.data;
+            console.log(todayInfo);
+            let Event_Num = Math.floor(Math.random() * todayInfo.Events.length);
+            let Birth_Num = Math.floor(Math.random() * todayInfo.Births.length);
+            let Death_Num = Math.floor(Math.random() * todayInfo.Deaths.length);
+            let todayEvent = todayInfo.Events[Event_Num];
+            let todayEvent_Year = todayEvent.year;
+            let todayEvent_text = todayEvent.text;
+            console.log(todayEvent_text);
+            let todayBirth = todayInfo.Births[Birth_Num];
+            let todayDeath = todayInfo.Deaths[Death_Num];
+            console.log(todayBirth);
+            document.getElementById("quote-goes-here").innerHTML =
+              todayEvent_text;
+            document.getElementById("author-goes-here").innerHTML =
+              todayEvent_Year;
+            document.getElementById("birth-goes-here").innerText =
+              todayBirth.text + " was born. (" + todayBirth.year + ")";
+            document.getElementById("death-goes-here").innerHTML =
+              todayDeath.text + " passed away. (" + todayDeath.year + ")";
+          });
+      }
+
+      function displayRems(list) {
+        for (let i = 0; i < list.length; i++) {
+          //iterate thru each doc
+
+          let reminder = list[i].Name;
+          let startTime = list[i].Time;
+          let endTime =
+            (parseInt(startTime.split(":")[0]) + 1 == 24
+              ? "00"
+              : (parseInt(startTime.split(":")[0]) + 1 < 10 ? "0" : "") +
+                (parseInt(startTime.split(":")[0]) + 1)) +
+            ":" +
+            startTime.split(":")[1];
+          let newcard = CardTemplate.content.cloneNode(true);
+
+          // //update title and text and image
+          newcard.querySelector(
+            ".card-title"
+          ).innerHTML = `<p>${reminder}</p><p>from ${
+            startTime + "~" + endTime
+          }</p>`;
+          // //updates href, so we can click.
+
+          // //give unique ids to all elements for future use
+          newcard.querySelector(".card-title").setAttribute("id", "ctitle" + i);
+          newcard
+            .querySelector(".form-check-input")
+            .setAttribute("id", "cdone" + i);
+          newcard.querySelector(".bttn").setAttribute("id", "cremove" + i);
+          //attach to gallery
+          document.getElementById("reminders-go-here").appendChild(newcard);
         }
- 
-function addHistory() {
-    fetch("https://history.muffinlabs.com/date").then(function(response) {
-    return response.json();
-  }).then(function(history) {
-    todayInfo = history.data;
-    console.log(todayInfo);
-    let Event_Num = Math.floor(Math.random() * todayInfo.Events.length);
-    let Birth_Num = Math.floor(Math.random() * todayInfo.Births.length);
-    let Death_Num = Math.floor(Math.random() * todayInfo.Deaths.length);
-    let todayEvent = todayInfo.Events[Event_Num];
-    let todayEvent_Year = todayEvent.year;
-    let todayEvent_text = todayEvent.text;
-    console.log(todayEvent_text);
-    let todayBirth = todayInfo.Births[Birth_Num];
-    let todayDeath = todayInfo.Deaths[Death_Num];
-    console.log(todayBirth);
-    document.getElementById("quote-goes-here").innerHTML = todayEvent_text;
-    document.getElementById("author-goes-here").innerHTML = todayEvent_Year;
-    document.getElementById("birth-goes-here").innerText = todayBirth.text + " was born. (" + todayBirth.year + ")";
-    document.getElementById("death-goes-here").innerHTML = todayDeath.text + " passed away. (" + todayDeath.year + ")";
+      }
 
-});
-}
-
-        function displayRems(list) {
-            for (let i = 0; i < list.length; i++) { //iterate thru each doc
-
-                let reminder = list[i].Name;
-                let startTime = list[i].Time;
-                let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime.split(':')[0]) +
-                    1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' + startTime.split(':')[1];
-                let newcard = CardTemplate.content.cloneNode(true);
-
-                // //update title and text and image
-                newcard.querySelector('.card-title').innerHTML =
-                    `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
-                // //updates href, so we can click.
-
-                // //give unique ids to all elements for future use
-                newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
-                newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
-                //attach to gallery
-                document.getElementById("reminders-go-here").appendChild(newcard);
-            }
+      function addReminderClass(classArr, index) {
+        if (classArr[index].classList.contains("rem6")) {
+          classArr[index].classList.add("rem7");
+        } else if (classArr[index].classList.contains("rem5")) {
+          classArr[index].classList.add("rem6");
+        } else if (classArr[index].classList.contains("rem4")) {
+          classArr[index].classList.add("rem5");
+        } else if (classArr[index].classList.contains("rem3")) {
+          classArr[index].classList.add("rem4");
+        } else if (classArr[index].classList.contains("rem2")) {
+          classArr[index].classList.add("rem3");
+        } else if (classArr[index].classList.contains("rem1")) {
+          classArr[index].classList.add("rem2");
+        } else {
+          classArr[index].classList.add("rem1");
         }
+      }
 
-        function addReminderClass(classArr, index) {
-            if (classArr[index].classList.contains('rem6')) {
-                classArr[index].classList.add('rem7');
-            } else if (classArr[index].classList.contains('rem5')) {
-                classArr[index].classList.add('rem6');
-            } else if (classArr[index].classList.contains('rem4')) {
-                classArr[index].classList.add('rem5');
-            } else if (classArr[index].classList.contains('rem3')) {
-                classArr[index].classList.add('rem4');
-            } else if (classArr[index].classList.contains('rem2')) {
-                classArr[index].classList.add('rem3');
-            } else if (classArr[index].classList.contains('rem1')) {
-                classArr[index].classList.add('rem2');
-            } else {
-                classArr[index].classList.add('rem1');
-            }
-        }
+      // May not need area (temporary garbage can)
+      // addDate2db();
 
-        // May not need area (temporary garbage can)
-        // addDate2db();
-
-
-        // adding dates into db collection.
-        // function addDate2db() {
-        //     for (let i = 1; i <= monthdays[month]; i++) {
-        //         firebase.auth().onAuthStateChanged(user => {
-        //             if (user) {
-        //                 var currentUser = db.collection("users").doc(user.uid)
-        //                 userID = user.uid;
-        //                 //get the document for current user.
-        //                 currentUser.get()
-        //                     .then(userDoc => {
-        //                         //get user name
-        //                         userName = userDoc.data().name;
-        //                         // Start a new collection and add all data in it.
-        //                         let docData = {
-        //                             reminder: "",
-        //                             name: userName
-        //                         };
-        //                         db.collection("dates").doc(userID)
-        //                             .collection(months[month] + "_" + year)
-        //                             .doc(i.toString()).collection("todo").set(docData).then(() => {
-        //                                 console.log("Document successfully written!");
-        //                             });
-        //                     })
-        //             } else {}
-        //         })
-        //     }
-        // }
+      // adding dates into db collection.
+      // function addDate2db() {
+      //     for (let i = 1; i <= monthdays[month]; i++) {
+      //         firebase.auth().onAuthStateChanged(user => {
+      //             if (user) {
+      //                 var currentUser = db.collection("users").doc(user.uid)
+      //                 userID = user.uid;
+      //                 //get the document for current user.
+      //                 currentUser.get()
+      //                     .then(userDoc => {
+      //                         //get user name
+      //                         userName = userDoc.data().name;
+      //                         // Start a new collection and add all data in it.
+      //                         let docData = {
+      //                             reminder: "",
+      //                             name: userName
+      //                         };
+      //                         db.collection("dates").doc(userID)
+      //                             .collection(months[month] + "_" + year)
+      //                             .doc(i.toString()).collection("todo").set(docData).then(() => {
+      //                                 console.log("Document successfully written!");
+      //                             });
+      //                     })
+      //             } else {}
+      //         })
+      //     }
+      // }
     </script>
-
-</body>
-
+  </body>
 </html>

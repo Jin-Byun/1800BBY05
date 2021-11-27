@@ -245,72 +245,82 @@
             z-index: 10;
         }
 
-        .navbar-bottom {
-  display: grid;
-  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
-  background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
-    
+        .fixed-bottom {
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        position: fixed;
+      }
 
-}
+      .navbar-bottom {
+        display: grid;
 
-#first-icon {
-    grid-column: 2;
-   
-}
+        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
 
-#second-icon {
-  grid-column: 6;
- 
-}
+        background-color: #f5efdf !important;
+        border-top: solid 2px #f37f5230;
+        border-left: solid 2px #f37f5230;
+        border-right: solid 2px #f37f5230;
+      }
 
-#third-icon {
-  grid-column: 9;
- 
-}
+      #first-icon {
+        grid-column: 2;
+      }
 
-        footer>a {
-            color: #f37f52;
-            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-        }
+      #second-icon {
+        grid-column: 4;
+      }
 
+      #third-icon {
+        grid-column: 6;
+      }
+
+      footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
+          0px -1px #f37f52;
+      }
 
         #badges {
             display: grid;
-            grid-template-columns: 10% 20% 20% 20% 20% 10%;
-
+            grid-template-columns: 4% 20% 4% 20% 4% 20% 4% 20% 4%;
+            
         }
 
         .circles {
             border-radius: 50%;
-            height: 50px;
-            width: 50px;
+            max-width: 100%;
+            max-height: 100%;
+            height: 100%;
+            width: 100%;
             background-color: #f37f52 !important;
             z-index: 20 !important;
+     
         }
 
         #circle-one {
             grid-column: 2;
-            margin: 1rem;
+          
         }
 
         #circle-two {
-            grid-column: 3;
-            margin: 1rem;
+            grid-column: 4;
+       
 
         }
 
         #circle-three {
-            grid-column: 4;
-            margin: 1rem;
+            grid-column: 6;
+            
         }
 
         #circle-four {
-            grid-column: 5;
-            margin: 1rem;
+            grid-column: 8;
+            
         }
+
+
+
+
 
 
         
@@ -425,9 +435,9 @@
         </div>
     </div>
 
+<div class="fixed-bottom">
 
-
-    <footer class="navbar-bottom bg-secondary fixed-bottom py-0">
+    <footer class="navbar-bottom">
             
         <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
         <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
@@ -435,7 +445,7 @@
 
 
     </footer>
-
+</div>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
     <!----------------------------------------------->
@@ -457,7 +467,7 @@
         var currentUser;
         var count;
         countReminders();
-        reward();
+        
         function populateInfo() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -665,6 +675,7 @@ function countReminders() {
                     reminders.push(doc.data());
                     ++count;
                     console.log(count);
+                    reward();
                 });
 
                    
@@ -683,9 +694,11 @@ function reward() {
         circleBadge.appendChild(img);
         img.style.cssText = `
             border-radius: 50%;
-            border: 2px solid yellow;
-            height: 50px;
-            width: 50px;
+            border: 1px solid yellow;
+            max-width: 100%;
+            max-height: 100%;
+            height: 100%;
+            width: 100%;
         `;
     }
 
