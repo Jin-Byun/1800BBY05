@@ -1,17 +1,18 @@
 @font-face {
     font-family: logo;
-    src: url(\fonts\Righteous-Regular.ttf)
+    src: url(fonts\Righteous-Regular.ttf)
 }
 
 @font-face {
     font-family: heading;
-    src: url(\fonts\Oxygen-Regular.ttf)
+    src: url(fonts\Oxygen-Regular.ttf)
 }
 
 @font-face {
     font-family: body;
-    src: url(\fonts\Sanchez-Regular.ttf);
+    src: url(fonts\Sanchez-Regular.ttf);
 }
+
 
 #logo {
     font-family: logo, !important;
@@ -37,6 +38,5 @@ p {
 }
 /** Create New Schedule**/
 option1, option2, option3 {
-    display: inline-block;
-    
+    display: inline-block;   
 }
