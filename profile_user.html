@@ -83,14 +83,14 @@
             margin-bottom: 30px;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            
+
         }
 
         .card .card-header {
             background-color: transparent;
             border-bottom: none;
             padding: 25px;
-            
+
         }
 
         .card .card-header h5 {
@@ -114,6 +114,17 @@
 
         .card .card-block {
             padding: 25px;
+        }
+
+        .btn {
+            cursor: pointer;
+            color: black;
+            width: 20%;
+            background: #ffd9b9;
+            padding: 1px;
+            margin: 0.2rem;
+            border: 1px solid #ec511330;
+            border-radius: 5%;
         }
 
         .user-card .card-block .user-image {
@@ -246,44 +257,43 @@
         }
 
         .fixed-bottom {
-        background-color: #f5efdf !important;
-        border-top: solid 2px #f37f5230;
-        position: fixed;
-      }
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            position: fixed;
+        }
 
-      .navbar-bottom {
-        display: grid;
+        .navbar-bottom {
+            display: grid;
 
-        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
+            grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
 
-        background-color: #f5efdf !important;
-        border-top: solid 2px #f37f5230;
-        border-left: solid 2px #f37f5230;
-        border-right: solid 2px #f37f5230;
-      }
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            border-left: solid 2px #f37f5230;
+            border-right: solid 2px #f37f5230;
+        }
 
-      #first-icon {
-        grid-column: 2;
-      }
+        #first-icon {
+            grid-column: 2;
+        }
 
-      #second-icon {
-        grid-column: 4;
-      }
+        #second-icon {
+            grid-column: 4;
+        }
 
-      #third-icon {
-        grid-column: 6;
-      }
+        #third-icon {
+            grid-column: 6;
+        }
 
-      footer > a {
-        color: #f37f52;
-        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
-          0px -1px #f37f52;
-      }
+        footer>a {
+            color: #f37f52;
+            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
+                0px -1px #f37f52;
+        }
 
         #badges {
             display: grid;
             grid-template-columns: 4% 20% 4% 20% 4% 20% 4% 20% 4%;
-            
         }
 
         .circles {
@@ -294,37 +304,28 @@
             width: 100%;
             background-color: #f37f52 !important;
             z-index: 20 !important;
-     
+
         }
 
         #circle-one {
             grid-column: 2;
-          
+
         }
 
         #circle-two {
             grid-column: 4;
-       
 
         }
 
         #circle-three {
             grid-column: 6;
-            
+
         }
 
         #circle-four {
             grid-column: 8;
-            
+
         }
-
-
-
-
-
-
-        
-        
     </style>
 
 </head>
@@ -362,7 +363,6 @@
                         <div class="user-image">
                             <div id="profile-image">
 
-                                <!-- Testing -->
                                 <img id="profile-img" src="#" alt="profile">
                                 <input type="file" id="profile-img-file" style="display:none" accept="image/*">
                                 <img onclick="document.getElementById('profile-img-file').click()">
@@ -401,31 +401,19 @@
                         <hr>
 
                         <div id="badges">
-                      
 
-                        <div class="circles" id="circle-one"><span id="badge-one"></span></div>
-                        <div class="circles" id="circle-two"><span id="badge-two"></span></div>
-                        <div class="circles" id="circle-three"><span id ="badge-three"></span></div>
-                        <div class="circles" id="circle-four"><span id="badge-four"></span></div>
-
-                        
-
+                            <div class="circles" id="circle-one"><span id="badge-one"></span></div>
+                            <div class="circles" id="circle-two"><span id="badge-two"></span></div>
+                            <div class="circles" id="circle-three"><span id="badge-three"></span></div>
+                            <div class="circles" id="circle-four"><span id="badge-four"></span></div>
 
                         </div>
 
                         <br>
-                        
                         <br>
-
-
-
-
-
-
-
-
-
-
+                        <a href="edit_profile.html" button type="button" class="btn btn-warning"
+                            onclick="saveUserInfo()">Edit</a>
+                        <br>
 
                     </div>
                 </div>
@@ -435,17 +423,16 @@
         </div>
     </div>
 
-<div class="fixed-bottom">
+    <div class="fixed-bottom">
 
-    <footer class="navbar-bottom">
-            
-        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
-        <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
+        <footer class="navbar-bottom">
 
+            <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+            <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
+            <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
 
-    </footer>
-</div>
+        </footer>
+    </div>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
     <!----------------------------------------------->
@@ -467,18 +454,14 @@
         var currentUser;
         var count;
         countReminders();
-        
+
         function populateInfo() {
             firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
                 if (user) {
-                    //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
                             var userName = userDoc.data().name;
-                            //console.log(userName);
                             var userAge = userDoc.data().age;
                             var userDescription = userDoc.data().description;
                             //if the data fields are not empty, then write them in to the form.
@@ -493,31 +476,22 @@
                             // }
                         })
                 } else {
-                    // No user is signed in.
                     console.log("No user is signed in");
                 }
             });
         }
 
-        //call the function to run it 
         populateInfo();
 
         function insertName() {
             firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
                 if (user) {
-                    // Do something for the current logged-in user here: 
-                    //console.log(user.uid);
-                    //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
                             var user_Name = userDoc.data().name;
-                            //console.log(user_Name);
-                            //document.getElementById("username").innerText = n;                     
-                            //using javascript
-                            $("#name-goes-here").text(user_Name); //using jquery
+
+                            $("#name-goes-here").text(user_Name);
                         })
                 } else {
                     // No user is signed in.
@@ -528,20 +502,12 @@
 
         function insertEmail() {
             firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
                 if (user) {
-                    // Do something for the current logged-in user here: 
-                    //console.log(user.uid);
-                    //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
-                    //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
                             var user_Email = userDoc.data().email;
-                            //console.log(user_Name);
-                            //document.getElementById("username").innerText = n;                     
-                            //using javascript
-                            $("#email-goes-here").text(user_Email); //using jquery
+                            $("#email-goes-here").text(user_Email); 
                         })
                 } else {
                     // No user is signed in.
@@ -554,13 +520,10 @@
         function insertAge() {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
-                    //console.log(user.uid);
                     db.collection("users").doc(user.uid).get().then(docs => {
                         if (docs.exists) {
-                            //console.log("data:", docs.data().counter)
                         }
                         document.getElementById("age-goes-here").innerText = docs.data().age;
-                        //console.log(age);
                     })
                 }
             });
@@ -570,12 +533,11 @@
         function insertDescription() {
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
-    
                     db.collection("users").doc(user.uid).get().then(docs => {
-                        if (docs.exists) {
-                        }
-                        document.getElementById("description-goes-here").innerText = docs.data().description;
-                      
+                        if (docs.exists) {}
+                        document.getElementById("description-goes-here").innerText = docs.data()
+                            .description;
+
 
                     })
                 }
@@ -586,31 +548,20 @@
         function uploadUserProfilePic() {
 
             firebase.auth().onAuthStateChanged(function (user) {
-                var fileInput = document.getElementById("profile-img-file"); // pointer #1
-                const image = document.getElementById("profile-img"); // pointer #2
-
-                // listen for file selection
+                var fileInput = document.getElementById("profile-img-file"); 
+                const image = document.getElementById("profile-img"); 
                 fileInput.addEventListener('change', function (e) {
                     var file = e.target.files[0];
                     var blob = URL.createObjectURL(file);
-                    image.src = blob; // display this image
-
-                    //store using this name
-
-                    //*****************************************************
-                    //*********************************************************
-                    //JIn's opinion: The storageRef is referencing to a file that does not exists with in the storage.
-                    //try copying a file in the storage to have the same name, and then put the new Item in to it.
+                    image.src = blob; 
                     var storageRef = storage.ref("images/" + user.uid + ".jpg");
-
                     storageRef.put(file)
                         .then(function () {
                             console.log('Uploaded to Cloud Storage.');
                         })
-
                     storageRef.getDownloadURL()
-                        .then(function (url) { // Get URL of the uploaded file
-                            console.log(url); // Save the URL into users collection
+                        .then(function (url) { 
+                            console.log(url); 
                             db.collection("users").doc(user.uid).update({
                                     "profilePic": url
                                 })
@@ -625,18 +576,12 @@
 
 
         function showUploadedPicture() {
-            const fileInput = document.getElementById("profile-img-file"); // pointer #1
-            const image = document.getElementById("profile-img"); // pointer #2
+            const fileInput = document.getElementById("profile-img-file"); 
+            const image = document.getElementById("profile-img"); 
 
-            //attach listener to input file
-            //when this file changes, do something
             fileInput.addEventListener('change', function (e) {
-
-                //the change event returns a file "e.target.files[0]"
                 var blob = URL.createObjectURL(e.target.files[0]);
-
-                //change the DOM img element source to point to this file
-                image.src = blob; //assign the "src" property of the "img" tag
+                image.src = blob; 
             })
         }
         showUploadedPicture();
@@ -644,11 +589,11 @@
 
         function displayUserProfilePic() {
 
-            firebase.auth().onAuthStateChanged(function (user) { //get user object
-                db.collection("users").doc(user.uid) //use user's uid
-                    .get() //READ the doc
+            firebase.auth().onAuthStateChanged(function (user) { 
+                db.collection("users").doc(user.uid) 
+                    .get() 
                     .then(function (doc) {
-                        var picUrl = doc.data().profilePic; //extract pic url
+                        var picUrl = doc.data().profilePic; 
 
                         // use this line if "mypicdiv" is a "div"
                         $("profile-img").append("<img src='" + picUrl + "'>")
@@ -659,40 +604,39 @@
             })
         }
         displayUserProfilePic();
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
-function countReminders() {
-    count = 0;
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            userID = user.uid;
-            var reminders = [];
-            var reminderRef = db.collection("reminders");
-            reminderRef.where("UserID", "==", userID).get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    reminders.push(doc.data());
-                    ++count;
-                    console.log(count);
-                    reward();
-                });
+        function countReminders() {
+            count = 0;
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    userID = user.uid;
+                    var reminders = [];
+                    var reminderRef = db.collection("reminders");
+                    reminderRef.where("UserID", "==", userID).get().then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+                            reminders.push(doc.data());
+                            ++count;
+                            console.log(count);
+                            reward();
+                        });
 
-                   
+
+                    })
+                }
             })
         }
-    })
-}
 
 
-
-function reward() {
-    if (count % 5 == 0) {
-        var img = document.createElement("img");
-        img.src = "images/badge1.png";
-        var circleBadge = document.getElementById("badge-one");
-        circleBadge.appendChild(img);
-        img.style.cssText = `
+        function reward() {
+            if (count % 5 == 0) {
+                var img = document.createElement("img");
+                img.src = "images/badge1.png";
+                var circleBadge = document.getElementById("badge-one");
+                circleBadge.appendChild(img);
+                img.style.cssText = `
             border-radius: 50%;
             border: 1px solid yellow;
             max-width: 100%;
@@ -700,10 +644,11 @@ function reward() {
             height: 100%;
             width: 100%;
         `;
-    }
+            }
 
-}
-///////////////////////////////////////////////////////////////////////////////////////////////////////////        
+        }
+        reward();
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////        
     </script>
 
 

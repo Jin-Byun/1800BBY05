@@ -61,7 +61,12 @@
             text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
         }
 
-
+        .fixed-bottom {
+            background-color:#f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            border-left: solid 2px #f37f5230;
+            border-right: solid 2px #f37f5230;
+        }
 
         body {
             font-size: 16px;
@@ -70,36 +75,8 @@
             letter-spacing: 0.7px;
         }
 
-        .font-size38 {
-            font-size: 38px;
-        }
-
-        .team-single-text .section-heading h4,
-        .section-heading h5 {
-            font-size: 36px
-        }
-
-        .team-single-text .section-heading.half {
-            margin-bottom: 20px
-        }
-
-        .team-single-icons ul li {
-            display: inline-block;
-            border: 1px solid #8ed0d3;
-            border-radius: 50%;
-            color: #86bc42;
-            margin-right: 8px;
-            margin-bottom: 5px;
-            -webkit-transition-duration: .3s;
-            transition-duration: .3s
-        }
-
         .padding-30px-all {
             padding: 30px;
-        }
-
-        .bg-light-gray {
-            background-color: #f7f7f7;
         }
 
         .text-center {
@@ -113,49 +90,32 @@
             padding-left: 15%;
         }
 
-
-        .list-style9 {
-            list-style: none;
-            padding: 0
+        .card-body {
+            background-color: #fffbf2;
         }
-
-        .list-style9 li {
-            position: relative;
-            padding: 0 0 15px 0;
-            margin: 0 0 15px 0;
-            border-bottom: 1px dashed rgba(0, 0, 0, 0.1)
-        }
-
-        .list-style9 li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-            margin-bottom: 0
-        }
-
-       
 
         .card-body img {
             position: relative;
             margin: 0 auto;
             display: inline-block;
-            padding: 5px;
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
+            padding: 2px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;        
         }
 
         .btn {
             cursor: pointer;
             color: black;
-            width: 50%;
+            width: 18%;
             background: #ffec82;
-            padding: 15px;
+            padding: 13px;
             margin: 1rem;
-            margin-bottom: 0.5rem;
-            font-family: inherit;
-            border: 1px solid #ec511330;
+            margin-bottom: 0.5rem; 
+            border: 1.5px solid #ec511330;
             border-radius: 5%;
         }
+
 
         .container.py-3 {
             color: black;
@@ -176,22 +136,20 @@
             color: black;
             width: 40%;
             background: #f5e3cb !important;
-            padding: 10px;
-            margin: 1rem;
-            font-family: inherit;
-            border: 2px solid #ec511330 !important;
+            padding: 1%;
+            margin: 1.5rem;
+            /* font-family:; */
+            border: 2px solid rgba(3, 0, 0, 0.188)!important;
             border-radius: 5%;
-
         }
 
-        #levelborder {
-            background: #f5e3cb !important;
-            border: 1px solid #ec511330 !important;
-            border-radius: 5%;
-            padding: 15px;
-            margin: 1rem;
-            color: #9b634d !important;
+        #upload-button:hover {
+            background: #e4c49d !important;
+            opacity: 0.6;
+            transition: 0.3s;
         }
+
+        #upload-button:hover {opacity: 1}
 
         #personalinfo {
             background: #f5e3cb !important;
@@ -203,7 +161,6 @@
             font-size: 2.5vh;
             font-weight: bold;
             color: #f37f52 !important;
-
         }
 
         #create_prof {
@@ -215,46 +172,22 @@
             text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 1px 1px yellow, 1px 1px yellow, 2px 2px yellow, 2px 2px 1px #f37f52, 2px 0.5px 2px #f37f52;
         }
 
+        .navbar-bottom {
+            display: grid;
+            grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            border-left: solid 2px #f37f5230;
+            border-right: solid 2px #f37f5230;
+            justify-content: space-evenly;
+        }
 
-
-        .fixed-bottom {
-        background-color: #f5efdf !important;
-        border-top: solid 2px #f37f5230;
-        position: fixed;
-      }
-
-      .navbar-bottom {
-        display: grid;
-
-        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
-
-        background-color: #f5efdf !important;
-        border-top: solid 2px #f37f5230;
-        border-left: solid 2px #f37f5230;
-        border-right: solid 2px #f37f5230;
-      }
-
-      #first-icon {
-        grid-column: 2;
-      }
-
-      #second-icon {
-        grid-column: 4;
-      }
-
-      #third-icon {
-        grid-column: 6;
-      }
-
-      footer > a {
-        color: #f37f52;
-        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
-          0px -1px #f37f52;
-      }
-
+        footer > a {
+            color: #f37f52;
+            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
+        }
 
     </style>
-
 </head>
 
 <body>
@@ -281,37 +214,27 @@
             <div class="row">
                 <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
                 </div>
-                <span id="create_prof">Create Profile</span> <span id="name2-goes-here"></span>
+                <span id="create_prof">Edit Profile</span> <span id="name2-goes-here"></span>
                 <br>
-                <div class="team-single-img">
+                <div class="team-single-img ">
                     <div class="container text-center col-md-4 col-md-offset-4">
                         <div class="card">
                             <div class="card-body">
-                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
+                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100"/>
                                 <!-- Welcome <span id="name-goes-here"></span> -->
-                                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
+                                <input type="file" id="profile-img-file"  style="display:none" accept="image/*">
                             </div>
                         </div>
-
+                        
                         <button onclick="document.getElementById('profile-img-file').click()" id="upload-button">Upload
                             Photo</button>
-
                     </div>
                 </div>
-            </div>
-            <!-- <div id="levelborder">
-                <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
-                    <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600"><span
-                            id="userlevel">Level 1 Habit User</span></h4>
-                    <p class="sm-width-95 sm-margin-auto"><span class="description-goes-here"></span></p>
-                    <div class="margin-20px-top team-single-icons">
-                    </div> -->
-                      
+            </div> 
         </div>
     </div>
 
-
-    <div class="container">
+    <div class="container ">
         <h1></h1><span id="add-user-form">
             <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
 
@@ -333,13 +256,12 @@
 
                 </fieldset>
 
-                <div class="d-flex justify-content-end mt-5">
+                <div class="d-flex mt-5 align-items-center justify-content-center">
 
-                    <button type="button" class="btn btn-danger" onclick="editUserInfo()">Edit</button>
-                    <span style="width: 10px"></span>
-                    <a href="frontpage.html" button type="button" class="btn btn-danger" onclick="saveUserInfo()">Save &
+                    <!-- <button type="button" class="btn btn-danger" onclick="editUserInfo()">Edit</button>
+                    <span style="width: 10px"></span> -->
+                    <a href="frontpage.html" button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save &
                         Continue</a>
-
                 </div>
             </form>
 
@@ -547,7 +469,6 @@
                     })
                 }
                 showUploadedPicture();
-
 
                 function displayUserProfilePic() {
                     //console.log("hi");
