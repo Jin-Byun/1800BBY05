@@ -471,8 +471,8 @@
                             // if (userAge != null) {
                             //     document.getElementById("ageInput").value = userAge;
                             // }
-                            // if (userCity != null) {
-                            //     document.getElementById("emailInput").value = userCity;
+                            // if (userDescription != null) {
+                            //     document.getElementById("emailInput").value = userDescription;
                             // }
                         })
                 } else {
@@ -490,7 +490,6 @@
                     currentUser.get()
                         .then(userDoc => {
                             var user_Name = userDoc.data().name;
-
                             $("#name-goes-here").text(user_Name);
                         })
                 } else {
@@ -628,7 +627,7 @@
                 }
             })
         }
-
+        
 
         function reward() {
             if (count % 5 == 0) {
