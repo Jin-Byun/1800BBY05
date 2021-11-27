@@ -13,22 +13,22 @@
 
   <!-- Bootstrap FirebaseUI CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-  <!-- Firebase 8 CDNs-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-  </script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<!-- Firebase 8 CDNs-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+</script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 
-  <!-- Link to the api keys for your firebase project -->
-  <script src="scripts/firebaseAPI.js"></script>
+<!-- Link to the api keys for your firebase project -->
+<script src="scripts/firebaseAPI.js"></script>
 
   <!-- Optional styles and scripts of your own -->
   <!-- Google Icons (Material Design)-->
@@ -41,107 +41,129 @@
 
 <style>
   * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+body{
+  
+  background-color:#fffaec;
+}
+.navbar {
 
-  body {
+  background-color: #f5efdf  !important;
+        border-bottom: solid 2px #f37f5230;
+}
 
-    background-color: #fffaec;
-  }
+.navbar-brand {
+        font-size: 5vh;
+        font-weight: bold;
+         color: #f37f52 !important;
+         word-spacing: -1vh;
+         line-height: 0;
+         padding-top: 1.4vh;
+         padding-bottom: 2.3vh;
+         text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
+    }
 
-  .navbar {
+/* #myChart {
+  background-color: #ffffff !important;
+} */
 
-    background-color: #f5efdf !important;
-    border-bottom: solid 2px #f37f5230;
-  }
 
-  .navbar-brand {
-    font-size: 5vh;
-    font-weight: bold;
-    color: #f37f52 !important;
-    word-spacing: -1vh;
-    line-height: 0;
-    padding-top: 1.4vh;
-    padding-bottom: 2.3vh;
-    text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
-  }
 
-  /* .container.text-center {
+/* .container.text-center {
   background-color: #BCD39C;
   font-size: 1.5em;
   padding: 15px;
   
-  } */
+} */
 
-  table {
-    width: 100%;
-    margin-inline: 0;
-    padding-inline: 0;
-  }
+table{
+            width: 100%;
+            margin-inline: 0;
+            padding-inline: 0;
+        }
 
-  p {
-    margin: 0;
-  }
+        p {
+            margin: 0;
+        }
 
-  p:nth-child(1) {
-    font-weight: bold;
-    font-size: 1rem;
-  }
+        p:nth-child(1) {
+            font-weight: bold;
+            font-size: 1rem;
+        }
 
-  th {
-    font-size: 1.1rem;
-    border-bottom: 2px solid orangered;
-  }
+        th {
+            font-size: 1.1rem;
+            border-bottom: 2px solid orangered;
+        }
+        th:nth-child(1) {
+            width: 60%;
+        }
 
-  th:nth-child(1) {
-    width: 60%;
-  }
+        th:nth-child(2) {
+            width: 40%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+        
+        td:nth-child(1) {
+            width: 60%;
+            /* margin-inline: auto; */
+        }
 
-  th:nth-child(2) {
-    width: 40%;
-    text-align: center;
-    /* margin-inline: auto; */
-  }
+        td:nth-child(2) {
+            width: 40%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
 
-  td:nth-child(1) {
-    width: 60%;
-    /* margin-inline: auto; */
-  }
+html, body {
+        /* overflow: hidden; */
+        height: 100%;
+        width: 100%;
+    }
 
-  td:nth-child(2) {
-    width: 40%;
-    text-align: center;
-    /* margin-inline: auto; */
-  }
-
-  html,
-  body {
-    /* overflow: hidden; */
-    height: 100%;
-    width: 100%;
-  }
-
-  .fixed-bottom {
-    background-color: #f5efdf !important;
+.fixed-bottom {
+    background-color:#f5efdf !important;
     border-top: solid 2px #f37f5230;
     border-left: solid 2px #f37f5230;
     border-right: solid 2px #f37f5230;
     justify-content: space-evenly;
     margin-left: 10rem;
     margin-right: 10rem;
+    
+    position: fixed;
+    grid-template-columns: 10% 20% 10% 20% 10% 20% 10%;
+    display: grid;
+}
 
-  }
+#first-icon {
+    grid-column: 2;
 
-  #reminderContainer {
-    border: 2px solid #f37f52;
-  }
+}
 
-  footer>a {
-    color: #f37f52;
-    text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-  }
+#second-icon {
+    grid-column: 4;
+}
+
+#third-icon {
+    grid-column: 6;
+}
+
+
+
+#reminderContainer {
+  border: 2px solid #f37f52;
+}
+
+footer > a {
+        color: #f37f52;
+        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
+    }
+
+
 </style>
 
 <body>
@@ -153,7 +175,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-success">
     <div class="container-fluid">
       <a class="navbar-brand" href="./frontpage.html">HE J!</a>
-
+      
       <!-- remove after Ryan is done with it -->
       <a class="navbar-brand" href="./create_profile.html">Create</a>
     </div>
@@ -162,65 +184,85 @@
   <!-- welcome and main part of the page --><br><br>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">Welcome <span id="name-goes-here"></span> <br /></h1>
+      <h1 class="display-4">Welcome <span id="name-goes-here"></span> <br/></h1>
       <p class="lead">
       </p>
     </div>
   </div><br>
+  
 
-
-  <div class="container text-center py-2" style="border: solid 2px #f37f52; ">
+  <div class="container text-center py-2" style="border: solid 2px #f37f52; " >
     <h2>You've completed <span id="counter"></span> habits this week!</h2>
-    <a href="#"></a>
+  <a href="#"></a>
   </div>
 
-  <br />
-  <!-- Templates for general use, not displayed -->
-  <template id="CardTemplate">
-    <tr>
-      <td class="card-title"></td>
-      <td class="card-freq"></td>
-    </tr>
-    <h2 class="card-isEmpty"></h2>
+  <!-- <div class="container text-center" style="border: solid 2px #f0dbd2; " >
+  <div class="container-fluid">1. Set up your Habits</div>
+  <hr/>
+  <div class="container-sm">2. Get the reminder</div>
+  <hr/>
+  <div class="container-md">3. See your Progress</div>
+  <hr/>
+   <div class="container-lg">Habits completed</div> 
+   <hr/>
+  <div class="container-xl">Habits to do today <span id="current-habit"> </span></div>
+  </div> -->
+
+  <br/>
+
+      <!-- Templates for general use, not displayed -->
+    <template id="CardTemplate">
+      <tr>
+          <td class="card-title"></td>
+          <td class="card-freq"></td>
+      </tr>
+      <h2 class="card-isEmpty"></h2>
   </template>
   <div class="container" id="reminderContainer">
-    <h1 style="margin-left: 0.7rem; margin-top: 1.5%; margin-bottom: 2%;">Active Schedules</h1>
-    <!-- Here is container for cards  -->
-    <div>
-      <table>
-        <tr>
-          <th>Reminders</th>
-          <th>Frequency</th>
-        </tr>
-      </table>
-      <table id="reminders-go-here">
-      </table>
-    </div>
-    <div id="isEmpty-go-here" style="text-align: center; margin: 3%;"></div>
+      <h1 style="margin-left: 0.7rem; margin-top: 1.5%; margin-bottom: 2%;">Active Schedules</h1>
+      <!-- Here is container for cards  -->
+      <div>
+          <table>
+              <tr>
+              <th>Reminders</th>
+              <th>Frequency</th>
+          </tr>
+          </table>
+          <table id="reminders-go-here">
+          </table>
+      </div>
+      <div id="isEmpty-go-here" style="text-align: center; margin: 3%;"></div>
   </div>
-  <br><br>
+<br><br>
 
-  <div class="container">
-    <p id="time">
 
-    </p>
-    <p id="frequency">
+<div class="container">
+  <p id="time">
 
-    </p>
-  </div>
+  </p>
+  <p id="frequency">
 
-  <div class="fixed-bottom py-3 bg-secondary align-items-center">
-    <div class="container text-center py-0">
-      <footer class="navbar bg-secondary fixed-bottom py-0">
+  </p>
+</div>
 
-        <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-        <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
 
-        <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
+<!-- <div>
+<canvas id="myChart" width="100" height="30"></canvas>
+</div> -->
 
-      </footer>
-    </div>
-  </div>
+
+<div class="fixed-bottom py-3 align-items-center">
+  
+          
+          <a id="first-icon" href="calendar.html" class="bi bi-calendar-date mx-3" style="font-size: 2em; "></a>
+          <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+          <a id="third-icon" href="profile_user.html" class="bi bi-person mx-3" style="font-size: 2em;"></a>
+
+
+          
+</div>
+
+
 
   <!----------------------------------------------->
   <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
@@ -241,115 +283,113 @@
   <!--------------------------------------------------------------------->
 
   <script>
-    displayRems();
+displayRems();
 
-    function displayRems() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          userID = user.uid;
-          var activities = [];
-          var reminderRef = db.collection("reminders");
-          reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
-            .then((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
-                activities.push(doc.data());
-              });
-              if (activities.length == 0) {
-                let newcard = CardTemplate.content.cloneNode(true);
-                newcard.querySelector('.card-isEmpty').innerText = "No active reminder!";
-                document.getElementById("isEmpty-go-here").appendChild(newcard);
-              } else {
-                activities.forEach(element => { //iterate thru each activity
+function displayRems() {
+  firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    userID = user.uid;
+                    var activities = [];
+                    var reminderRef = db.collection("reminders");
+                    reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
+                        .then((querySnapshot) => {
+                            querySnapshot.forEach((doc) => {
+                                activities.push(doc.data());
+                            }); 
+                            if (activities.length == 0) {
+                              let newcard = CardTemplate.content.cloneNode(true);
+                              newcard.querySelector('.card-isEmpty').innerText = "No active reminder!";
+                              document.getElementById("isEmpty-go-here").appendChild(newcard);
+                            } else {
+                                activities.forEach(element => {//iterate thru each activity
+                        
+                        let reminder = element.Name;
+                        let startTime = element.Time;
+                        let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime.split(':')[0]) + 1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' + startTime.split(':')[1];
+                        let freq = element.Frequency;
+                        let isAlive = (element.Active ? "Active!" : "Not Active...");
+                        let newcard = CardTemplate.content.cloneNode(true);
 
-                  let reminder = element.Name;
-                  let startTime = element.Time;
-                  let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime
-                      .split(':')[0]) + 1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' +
-                    startTime.split(':')[1];
-                  let freq = element.Frequency;
-                  let isAlive = (element.Active ? "Active!" : "Not Active...");
-                  let newcard = CardTemplate.content.cloneNode(true);
-
-                  // // //update title and text and image
-                  newcard.querySelector('.card-title').innerHTML =
-                    `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
-                  newcard.querySelector('.card-freq').innerHTML = freq;
-                  // // //give unique ids to all elements for future use
-                  // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                  // newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
-                  // newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
-                  // //attach to gallery
-
-                  document.getElementById("reminders-go-here").appendChild(newcard);
-                })
-              }
-            })
-        }
-      });
-    }
+                        // // //update title and text and image
+                        newcard.querySelector('.card-title').innerHTML = `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
+                        newcard.querySelector('.card-freq').innerHTML = freq;
+                        // // //give unique ids to all elements for future use
+                        // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+                        // newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
+                        // newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
+                        // //attach to gallery
+                                
+                        document.getElementById("reminders-go-here").appendChild(newcard);
+                    })}
+                })}});}
 
 
-    function insertReview() {
+function insertReview() {
       db.collection("reminders").get().then(docs => {
         docs.forEach(eachReminder => {
           var time = eachReminder.data().Time;
           var frequency = eachReminder.data().Frequency;
           //console.log(time, frequency);
-        })
-      })
+        }) 
+      }) 
     }
     insertReview();
 
 
 
     function insertName() {
-      firebase.auth().onAuthStateChanged(user => {
+    firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
-        if (user) {
-          // Do something for the current logged-in user here: 
+        if (user) {                                                                 
+            // Do something for the current logged-in user here: 
           //  console.log(user.uid);
-          //go to the correct user document by referencing to the user uid
-          currentUser = db.collection("users").doc(user.uid);
-          //get the document for current user.
-          currentUser.get()
+            //go to the correct user document by referencing to the user uid
+            currentUser = db.collection("users").doc(user.uid);
+            //get the document for current user.
+            currentUser.get()
             .then(userDoc => {
-              var user_Name = userDoc.data().name;
+               var user_Name = userDoc.data().name;
               //console.log(user_Name);
-              //method #1:  insert with html only
-              document.getElementById("name-goes-here").innerText = user_Name; //using javascript
-              //method #2:  insert using jquery
-              //    $("#name-goes-here").text(user_Name);                         //using jquery
+               //method #1:  insert with html only
+               document.getElementById("name-goes-here").innerText = user_Name;    //using javascript
+               //method #2:  insert using jquery
+            //    $("#name-goes-here").text(user_Name);                         //using jquery
             })
         } else {
-          // No user is signed in.
+            // No user is signed in.
         }
-      });
-    }
-    insertName();
+    });
+}
+insertName();
+
+// 
 
 
-    function insertCounter() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          //console.log(user.uid);
-          db.collection("users").doc(user.uid).get().then(docs => {
-              if (docs.exists) {
-                //console.log("data:", docs.data().counter)
-              }
-              //  docs.forEach(eachComplete => {
-              //    var complete = eachComplete.data().Completed;
-              document.getElementById("counter").innerText = docs.data().counter;
-              //    console.log(complete);
-              //  })
-            }
-          )
-        }
-      });
-    }
-    insertCounter();
+function insertCounter() {
+     firebase.auth().onAuthStateChanged(user => {
+         if (user) {                                                                 
+            //console.log(user.uid);
+               db.collection("users").doc(user.uid).get().then(docs => {
+                 if (docs.exists) {
+                   //console.log("data:", docs.data().counter)
+                 }
+                //  docs.forEach(eachComplete => {
+                //    var complete = eachComplete.data().Completed;
+                   document.getElementById("counter").innerText = docs.data().counter;
+                //    console.log(complete);
+                //  })
+               }
+               
+
+               )}
+    });
+ }
+ insertCounter();
 
 
-  </script>
+
+
+</script>
 
 </body>
 
