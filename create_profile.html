@@ -353,16 +353,15 @@
             name = document.getElementById('nameInput').value;
             age = document.getElementById('ageInput').value;
             description = document.getElementById('descriptionInput').value;
+            profilePic = profilePic.getElementById('profile-img').value;
             //write the value in the database:
             currentUser.update({
                 //below means field of 'name' in firebase store - data from firestore
                 name: name,
                 age: age,
-                description: description
+                description: description,
+                profilePic: profilePic
             })
-
-
-
         }
 
         function insertName() {
@@ -480,10 +479,11 @@
             fileInput.addEventListener('change', function (e) {
 
                 //the change event returns a file "e.target.files[0]"
-                var blob = URL.createObjectURL(e.target.files[0]);
+                var img_file = URL.createObjectURL(e.target.files[0]);
 
                 //change the DOM img element source to point to this file
-                image.src = blob; //assign the "src" property of the "img" tag
+                //assign the "src" property of the "img" tag
+                image.src = img_file;
             })
         }
         showUploadedPicture();
@@ -506,8 +506,6 @@
             })
         }
         displayUserProfilePic();
-
-
     </script>
 
 </body>
