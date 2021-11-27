@@ -28,13 +28,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/ui/8.10.0/firebase-ui-auth.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-
-    <!-- Firebase 8 related CSS CDN -->
-    <!-- <link type="text/css" rel="stylesheet" 
-    href="https://www.gstatic.com/firebasejs/ui/8.10.0/firebase-ui-auth.css" /> -->
 
     <!-- Link to the api keys for your Firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
@@ -411,8 +405,7 @@
 
                         <br>
                         <br>
-                        <a href="edit_profile.html" button type="button" class="btn btn-warning"
-                            onclick="saveUserInfo()">Edit</a>
+                        <a href="edit_profile.html" button type="button" class="btn btn-warning">Edit</a>
                         <br>
 
                     </div>
@@ -454,6 +447,15 @@
         var currentUser;
         var count;
         countReminders();
+        populateInfo();
+        insertName();
+        insertEmail();
+        insertAge();
+        insertDescription();
+        uploadUserProfilePic();
+        showUploadedPicture();
+        displayUserProfilePic();
+        reward();
 
         function populateInfo() {
             firebase.auth().onAuthStateChanged(user => {
@@ -481,7 +483,7 @@
             });
         }
 
-        populateInfo();
+        
 
         function insertName() {
             firebase.auth().onAuthStateChanged(user => {
@@ -497,7 +499,7 @@
                 }
             });
         }
-        insertName();
+        
 
         function insertEmail() {
             firebase.auth().onAuthStateChanged(user => {
@@ -513,7 +515,7 @@
                 }
             });
         }
-        insertEmail();
+        
 
 
         function insertAge() {
@@ -527,7 +529,7 @@
                 }
             });
         }
-        insertAge();
+        
 
         function insertDescription() {
             firebase.auth().onAuthStateChanged(user => {
@@ -542,7 +544,7 @@
                 }
             });
         }
-        insertDescription();
+        
 
         function uploadUserProfilePic() {
 
@@ -571,23 +573,20 @@
                 })
             })
         }
-        uploadUserProfilePic();
+        
 
 
         function showUploadedPicture() {
             const fileInput = document.getElementById("profile-img-file"); 
             const image = document.getElementById("profile-img"); 
-
             fileInput.addEventListener('change', function (e) {
                 var blob = URL.createObjectURL(e.target.files[0]);
                 image.src = blob; 
             })
-        }
-        showUploadedPicture();
+        }        
 
 
         function displayUserProfilePic() {
-
             firebase.auth().onAuthStateChanged(function (user) { 
                 db.collection("users").doc(user.uid) 
                     .get() 
@@ -602,7 +601,7 @@
                     })
             })
         }
-        displayUserProfilePic();
+        
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -627,7 +626,6 @@
                 }
             })
         }
-        
 
         function reward() {
             if (count % 5 == 0) {
@@ -644,9 +642,8 @@
             width: 100%;
         `;
             }
-
         }
-        reward();
+        
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////        
     </script>
 
