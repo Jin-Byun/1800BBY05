@@ -143,6 +143,14 @@
             border-radius: 5%;
         }
 
+        #upload-button:hover {
+            background: #e4c49d !important;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        #upload-button:hover {opacity: 1}
+
         #personalinfo {
             background: #f5e3cb !important;
             border: 1px solid #ec511330 !important;
@@ -212,9 +220,9 @@
                     <div class="container text-center col-md-4 col-md-offset-4">
                         <div class="card">
                             <div class="card-body">
-                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
+                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100"/>
                                 <!-- Welcome <span id="name-goes-here"></span> -->
-                                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
+                                <input type="file" id="profile-img-file"  style="display:none" accept="image/*">
                             </div>
                         </div>
                         
@@ -226,7 +234,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container ">
         <h1></h1><span id="add-user-form">
             <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
 
@@ -252,7 +260,7 @@
 
                     <!-- <button type="button" class="btn btn-danger" onclick="editUserInfo()">Edit</button>
                     <span style="width: 10px"></span> -->
-                    <a href="frontpage.html" button type="button" class="btn btn-danger" onclick="saveUserInfo()">Save &
+                    <a href="frontpage.html" button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save &
                         Continue</a>
                 </div>
             </form>
