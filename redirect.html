@@ -24,52 +24,48 @@
 
     <!-- Optional styles and scripts of your own -->
     <!-- Google Icons (Material Design)-->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" 
-rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">    
-<link rel="stylesheet" href="styles/my_style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles/my_style.css">
 
-<style>
- 
+    <style>
+        body {
 
-    body{
+            background-color: #fffaec;
+        }
 
-background-color:#fffaec;
-}
+        .navbar {
 
-.navbar {
+            background-color: #f5efdf !important;
+            border-bottom: solid 2px #f37f5230;
+        }
 
-background-color: #f5efdf  !important;
-    border-bottom: solid 2px #f37f5230;
-}
+        .navbar-brand {
+            font-size: 5vh;
+            font-weight: bold;
+            color: #f37f52 !important;
+            word-spacing: -1vh;
+            line-height: 0;
+            padding-top: 1.4vh;
+            padding-bottom: 2.3vh;
+            text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
+        }
 
-.navbar-brand {
-        font-size: 5vh;
-        font-weight: bold;
-         color: #f37f52 !important;
-         word-spacing: -1vh;
-         line-height: 0;
-         padding-top: 1.4vh;
-         padding-bottom: 2.3vh;
-         text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
-    }
+        .fixed-bottom {
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            border-left: solid 2px #f37f5230;
+            border-right: solid 2px #f37f5230;
+            justify-content: space-evenly;
+            margin-left: 10rem;
+            margin-right: 10rem;
+        }
 
-    .fixed-bottom {
-    background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
-    justify-content: space-evenly;
-    margin-left: 10rem;
-    margin-right: 10rem;
-}
-
-footer > a {
-        color: #f37f52;
-        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
-    }
-
-</style>
+        footer>a {
+            color: #f37f52;
+            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
+        }
+    </style>
 
 </head>
 
@@ -86,11 +82,12 @@ footer > a {
     </nav>
 
     <!-- welcome and main part of the page -->
-   
+
     <div class="position-absolute top-50 start-50 translate-middle">
-        <div class="container-fluid bg-light-gray text-light p-5" style="width: 100%; font-size: medium; margin-right: 5rem; background-color: #f5efdf; border-radius: 2%;">
+        <div class="container-fluid bg-light-gray text-light p-5"
+            style="width: 100%; font-size: medium; margin-right: 5rem; background-color: #f5efdf; border-radius: 2%;">
             <div class="container p-5">
-                <h2 class="display-4" style= "color: #f37f52;">Nice!</h2>
+                <h2 class="display-4" style="color: #f37f52;">Nice!</h2>
                 <hr style="color:#f37f52; height: 0.5rem;">
                 <h2 style="color: #f37f52;">You set a reminder for <span id="reminder-here"></span>.</h2>
 
@@ -100,16 +97,25 @@ footer > a {
 
 
 
-    
+
     <div class="fixed-bottom py-3 bg-secondary align-items-center">
         <div class="container text-center py-0">
             <footer class="navbar bg-secondary fixed-bottom py-0">
+<<<<<<< HEAD
                 
                 <a href="calendar.html" class="bi bi-calendar-date mx-3" style="font-size: 2rem;"></a>
                 <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3rem;"></a>
                 
                 <a href="profile_user.html" class="bi bi-person mx-3" style="font-size: 2rem;"></a>
     
+=======
+
+                <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+                <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+
+                <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
+
+>>>>>>> e89de9b7951be6146cbe87eb4137d0575a738ebc
             </footer>
         </div>
     </div>
@@ -130,30 +136,26 @@ footer > a {
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
-<script>
+    <script>
+        goToFrontpage();
+        var queryString = decodeURIComponent(window.location.search);
+        var queries = queryString.split("?");
+        var Name = queries[1];
 
-goToFrontpage();
-   var queryString = decodeURIComponent(window.location.search);
-   var queries = queryString.split("?");
-   var Name = queries[1];
+        //how to add strings dynamically through js
+        var para = document.getElementById("reminder-here").innerHTML = Name;
 
-   //how to add strings dynamically through js
-   var para = document.getElementById("reminder-here").innerHTML = Name;
-   
-   document.body.appendChild(para);
-   var node = document.createTextNode(Name);
-   para.appendChild(node);
-   
-
-
-   function goToFrontpage() {
-    setTimeout(() => window.location.href = "frontpage.html?", 2000)
-    
-}
+        document.body.appendChild(para);
+        var node = document.createTextNode(Name);
+        para.appendChild(node);
 
 
 
-</script>
+        function goToFrontpage() {
+            setTimeout(() => window.location.href = "frontpage.html?", 2000)
+
+        }
+    </script>
 </body>
 
 </html>
