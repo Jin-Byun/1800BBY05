@@ -153,7 +153,6 @@
             width: 110px;
             height: 110px;
             border-radius: 50%;
-
         }
 
         .btn {
@@ -167,7 +166,6 @@
             font-family: inherit;
             border: 1px solid #ec511330;
             border-radius: 5%;
-            
         }
 
         .container.py-3 {
@@ -183,19 +181,18 @@
             color: #f37f52 !important;
             font-size: 2vh;
             font-weight: bold;
-            
         }
 
         #upload-button {
             color: black;
             width: 40%;
             background: #f5e3cb !important;
-            padding: 15px;
+            padding: 10px;
             margin: 1rem;
-            margin-bottom: 0.5rem;
             font-family: inherit;
-            border: 1px solid #ec511330 !important;
+            border: 2px solid #ec511330 !important;
             border-radius: 5%;
+
         }
 
         #levelborder {
@@ -205,7 +202,6 @@
             padding: 15px;
             margin: 1rem;
             color: #9b634d !important;
-            font-weight: bold;
         }
 
         #personalinfo {
@@ -215,21 +211,20 @@
             padding: 15px;
             margin: 0.5rem;
             color: #000000;
-            font-size: 3.3vh;
+            font-size: 2.5vh;
             font-weight: bold;
             color: #f37f52 !important;
-            
+
         }
+
         #create_prof {
-            font-size: 3.3vh;
+            font-size: 3vh;
             font-weight: bold;
             color: #f37f52 !important;
             text-align: center;
             justify-content: center;
             text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 1px 1px yellow, 1px 1px yellow, 2px 2px yellow, 2px 2px 1px #f37f52, 2px 0.5px 2px #f37f52;
         }
-
-
     </style>
 
 </head>
@@ -282,7 +277,7 @@
                 <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
                     <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600"><span
                             id="userlevel">Level 1 Habit User</span></h4>
-                    <p class="sm-width-95 sm-margin-auto"><span id="description-goes-here"></span></p>
+                    <p class="sm-width-95 sm-margin-auto"><span class="descriptionInput"></span></p>
                     <div class="margin-20px-top team-single-icons">
                     </div>
                     <!-- <ul class="no-margin">
@@ -370,7 +365,6 @@
                         .then(userDoc => {
                             //get the data fields of the user
                             var userName = userDoc.data().name;
-                            //console.log(userName);
                             var userAge = userDoc.data().age;
                             var userDescription = userDoc.data().description;
 
@@ -384,9 +378,6 @@
                             if (userDescription != null) {
                                 document.getElementById("descriptionInput").value = userDescription;
                             }
-                            // if (userCity != null) {
-                            //     document.getElementById("emailInput").value = userCity;
-                            // }
                         })
                 } else {
                     // No user is signed in.
@@ -458,7 +449,6 @@
         }
         insertName();
 
-
         function insertDescription() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -467,11 +457,11 @@
                     currentUser.get()
                         .then(userDoc => {
                             var user_Description = userDoc.data().description;
-                            //console.log(user_Name);
+                            
                             //document.getElementById("username").innerText = n;                     
                             //using javascript
                             $("#descriptionInput").text(user_Description); //using jquery
-                            //$("#description-goes-here").text(user_Description);
+                            
                         })
                 } else {
                     // No user is signed in.
@@ -479,6 +469,21 @@
             });
         }
         insertDescription();
+
+
+        // function populateDescription() {
+        //     firebase.auth().onAuthStateChanged(user => {
+        //         if (user) {
+        //             currentUser.collection("users").doc(user.uid).get().then(docs => {
+        //                 if (docs.exists) {
+        //                 }
+        //                     document.getElementById("descriptionInput").innerText = docs.data().description;
+        //                 }
+        //             )}
+        //     });
+        // }
+        // populateDescription();
+
 
 
         function uploadUserProfilePic() {
