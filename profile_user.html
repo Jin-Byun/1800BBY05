@@ -299,7 +299,7 @@
                             <div id="profile-image">
 
                                 <!-- Testing -->
-                                <img id="profile-img" src="https://i.imgur.com/Fp8TW5v.png" alt="profile">
+                                <img id="profile-img" src="#" alt="profile">
                                 <input type="file" id="profile-img-file" style="display:none" accept="image/*">
                                 <img onclick="document.getElementById('profile-img-file').click()">
 
@@ -385,17 +385,15 @@
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
                 if (user) {
-
                     //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid)
                     //get the document for current user.
                     currentUser.get()
                         .then(userDoc => {
-                            //get the data fields of the user
                             var userName = userDoc.data().name;
                             //console.log(userName);
                             var userAge = userDoc.data().age;
-
+                            var userDescription = userDoc.data().description;
                             //if the data fields are not empty, then write them in to the form.
                             // if (userName != null) {
                             //     document.getElementById("nameInput").value = userName;
