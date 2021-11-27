@@ -307,15 +307,10 @@
             color: #f37f52;
             text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
         }
-<<<<<<< HEAD
- 
-
-=======
 
         #history {
             padding-bottom: 80px;
         }
->>>>>>> c8f6b8e (quote and event added)
     </style>
 
 </head>
@@ -462,6 +457,7 @@
         getReminder();
         getReminderCalendar();
         displayDate();
+        addHistory(); 
 
         function displayDate() {
             if (year == today.getFullYear() && month == today.getMonth()) {
@@ -763,12 +759,9 @@
                 // console.log(reminderList);
             });
         }
-
-        // addQuote();
  
-       addHistory(); 
 function addHistory() {
-    fetch("http://history.muffinlabs.com/date").then(function(response) {
+    fetch("https://history.muffinlabs.com/date").then(function(response) {
     return response.json();
   }).then(function(history) {
     todayInfo = history.data;
@@ -790,20 +783,6 @@ function addHistory() {
 
 });
 }
-
-
-//         function addQuote() {
-//         fetch("https://type.fit/api/quotes").then(function(response) {
-//     return response.json();
-//   }).then(function(data) {
-//     let todayQ = data[(today.getMonth()+1) * today.getDate()].text;
-//     let todayA = data[(today.getMonth()+1) * today.getDate()].author;
-
-//     document.getElementById("quote-goes-here").innerHTML = todayQ;
-//     document.getElementById("author-goes-here").innerHTML = todayA;
-
-//   });
-// }
 
         function displayRems(list) {
             for (let i = 0; i < list.length; i++) { //iterate thru each doc
