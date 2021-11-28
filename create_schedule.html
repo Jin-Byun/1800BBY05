@@ -132,9 +132,11 @@ fieldset {
     cursor: pointer;
     display: inline-block;
     width: 50%;
+    min-width: 50%;
     height: 20%;
+    min-height: 20%;
     background: #ffec82;
-   margin-top: 5%;
+    margin-top: 5%;
     
     font-family: inherit;
     font-size: 16px;
@@ -175,11 +177,12 @@ fieldset {
     border-bottom: 2px rgb(0, 0, 0) solid;
     display: block;
     width: 100%;
-    padding: 18px;
+  
     font-size: 18px;
     color: rgb(0, 0, 0);
+    text-decoration: none;
+    max-width: 100%;
     
-    margin: 0px;
 }
 
 .form-control input:focus, .form-control input:valid {
@@ -243,10 +246,8 @@ fieldset {
       }
 
 
-  hr {
-  width: 50%;
-  max-width: 50%;
-  }
+ 
+
 
 
    </style>
@@ -267,6 +268,8 @@ fieldset {
 
     <!-- The following is the input form for creating a new reminder -->
     <div class="container">
+      <br>
+      
             <h1>Create a reminder</h1>
 
 
