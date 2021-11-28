@@ -455,7 +455,7 @@
         uploadUserProfilePic();
         showUploadedPicture();
         displayUserProfilePic();
-        reward();
+    
 
         function populateInfo() {
             firebase.auth().onAuthStateChanged(user => {
@@ -605,6 +605,29 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
+function countReminders() {
+    count = 0;
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            userID = user.uid;
+            var reminders = [];
+            var remindersRef = db.collection("reminders");
+           
+            remindersRef.where("UserID", "==", userID).get()
+                .then((querySnapshot) => {
+                    querySnapshot.forEach((doc) => {
+                    reminders.push(doc.data());
+                    ++count;
+                    reward();
+
+                    });
+
+
+                });
+        }
+    })
+}
 
 function reward() {
     if (count == 5) {
