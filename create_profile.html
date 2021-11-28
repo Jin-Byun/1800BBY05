@@ -257,7 +257,7 @@
 
                     <!-- <button type="button" class="btn btn-danger" onclick="editUserInfo()">Edit</button>
                     <span style="width: 10px"></span> -->
-                    <a href="frontpage.html" button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save &
+                    <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save &
                         Continue</a>
                 </div>
             </form>
@@ -341,7 +341,7 @@
                         name: name,
                         age: age,
                         description: description,
-                    })
+                    }).then(goHome());
                 }
 
                 function insertName() {
@@ -448,6 +448,10 @@
                 }
                 uploadUserProfilePic();
 
+                function goHome() {
+            setTimeout(() => window.location.href = "frontpage.html?", 800)
+
+        }
 
                 function showUploadedPicture() {
                     const fileInput = document.getElementById("profile-img-file"); // pointer #1

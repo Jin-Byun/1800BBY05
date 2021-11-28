@@ -321,6 +321,290 @@
       #history {
         padding-bottom: 80px;
       }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            background-color: #fffaec;
+        }
+
+        table {
+            width: 100%;
+            margin-inline: 0;
+            padding-inline: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        p:nth-child(1) {
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        th {
+            font-size: 1.1rem;
+            border-bottom: 2px solid orangered;
+        }
+
+        th:nth-child(1) {
+            width: 56%;
+        }
+
+        th:nth-child(2) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        th:nth-child(3) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        td:nth-child(1) {
+            width: 56%;
+            /* margin-inline: auto; */
+        }
+
+        td:nth-child(2) {
+            width: 22%;
+            font-size: 1.6rem;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        td:nth-child(3) {
+            width: 22%;
+            text-align: center;
+            /* margin-inline: auto; */
+        }
+
+        #reminders-go-here {
+            margin-top: 2%;
+            border-bottom: 2px solid orangered;
+        }
+
+        .textblock {
+            border: 2px solid orangered;
+            margin-bottom: 4%;
+            padding: 2%;
+        }
+
+        .bttn {
+            cursor: pointer;
+            display: inline-block;
+            width: 50%;
+            background: rgba(255, 0, 0, 0.5);
+            font-family: inherit;
+            font-size: 16px;
+            border: 1px solid #f37f5230;
+            border-radius: 5%;
+        }
+
+        .bttn:focus {
+            outline: 0;
+
+        }
+
+        .bttn:active {
+            transform: scale(0.98);
+        }
+
+        .navbar {
+
+            background-color: #f5efdf !important;
+            border-bottom: solid 2px #f37f5230;
+        }
+
+        .navbar-brand {
+            font-size: 5vh;
+            font-weight: bold;
+            color: #f37f52 !important;
+            word-spacing: -1vh;
+            line-height: 0;
+            padding-top: 1.4vh;
+            padding-bottom: 2.3vh;
+            text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
+        }
+
+        .fixed-bottom {
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+        }
+
+        #app-calendar {
+            /* border: solid black 2px; */
+            width: 88vw;
+            max-width: 80vh;
+            margin: 0 auto;
+            display: grid;
+            overflow: hidden;
+            text-align: center;
+            column-gap: 2px;
+            row-gap: 4px;
+            grid-template-columns: repeat(7, 1fr);
+            grid-template-rows: 9% repeat(6, 1fr);
+        }
+
+        .block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: rgba(0, 0, 0, 0.7) solid 2px;
+            border-radius: 50%;
+            font-size: 12pt;
+            height: 100%;
+        }
+
+        .xtrablock {
+            height: 100%;
+        }
+
+        .weekend {
+            color: red;
+        }
+
+        .date {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: ivory;
+            margin: auto 0;
+            line-height: 100%;
+            border-radius: 10px;
+            border: black solid 1px;
+            font-size: 10pt;
+            font-weight: 800;
+            height: 100%;
+        }
+
+        .today {
+            color: black;
+            text-shadow: 1px 0px #f37f52, 2px 0px 1px #f37f52, 2px 1px #f37f52, 1px 1px #f37f52, 2px 2px #f37f52, 3px 3px 1px black, 3px 0.5px 2px black;
+            font-size: 15pt;
+            font-weight: bold;
+            border: solid green 2px;
+            text-decoration: none;
+        }
+
+        .selected {
+            background-color: brown;
+        }
+
+        .day {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+        }
+
+        .rem1,
+        .rem2 {
+            background-color: rgba(0, 255, 0, 0.4);
+        }
+
+        .rem3,
+        .rem4 {
+            background-color: rgba(255, 255, 0, 0.6);
+        }
+
+        .rem5,
+        .rem6 {
+            background-color: rgba(255, 0, 0, 0.8);
+            color: yellow;
+            border-color: black;
+        }
+
+        .rem7 {
+            background-color: rgba(0, 0, 0, 1);
+            color: black;
+            border-color: gray;
+            text-shadow: 0 0 6px whitesmoke;
+        }
+
+        .toprow {
+            display: grid;
+            width: 88vw;
+            max-width: 80vh;
+            margin-top: 2%;
+            margin-bottom: 2%;
+            margin-inline: auto;
+            text-align: center;
+            grid-template-columns: 6% 88% 6%;
+        }
+
+        .btntop {
+            line-height: 0;
+            padding-top: 0.4vh;
+            font-size: 2vh;
+            font-weight: 800;
+            padding-inline: 0;
+        }
+
+        #date {
+            line-height: 1.5;
+            padding-bottom: 0;
+            font-size: clamp(2.35vh, 5vw, 1.6rem);
+            font-weight: 700;
+        }
+
+        #prev {
+            grid-column: 1 / span 1;
+            margin-right: auto;
+        }
+
+        #next {
+            grid-column: 3 / span 1;
+            margin-left: auto;
+        }
+      
+
+
+.navbar-bottom {
+  display: grid;
+  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
+
+  background-color:#f5efdf !important;
+    border-top: solid 2px #f37f5230;
+    border-left: solid 2px #f37f5230;
+    border-right: solid 2px #f37f5230;
+
+}
+
+#first-icon {
+    grid-column: 2;
+ 
+    
+}
+
+#second-icon {
+  grid-column: 6;
+ 
+}
+
+#third-icon {
+  grid-column: 9;
+ 
+}
+
+
+
+        footer>a {
+            color: #f37f52;
+            text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
+        }
+
+        #history {
+            padding-bottom: 45px;
+        }
+
+        h6 {
+            text-decoration: orangered underline 1px;
+        }
     </style>
   </head>
 
@@ -398,18 +682,14 @@
 
     <br />
     <div id="history" class="container">
-      <div class="col" style="margin-inline: 0.7rem">
-        <h1 style="margin-bottom: 4%">In history, today:</h1>
-        <div class="container">
-          <div class="textblock">
-            <h6>EVENT</h6>
-            <div id="quote-goes-here"></div>
-            <div
-              id="author-goes-here"
-              style="text-align: right; font-style: italic"
-            ></div>
-          </div>
-          <div class="textblock">
+        <div class="col"  style="margin-inline: 0.7rem;">
+            <h1 style="margin-bottom: 4%;">In history, today:</h1>
+            <div class="container">
+                <div class="textblock">
+                <h6>EVENT</h6>
+        <div id="event-goes-here"></div>
+            </div>
+            <div class="textblock">
             <h6>BIRTH</h6>
             <div id="birth-goes-here"></div>
           </div>
@@ -566,53 +846,35 @@
         getReminderCalendar();
       }
 
-      // --------------------------------------
-      // Making calendar
-      // --------------------------------------
-      function fillCalendar() {
-        for (let i = 0; i < 7; i++) {
-          calendar.insertAdjacentHTML(
-            "beforeend",
-            `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${
-              days[i]
-            }</div>`
-          );
+        // --------------------------------------
+        // Making calendar
+        // --------------------------------------
+        function fillCalendar() {
+            for (let i = 0; i < 7; i++) {
+                calendar.insertAdjacentHTML("beforeend",
+                    `<div class="date ${i == 0 || i == 6 ? "weekend" : ""}">${days[i]}</div>`);
+            }
+            for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
+                calendar.insertAdjacentHTML("beforeend", `<div class="xtrablock"></div>`);
+            }
+            for (let block = 1; block <= monthdays[month]; block++) {
+                const weekend = isWeekend(block);
+                const now = istoday(block);
+                calendar.insertAdjacentHTML("beforeend",
+                    `<a class ="day" href="./day.html?uid=${userID}?${year}?${months[month]}?${block}"><div id="${year+'_'+month+'_'+block}" class="day${(firstday.getDay() + block - 1) % 7} block ${weekend ? "weekend" : ""} ${now ? "today" : ""}">${block}</div></a>`
+                );
+            }
+            if (firstday.getDay() == 5 && monthdays[month] > 30 || firstday.getDay() == 6 && monthdays[month] >= 30) {
+                document.getElementById('app-calendar').style.gridTemplateRows = `7.5% repeat(6, 1fr)`;
+                document.getElementById('app-calendar').style.maxHeight = `75vh`;
+                document.getElementById('app-calendar').style.height = `84.6vw`;
+            } else {
+                document.getElementById('app-calendar').style.gridTemplateRows = `9% repeat(5, 1fr)`;
+                document.getElementById('app-calendar').style.height = `71.8vw`;
+                document.getElementById('app-calendar').style.maxHeight = `65vh`;
+            }
         }
-        for (let xtrablock = 0; xtrablock < firstday.getDay(); xtrablock++) {
-          calendar.insertAdjacentHTML(
-            "beforeend",
-            `<div class="xtrablock"></div>`
-          );
-        }
-        for (let block = 1; block <= monthdays[month]; block++) {
-          const weekend = isWeekend(block);
-          const now = istoday(block);
-          calendar.insertAdjacentHTML(
-            "beforeend",
-            `<a class ="day" href="./day.html?uid=${userID}?${year}?${
-              months[month]
-            }?${block}"><div id="${
-              year + "_" + month + "_" + block
-            }" class="day${(firstday.getDay() + block - 1) % 7} block ${
-              weekend ? "weekend" : ""
-            } ${now ? "today" : ""}">${block}</div></a>`
-          );
-        }
-        if (
-          (firstday.getDay() == 5 && monthdays[month] > 30) ||
-          (firstday.getDay() == 6 && monthdays[month] >= 30)
-        ) {
-          document.getElementById(
-            "app-calendar"
-          ).style.gridTemplateRows = `7.5% repeat(6, 1fr)`;
-          document.getElementById("app-calendar").style.height = `41.65vh`;
-        } else {
-          document.getElementById(
-            "app-calendar"
-          ).style.gridTemplateRows = `9% repeat(5, 1fr)`;
-          document.getElementById("app-calendar").style.height = `35.25vh`;
-        }
-      }
+      
       //-------------------------
       //Get reminder
       //-------------------------
@@ -961,68 +1223,50 @@
         });
       }
 
-      function addHistory() {
-        fetch("https://history.muffinlabs.com/date")
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (history) {
-            todayInfo = history.data;
-            console.log(todayInfo);
-            let Event_Num = Math.floor(Math.random() * todayInfo.Events.length);
-            let Birth_Num = Math.floor(Math.random() * todayInfo.Births.length);
-            let Death_Num = Math.floor(Math.random() * todayInfo.Deaths.length);
-            let todayEvent = todayInfo.Events[Event_Num];
-            let todayEvent_Year = todayEvent.year;
-            let todayEvent_text = todayEvent.text;
-            console.log(todayEvent_text);
-            let todayBirth = todayInfo.Births[Birth_Num];
-            let todayDeath = todayInfo.Deaths[Death_Num];
-            console.log(todayBirth);
-            document.getElementById("quote-goes-here").innerHTML =
-              todayEvent_text;
-            document.getElementById("author-goes-here").innerHTML =
-              todayEvent_Year;
-            document.getElementById("birth-goes-here").innerText =
-              todayBirth.text + " was born. (" + todayBirth.year + ")";
-            document.getElementById("death-goes-here").innerHTML =
-              todayDeath.text + " passed away. (" + todayDeath.year + ")";
-          });
-      }
+ 
+function addHistory() {
+    fetch("https://history.muffinlabs.com/date").then(function(response) {
+    return response.json();
+  }).then(function(history) {
+    todayInfo = history.data;
+    console.log(todayInfo);
+    let Event_Num = Math.floor(Math.random() * todayInfo.Events.length);
+    let Birth_Num = Math.floor(Math.random() * todayInfo.Births.length);
+    let Death_Num = Math.floor(Math.random() * todayInfo.Deaths.length);
+    let todayEvent = todayInfo.Events[Event_Num];
+    let todayBirth = todayInfo.Births[Birth_Num];
+    let todayDeath = todayInfo.Deaths[Death_Num];
+    console.log(todayBirth);
+    document.getElementById("event-goes-here").innerHTML = todayEvent.text + " (" + todayEvent.year + ")";
+    document.getElementById("birth-goes-here").innerText = todayBirth.text + " was born. (" + todayBirth.year + ")";
+    document.getElementById("death-goes-here").innerHTML = todayDeath.text + " passed away. (" + todayDeath.year + ")";
 
-      function displayRems(list) {
-        for (let i = 0; i < list.length; i++) {
-          //iterate thru each doc
+});
+}
 
-          let reminder = list[i].Name;
-          let startTime = list[i].Time;
-          let endTime =
-            (parseInt(startTime.split(":")[0]) + 1 == 24
-              ? "00"
-              : (parseInt(startTime.split(":")[0]) + 1 < 10 ? "0" : "") +
-                (parseInt(startTime.split(":")[0]) + 1)) +
-            ":" +
-            startTime.split(":")[1];
-          let newcard = CardTemplate.content.cloneNode(true);
+        function displayRems(list) {
+            for (let i = 0; i < list.length; i++) { //iterate thru each doc
 
-          // //update title and text and image
-          newcard.querySelector(
-            ".card-title"
-          ).innerHTML = `<p>${reminder}</p><p>from ${
-            startTime + "~" + endTime
-          }</p>`;
-          // //updates href, so we can click.
+                let reminder = list[i].Name;
+                let startTime = list[i].Time;
+                let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime.split(':')[0]) +
+                    1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' + startTime.split(':')[1];
+                let newcard = CardTemplate.content.cloneNode(true);
 
-          // //give unique ids to all elements for future use
-          newcard.querySelector(".card-title").setAttribute("id", "ctitle" + i);
-          newcard
-            .querySelector(".form-check-input")
-            .setAttribute("id", "cdone" + i);
-          newcard.querySelector(".bttn").setAttribute("id", "cremove" + i);
-          //attach to gallery
-          document.getElementById("reminders-go-here").appendChild(newcard);
+                // //update title and text and image
+                newcard.querySelector('.card-title').innerHTML =
+                    `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
+                // //updates href, so we can click.
+
+                // //give unique ids to all elements for future use
+                newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
+                newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
+                newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
+                //attach to gallery
+                document.getElementById("reminders-go-here").appendChild(newcard);
+            }
         }
-      }
+      
 
       function addReminderClass(classArr, index) {
         if (classArr[index].classList.contains("rem6")) {

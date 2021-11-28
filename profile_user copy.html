@@ -40,6 +40,12 @@
     <script src="scripts/firebaseAPI.js"></script>
 
     <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
         body {
             background-color: #fffaec;
         }
@@ -72,7 +78,7 @@
             margin-bottom: 0.5rem;
             border: 1px solid #ec511330 !important;
             border-radius: 5%;
-            color: #ffe6dc !important;
+            color: #ece3df !important;
         }
 
         .card {
@@ -83,14 +89,14 @@
             margin-bottom: 30px;
             -webkit-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
-            
+
         }
 
         .card .card-header {
             background-color: transparent;
             border-bottom: none;
             padding: 25px;
-            
+
         }
 
         .card .card-header h5 {
@@ -165,32 +171,19 @@
             font-size: 1.2em;
         }
 
-        .user-card .card-block .activity-level li.active {
-            background-color: #ffa685;
-        }
-
         .user-card .card-block .activity-level li {
             display: inline-block;
             width: 15%;
-            height: 4px;
+            height: 8px;
             margin: 0 3px;
-            background-color: #ccc;
+            background-color: white;
+            border: 1px solid rgba(243, 127, 82, 0.5);
+            color: rgba(0, 0, 0, 0)
         }
 
         .bg-c-blue {
-            background: linear-gradient(45deg, #f37f52, #73b4ff);
-        }
-
-        .bg-c-green {
-            background: linear-gradient(45deg, #2ed8b6, #59e0c5);
-        }
-
-        .bg-c-yellow {
-            background: linear-gradient(45deg, #FFB64D, #ffcb80);
-        }
-
-        .bg-c-pink {
-            background: linear-gradient(45deg, #FF5370, #ff869a);
+            background: linear-gradient(90deg, rgba(243, 127, 82, 1) 0%, rgba(243, 127, 82, 1) 40%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0) 100%);
+            letter-spacing: 1.5px;
         }
 
         .m-t-10 {
@@ -198,7 +191,10 @@
         }
 
         .p-20 {
-            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: black;
+            text-shadow: 0px 0px 1px white;
         }
 
         .user-card .card-block .user-social-link i {
@@ -242,30 +238,30 @@
         }
 
         .navbar-bottom {
-  display: grid;
-  grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
-  background-color:#f5efdf !important;
-    border-top: solid 2px #f37f5230;
-    border-left: solid 2px #f37f5230;
-    border-right: solid 2px #f37f5230;
-    
+            display: grid;
+            grid-template-columns: 5% 10% 10% 10% 10% 10% 10% 10% 10% 10% 5%;
+            background-color: #f5efdf !important;
+            border-top: solid 2px #f37f5230;
+            border-left: solid 2px #f37f5230;
+            border-right: solid 2px #f37f5230;
 
-}
 
-#first-icon {
-    grid-column: 2;
-   
-}
+        }
 
-#second-icon {
-  grid-column: 6;
- 
-}
+        #first-icon {
+            grid-column: 2;
 
-#third-icon {
-  grid-column: 9;
- 
-}
+        }
+
+        #second-icon {
+            grid-column: 6;
+
+        }
+
+        #third-icon {
+            grid-column: 9;
+
+        }
 
         footer>a {
             color: #f37f52;
@@ -274,9 +270,8 @@
 
         #experience-bar {
             width: 100%;
-            border: 3px solid orangered;
+            border: 3px solid #f37f527b;
         }
-        
     </style>
 
 </head>
@@ -332,22 +327,19 @@
                         <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                         <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                         <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                        <p class="text-muted m-t-15">Progress Level: <span id="counter"></span></p>
+                        <p class="text-muted m-t-15">Progress Level: <span id="currLevel"></span></p>
                         <ul class="list-unstyled activity-level">
-                            <li class="active"></li>
-                            <li class="active"></li>
-                            <li class="active"></li>
-                            <li></li>
-                            <li></li>
+                            <li id="level-1"></li>
+                            <li id="level-10"></li>
+                            <li id="level-100"></li>
+                            <li id="level-1000"></li>
+                            <li id="level-10000"></li>
                         </ul>
-                        <div class="py-1" id="experience-bar">
-                        <div class="bg-c-blue m-t-10 p-20"></div>
+                        <div id="experience-bar">
+                            <div class="bg-c-blue p-20" id="expPercent"></div>
                         </div>
                         <p class="m-t-15 text-muted"><span id="description-goes-here"></span></p>
-                        <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                        <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                        <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                        <!-- Target!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
                         <hr>
 
 
@@ -363,7 +355,7 @@
 
 
     <footer class="navbar-bottom bg-secondary fixed-bottom py-0">
-            
+
         <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
         <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
         <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
@@ -389,29 +381,114 @@
 
 
     <script>
+        const levelRankColor = ["linear-gradient(50deg, #FBE9A7, #FCA733, #FBE9A7)", "linear-gradient(50deg, #4CE0FF, #FF761E, #4CE0FF)", "linear-gradient(50deg, #393355, #FBE993, #393355)", "linear-gradient(50deg, #3BB1EE, #9B48FF, #3BB1EE)", "linear-gradient(50deg, #FFA83D, #E4749A, #FFA83D)"]
+        const levelUpThres = [2, 3, 5, 7, 10, 13, 18]
         var currentUser;
-insertCounter();
+        var level;
+        var counter;
+
         //call the function to run it 
+        makeExpBar();
         populateInfo();
         insertName();
         insertEmail();
         insertAge();
         insertDescription();
-        uploadUserProfilePic();
+        uploadUserProfilePic();     
         showUploadedPicture();
         displayUserProfilePic();
-
         //insert the number of activities done.
-    function insertCounter() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          db.collection("users").doc(user.uid).get().then(docs => {
-              document.getElementById("counter").innerText = docs.data().counter;
+
+        function levelIndicatorBar(lv) {
+            switch (lv) {
+                case 0:
+                    break;
+                case 1:
+                    document.getElementById("level-1").style.background = levelRankColor[0];
+                    document.getElementById("level-1").innerText = 1;
+                    break;
+                case 2:
+                document.getElementById("level-10").style.background = levelRankColor[1];
+                document.getElementById("level-10").innerText = 1;
+                    break;
+                case 3:
+                document.getElementById("level-1").style.background = levelRankColor[1];
+                document.getElementById("level-10").style.background = levelRankColor[1];
+                document.getElementById("level-1").innerText = 1;
+                document.getElementById("level-10").innerText = 1;
+                    break;
+                case 4:
+                document.getElementById("level-100").style.background = levelRankColor[2];
+                document.getElementById("level-100").innerText = 1;
+                    break;
+                case 5:
+                document.getElementById("level-100").style.background = levelRankColor[2];
+                document.getElementById("level-1").style.background = levelRankColor[2];
+                document.getElementById("level-100").innerText = 1;
+                document.getElementById("level-1").innerText = 1;
+                    break;
+                case 6:
+                document.getElementById("level-100").style.background = levelRankColor[2];
+                document.getElementById("level-10").style.background = levelRankColor[2];
+                document.getElementById("level-10").innerText = 1;
+                document.getElementById("level-100").innerText = 1;
+                break;
+                case 7:
+                document.getElementById("level-100").style.background =levelRankColor[2];
+                document.getElementById("level-10").style.background =levelRankColor[2];
+                document.getElementById("level-1").style.background =levelRankColor[2];
+                document.getElementById("level-1").innerText = 1;
+                document.getElementById("level-10").innerText = 1;
+                document.getElementById("level-100").innerText = 1;
+                break;  
+                case 8:
+                document.getElementById("level-1000").style.background = levelRankColor[3];
+                document.getElementById("level-1000").innerText = 1;
+                break;  
+                case 9:
+                document.getElementById("level-1000").style.background = levelRankColor[3];
+                document.getElementById("level-1000").innerText = 1;
+                document.getElementById("level-1").style.background = levelRankColor[3];
+                document.getElementById("level-1").innerText = 1;
+                break;  
+                case 10:
+                document.getElementById("level-1000").style.background = levelRankColor[3];
+                document.getElementById("level-1000").innerText = 1;
+                document.getElementById("level-10").style.background = levelRankColor[3];
+                document.getElementById("level-10").innerText = 1;
+                break;  
+
             }
-          )
         }
-      });
-    }
+
+        function makeExpBar() {
+            let levelpercent = 0;
+            let level = 1;
+            firebase.auth().onAuthStateChanged(user => {
+                if (user) {
+                    db.collection("users").doc(user.uid).get().then(docs => {
+                        counter = docs.data().counter;
+                        for (let i = 0; i < levelUpThres.length; i++) {
+                            if (counter < levelUpThres[i]) {
+                                levelpercent = Math.floor(100 * counter / levelUpThres[i]); {
+                                    break;
+                                }
+                            } else {
+                                level++;
+                                counter -= levelUpThres[i];
+                            }
+                        }
+                        document.getElementById("expPercent").innerText = levelpercent + "%";
+                        document.querySelector(".bg-c-blue").style.background =
+                            `linear-gradient(90deg,rgba(243,127,82,1) ${levelpercent-(50-(100-levelpercent)/2)}%, rgba(243,127,82,0.6) ${levelpercent-(5-(100-levelpercent)/20)}%, rgba(0,0,0,0) ${levelpercent}.9%, rgba(0,0,0,0) 100%)`;
+                        document.getElementById("currLevel").innerText = level;
+                        levelIndicatorBar(level);
+
+                    })
+                }
+
+            });
+        }
 
         function populateInfo() {
             firebase.auth().onAuthStateChanged(user => {
@@ -451,6 +528,7 @@ insertCounter();
                 }
             });
         }
+
         function insertEmail() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -488,9 +566,9 @@ insertCounter();
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
                     db.collection("users").doc(user.uid).get().then(docs => {
-                        if (docs.exists) {
-                        }
-                        document.getElementById("description-goes-here").innerText = docs.data().description;
+                        if (docs.exists) {}
+                        document.getElementById("description-goes-here").innerText = docs.data()
+                            .description;
                     })
                 }
             });
@@ -562,7 +640,6 @@ insertCounter();
                     })
             })
         }
-
     </script>
 
 </body>
