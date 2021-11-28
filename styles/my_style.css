@@ -1,42 +1,42 @@
 @font-face {
     font-family: logo;
-    src: url(\fonts\Righteous-Regular.ttf)
+    src: url(fonts\Righteous-Regular.ttf)
 }
 
 @font-face {
     font-family: heading;
-    src: url(\fonts\Oxygen-Regular.ttf)
+    src: url(fonts\Oxygen-Regular.ttf)
 }
 
 @font-face {
     font-family: body;
-    src: url(\fonts\Sanchez-Regular.ttf);
+    src: url(fonts\Sanchez-Regular.ttf);
 }
 
+
 #logo {
-    font-family: logo !important;
+    font-family: logo, !important;
 }
 label, th, td {
-    font-family: heading !important;
+    font-family: heading, !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: heading !important;
+    font-family: heading, !important;
 }
 
 li {
-    font-family: body !important;
+    font-family: body, !important;
 }
 
 #date, #app-calendar {
-    font-family: heading !important;
+    font-family: heading, !important;
 }
 
 p {
-    font-family: body !important;
+    font-family: body, !important;
 }
 /** Create New Schedule**/
 option1, option2, option3 {
-    display: inline-block;
-    
+    display: inline-block;   
 }
