@@ -687,7 +687,7 @@ function countReminders() {
 
 
 function reward() {
-    if (count % 5 == 0) {
+    if (count == 5) {
         var img = document.createElement("img");
         img.src = "images/badge1.png";
         var circleBadge = document.getElementById("badge-one");
@@ -700,7 +700,7 @@ function reward() {
             height: 100%;
             width: 100%;
         `;
-    }
+    } 
 
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////        
