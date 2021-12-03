@@ -616,23 +616,29 @@
             })
         }
         
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
+// Function that counts the reminders set by a user.
 function countReminders() {
+    //Count initialized to 0
     count = 0;
+    //Authenticates the user
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             userID = user.uid;
+            //Array of reminders
             var reminders = [];
+            //Variable representing the 'reminders' collection
             var remindersRef = db.collection("reminders");
-           
+            //Reads the 'reminders' collection
             remindersRef.where("UserID", "==", userID).get()
+                //Promise that accepts a callback function
                 .then((querySnapshot) => {
+                    //forEach accepts the doc of the user
                     querySnapshot.forEach((doc) => {
+                    //Appends the data of the doc into the reminders arrary
                     reminders.push(doc.data());
+                    //Increments the count for each reminder read
                     ++count;
+                    //Reward function is called if conditions are met. (5 reminders)
                     reward();
 
                     });
@@ -643,12 +649,18 @@ function countReminders() {
     })
 }
 
+// The reward function populates the badge section if the condition is met
 function reward() {
     if (count == 5) {
+        //The variable representing the image for the 1st badge
         var img = document.createElement("img");
+        //The src path for badge image one
         img.src = "images/badge1.png";
+        //Gets the html for badge one
         var circleBadge = document.getElementById("badge-one");
+        //Appends the img to the appropriate div
         circleBadge.appendChild(img);
+        //Styling of the badge through javascript so that it fits into the circle
         img.style.cssText = `
             border-radius: 50%;
             border: 1px solid yellow;
@@ -660,7 +672,7 @@ function reward() {
     } 
 
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////        
+
     </script>
 
 
