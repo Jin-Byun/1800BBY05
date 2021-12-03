@@ -50,19 +50,12 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css"
     />
-    <!-- <link rel="stylesheet" href="styles/my_style.css" /> -->
+    <link rel="stylesheet" href="styles/my_style.css" />
+
    <style>
-     
-
-     * {
-    box-sizing: border-box; 
-      }
-
-
+    
 
 body {
-    background-color: #fffaec;
-    color: rgb(0, 0, 0);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,25 +65,6 @@ body {
     margin: 0;
     
 }
-
-
-.navbar {
-
-  background-color: #f5efdf  !important;
-  border-bottom: solid 2px #f37f5230;
-}
-
-.navbar-brand {
-        font-size: 5vh;
-        font-weight: bold;
-         color: #f37f52 !important;
-         word-spacing: -1vh;
-         line-height: 10%;
-            padding-top: 1.9vh;
-         padding-bottom: 2.3vh;
-         text-shadow:1px 0px yellow, 2px 0px 1px yellow, 2px 1px yellow, 1px 1px yellow, 2px 2px yellow, 3px 3px 1px #f37f52, 3px 0.5px 2px #f37f52;
-    }
-
 
 .container {
     
@@ -104,9 +78,6 @@ body {
     width: 80%;
     align-items: center;
     margin-bottom: 5rem;
-    /* display: grid;
-    grid-template-columns: 10% 80% 10%;
-    grid-template-rows: 20% 20% 20% 20% 20%; */
 }
 
 
@@ -120,14 +91,6 @@ fieldset {
   
 }
 
-/* h1 {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-}
-fieldset {
-  grid-column: 2;
-  grid-row: 3 /span 4;
-} */
 .bttn {
     cursor: pointer;
     display: inline-block;
@@ -158,7 +121,7 @@ fieldset {
     display: flex;
     margin: 5% 5%;
     position: relative;
-    margin-top: 5%;
+    margin-bottom: 15%;
     width: 300px;
     background-color: transparent !important;
     text-decoration: none;
@@ -202,49 +165,18 @@ fieldset {
     display: inline-block;
     font-size: 18px;
     min-width: 5px;
+    position: relative;
+    bottom: 5px;
+    background-color: rgb(253, 227, 207);
     transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .form-control input:focus + label span,
 .form-control input:valid + label span {
     color: black;
-    transform: translateY(-30px);
+    transform: translateY(-25px);
 }
 
-.fixed-bottom {
-        background-color: #f5efdf !important;
-        border-top: solid 2px #f37f5230;
-        position: fixed;
-      }
-
-      .navbar-bottom {
-        display: grid;
-
-        grid-template-columns: 17% 20% 10% 20% 10% 20% 3%;
-
-        background-color: #f5efdf !important;
-        border-top: solid 2px #f37f5230;
-        border-left: solid 2px #f37f5230;
-        border-right: solid 2px #f37f5230;
-      }
-
-      #first-icon {
-        grid-column: 2;
-      }
-
-      #second-icon {
-        grid-column: 4;
-      }
-
-      #third-icon {
-        grid-column: 6;
-      }
-
-      footer > a {
-        color: #f37f52;
-        text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52,
-          0px -1px #f37f52;
-      }
 
 
  
@@ -269,10 +201,9 @@ fieldset {
 
     <!-- The following is the input form for creating a new reminder -->
     <div class="container">
-      <br>
       
             <h1>Create a reminder</h1>
-
+            <br>
 
             <fieldset id="set-reminder" action="">
 
