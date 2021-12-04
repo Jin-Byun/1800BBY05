@@ -2,138 +2,137 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Hej!</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <title>Hej!</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="author" content="BCIT">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-    <!-- Link to the api keys for your Firebase project -->
-    <script src="scripts/firebaseAPI.js"></script>
-    <script src="scripts/profile_user.js"></script>
+  <!-- Link to the api keys for your Firebase project -->
+  <script src="scripts/firebaseAPI.js"></script>
+  <script src="scripts/profile_user.js"></script>
 
-    <!-- the css for the page -->
-    <link rel="stylesheet" href="styles/my_style.css">
-    <link rel="stylesheet" href="styles/profile_user.css">
-    <style>
+  <!-- the css for the page -->
+  <link rel="stylesheet" href="styles/my_style.css">
+  <link rel="stylesheet" href="styles/profile_user.css">
+  <style>
 
-    </style>
+  </style>
 
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-success">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./frontpage.html">HE J!</a>
-        </div>
-    </nav>
-    <div id="firebaseui-auth-container"></div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./frontpage.html">HE J!</a>
+    </div>
+  </nav>
+  <div id="firebaseui-auth-container"></div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
-    <div class="container">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-4">
-                <div class="card user-card">
-                    <div class="card-header">
-                        <h5></h5>
-                    </div>
-                    <div class="card-block">
-                        <div class="user-image">
-                            <div id="profile-image">
+  <div class="container">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-4">
+        <div class="card user-card">
+          <div class="card-header">
+            <h5></h5>
+          </div>
+          <div class="card-block">
+            <div class="user-image">
+              <div id="profile-image">
 
-                                <img id="profile-img" src="#" alt="profile">
-                                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
-                                <img onclick="document.getElementById('profile-img-file').click()">
+                <img id="profile-img" src="#" alt="profile">
+                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
+                <img onclick="document.getElementById('profile-img-file').click()">
 
-                            </div>
-                        </div>
-                        <h6 class="f-w-600 m-t-25 m-b-10 "></h6>
-                        <p class="text-muted"><span id="name-goes-here"></span> <br /> <span
-                                id="email-goes-here"></span> <br />Age:
-                            <span id="age-goes-here"></span></p>
-                        <hr>
-                        <p class="text-muted m-t-15">Progress Level: <span id="currLevel"></span></p>
-                        <ul class="list-unstyled activity-level">
-                            <li id="level-1"></li>
-                            <li id="level-10"></li>
-                            <li id="level-100"></li>
-                            <li id="level-1000"></li>
-                            <li id="level-10000"></li>
-                        </ul>
-                        <div id="experience-bar">
-                            <div class="bg-c-blue p-20" id="expPercent"></div>
-                        </div>
-                        <p class="m-t-15 text-muted">Favourite quote: <br /> <span id="description-goes-here"></span>
-                        </p>
-                        <hr>
+              </div>
+            </div>
+            <h6 class="f-w-600 m-t-25 m-b-10 "></h6>
+            <p class="text-muted"><span id="name-goes-here"></span> <br /> <span id="email-goes-here"></span> <br />Age:
+              <span id="age-goes-here"></span></p>
+            <hr>
+            <p class="text-muted m-t-15">Progress Level: <span id="currLevel"></span></p>
+            <ul class="list-unstyled activity-level">
+              <li id="level-1"></li>
+              <li id="level-10"></li>
+              <li id="level-100"></li>
+              <li id="level-1000"></li>
+              <li id="level-10000"></li>
+            </ul>
+            <div id="experience-bar">
+              <div class="bg-c-blue p-20" id="expPercent"></div>
+            </div>
+            <p class="m-t-15 text-muted">Favourite quote: <br /> <span id="description-goes-here"></span>
+            </p>
+            <hr>
 
-                        <div id="badges">
+            <div id="badges">
 
-                            <div class="circles" id="circle-one"><span id="badge-one"></span></div>
-                            <div class="circles" id="circle-two"><span id="badge-two"></span></div>
-                            <div class="circles" id="circle-three"><span id="badge-three"></span></div>
-                            <div class="circles" id="circle-four"><span id="badge-four"></span></div>
+              <div class="circles" id="circle-one"><span id="badge-one"></span></div>
+              <div class="circles" id="circle-two"><span id="badge-two"></span></div>
+              <div class="circles" id="circle-three"><span id="badge-three"></span></div>
+              <div class="circles" id="circle-four"><span id="badge-four"></span></div>
 
-                        </div>
-
-                        <br>
-                        <br>
-                        <a href="edit_profile.html" button type="button" class="btn btn-warning">Edit</a>
-                        <br>
-
-                    </div>
-                </div>
             </div>
 
+            <br>
+            <br>
+            <a href="edit_profile.html" button type="button" class="btn btn-warning">Edit</a>
+            <br>
 
+          </div>
         </div>
+      </div>
+
+
     </div>
+  </div>
 
-    <div style="padding-top: 55px;"></div>
+  <div style="padding-top: 55px;"></div>
 
-    <div class="fixed-bottom">
+  <div class="fixed-bottom">
 
-        <footer class="navbar-bottom">
+    <footer class="navbar-bottom">
 
-            <a id="first-icon" href="calendar.html" class="bi bi-calendar-date"></a>
-            <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle"></a>
-            <a id="third-icon" href="profile_user.html" class="bi bi-person"></a>
+      <a id="first-icon" href="calendar.html" class="bi bi-calendar-date"></a>
+      <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle"></a>
+      <a id="third-icon" href="profile_user.html" class="bi bi-person"></a>
 
-        </footer>
-    </div>
+    </footer>
+  </div>
 
-    <script>
-        makeExpBar();
-        countReminders();
-        populateInfo();
-        insertName();
-        insertEmail();
-        insertAge();
-        insertDescription();
-        uploadUserProfilePic();
-        showUploadedPicture();
-        displayUserProfilePic();
-    </script>
+  <script>
+    makeExpBar();
+    countReminders();
+    populateInfo();
+    insertName();
+    insertEmail();
+    insertAge();
+    insertDescription();
+    uploadUserProfilePic();
+    showUploadedPicture();
+    displayUserProfilePic();
+  </script>
 
 
 

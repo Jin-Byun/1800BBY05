@@ -2,120 +2,110 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>HEJ!</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <meta charset="utf-8">
+  <title>HEJ!</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="author" content="BCIT">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
-    <!-- Bootstrap, firebase-auth-ui -->
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <!-- Bootstrap, firebase-auth-ui -->
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-    <!-- Bootstrap FirebaseUI CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- Bootstrap FirebaseUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 
-    <script src="scripts/firebaseAPI.js"></script>
+  <script src="scripts/firebaseAPI.js"></script>
 
-    <!-- Google Icons (Material Design)-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-        <!-- Optional styles and scripts of your own -->
-    <link rel="stylesheet" href="styles/my_style.css">
-    <link rel="stylesheet" href="styles/day.css">
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+  <!-- Optional styles and scripts of your own -->
+  <link rel="stylesheet" href="styles/my_style.css">
+  <link rel="stylesheet" href="styles/day.css">
 
 </head>
 
 <body>
 
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./frontpage.html">HE J!</a>
-        </div>
-    </nav>
-
-    <!-- welcome and main part of the page -->
-
-    <div class="container text-center">
-        <h1 id="date-go-here"></h1>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./frontpage.html">HE J!</a>
     </div>
+  </nav>
 
-    <br />
-    <section>
-        <div class="clock">
-            <div class="hour"></div>
-            <div class="minute"></div>
-            <div class="cap"></div>
-        </div>
-    </section>
+  <div class="container text-center">
+    <h1 id="date-go-here"></h1>
+  </div>
 
-    <!-- Templates for general use, not displayed -->
-    <template id="CardTemplate">
+  <br />
+  <section>
+    <div class="clock">
+      <div class="hour"></div>
+      <div class="minute"></div>
+      <div class="cap"></div>
+    </div>
+  </section>
+
+  <!-- Templates for general use, not displayed -->
+  <template id="CardTemplate">
+    <tr>
+      <td class="card-title"></td>
+      <td>
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="counterUp(this.id)">
+      </td>
+      <td>
+        <button class="bttn" onclick="removeReminder(this.id)">X</button>
+      </td>
+    </tr>
+
+  </template>
+
+  <br />
+
+  <div class="container" id="reminderContainer">
+    <h3 id="to_do_date"></h3>
+    <!-- Here is container for cards  -->
+    <div class="container">
+      <table>
         <tr>
-            <td class="card-title"></td>
-            <td>
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="counterUp(this.id)">
-            </td>
-            <td>
-                <button class="bttn" onclick="removeReminder(this.id)">X</button>
-            </td>
+          <th>Reminders</th>
+          <th>Done</th>
+          <th>Remove</th>
         </tr>
-
-    </template>
-
-    <br />
-
-    <div class="container" id="reminderContainer">
-        <h3 id="to_do_date"></h3>
-        <!-- Here is container for cards  -->
-        <div class="container">
-            <table>
-                <tr>
-                <th>Reminders</th>
-                <th>Done</th>
-                <th>Remove</th>
-            </tr>
-            </table>
-            <table id="reminders-go-here">
-            </table>
-        </div>
+      </table>
+      <table id="reminders-go-here">
+      </table>
     </div>
+  </div>
 
-
-          <div class="fixed-bottom">
+  <div class="fixed-bottom">
     <footer class="navbar-bottom">
 
-        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date"></a>
-        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle"></a>
-        <a id="third-icon" href="profile_user.html" class="bi bi-person"></a>
-
+      <a id="first-icon" href="calendar.html" class="bi bi-calendar-date"></a>
+      <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle"></a>
+      <a id="third-icon" href="profile_user.html" class="bi bi-person"></a>
 
     </footer>
-    </div>
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-    <script src="scripts/day.js"></script>
-    
-    <script>
+  </div>
+
+  <script src="scripts/day.js"></script>
+
+  <script>
     getReminder();
     showDate();
-    </script>
+  </script>
 
 </body>
 
