@@ -1,0 +1,161 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+section {
+  margin: 0%;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock {
+  height: 40vh;
+  width: 40vh;
+  border-radius: 50%;
+  border: 5px solid #f37f52;
+  display: grid;
+  grid-template-columns: 1;
+  grid-template-rows: 1;
+}
+
+span {
+  position: absolute;
+  color: whitesmoke;
+  background-color: #f37f52;
+  border-radius: 30%;
+  text-shadow: 0 0 3px black;
+  transform-origin: top left;
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.clock>.cap,
+.hour,
+.minute {
+  grid-column: 1;
+  grid-row: 1;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  transform: rotate(-90deg);
+  transform-origin: left;
+  background-color: #f37f52;
+}
+
+.clock>canvas {
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  transform: rotate(0.5deg);
+  z-index: -1;
+}
+
+.cap {
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  background-color: #f37f52 !important;
+  border-radius: 50%;
+}
+
+.hour {
+  width: 30%;
+  height: 5px;
+}
+
+.minute {
+  width: 45%;
+  height: 3px;
+}
+
+
+#reminderContainer {
+  margin-bottom: 15%;
+  padding-bottom: 15%;
+}
+
+table {
+  width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+p:nth-child(1) {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+th {
+  font-size: 1.1rem;
+  border-bottom: 2px solid orangered;
+}
+
+th:nth-child(1) {
+  width: 56%;
+}
+
+th:nth-child(2) {
+  width: 22%;
+  text-align: center;
+  /* margin-inline: auto; */
+}
+
+th:nth-child(3) {
+  width: 22%;
+  text-align: center;
+  /* margin-inline: auto; */
+}
+
+td:nth-child(1) {
+  width: 56%;
+  /* margin-inline: auto; */
+}
+
+td:nth-child(2) {
+  width: 22%;
+  text-align: center;
+  /* margin-inline: auto; */
+}
+
+td:nth-child(3) {
+  width: 22%;
+  text-align: center;
+  /* margin-inline: auto; */
+}
+
+#reminders-go-here {
+  margin-top: 2%;
+  margin-bottom: 5%;
+}
+
+.bttn {
+  cursor: pointer;
+  display: inline-block;
+  width: 50%;
+  background: rgba(255, 0, 0, 0.5);
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #f37f5230;
+  border-radius: 5%;
+}
+
+.bttn:focus {
+  outline: 0;
+
+}
+
+.bttn:active {
+  transform: scale(0.98);
+}
+
+#to_do_date {
+  margin-left: 4%;
+}
