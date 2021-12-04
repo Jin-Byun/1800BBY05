@@ -26,137 +26,22 @@
 
     <!-- Link to the api keys for your Firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
+    <script src="scripts/edit_profile.js"></script>
 
     <!-- the css for the page -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/my_style.css">
-
-    <style>  
-        body {
-            font-size: 16px;
-            color: #6f6f6f;
-            font-weight: 400;
-            letter-spacing: 0.7px;
-        }
-
-        .padding-30px-all {
-            padding: 30px;
-        }
-
-        .text-center {
-            text-align: center !important;
-        }
-
-        img {
-            max-width: 100%;
-            height: 100%;
-            width: auto;
-            padding-left: 15%;
-        }
-
-        .card-body {
-            background-color: #fffbf2;
-        }
-
-        .card-body img {
-            position: relative;
-            margin: 0 auto;
-            display: inline-block;
-            padding: 2px;
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-        }
-
-        .btn {
-            cursor: pointer;
-            color: black;
-            width: 18%;
-            background: #ffec82;
-            padding: 13px;
-            margin: 1rem;
-            margin-bottom: 0.5rem;
-            border: 1.5px solid #ec511330;
-            border-radius: 5%;
-        }
-
-
-        .container.py-3 {
-            color: black;
-            width: 50%;
-            background: #ffce8f !important;
-            padding: 15px;
-            margin: 1rem;
-            margin-bottom: 0.5rem;
-            font-family: inherit;
-            border: 1px solid #ec511330 !important;
-            border-radius: 5%;
-            color: #f37f52 !important;
-            font-size: 2vh;
-            font-weight: bold;
-        }
-
-        #upload-button {
-            color: black;
-            width: 40%;
-            background: #f5e3cb !important;
-            padding: 1%;
-            margin: 1.5rem;
-            /* font-family:; */
-            border: 2px solid rgba(3, 0, 0, 0.188) !important;
-            border-radius: 5%;
-        }
-
-        #upload-button:hover {
-            background: #e4c49d !important;
-            opacity: 0.6;
-            transition: 0.3s;
-        }
-
-        #upload-button:hover {
-            opacity: 1
-        }
-
-        #personalinfo {
-            background: #f5e3cb !important;
-            border: 1px solid #ec511330 !important;
-            border-radius: 5%;
-            padding: 15px;
-            margin: 0.5rem;
-            color: #000000;
-            font-size: 2.5vh;
-            font-weight: bold;
-            color: #f37f52 !important;
-        }
-
-        #create_prof {
-            font-size: 3vh;
-            font-weight: bold;
-            color: #f37f52 !important;
-            text-align: center;
-            justify-content: center;
-            text-shadow: 1px 0px yellow, 2px 0px 1px yellow, 1px 1px yellow, 1px 1px yellow, 2px 2px yellow, 2px 2px 1px #f37f52, 2px 0.5px 2px #f37f52;
-        }
-
-    </style>
-</head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles/my_style.css">
+    <link rel="stylesheet" href="styles/edit_profile.css">
+   </head>
 
 <body>
-
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
     <!-- Header Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
         <div class="container-fluid">
             <a class="navbar-brand" href="./frontpage.html">HE J!</a>
         </div>
-    </nav>
-
-    <!-- welcome and main part of the page -->
-    <br>
-    
+    </nav><br>
     <div class="container">
         <div class="team-single">
             <div class="row">
@@ -169,7 +54,6 @@
                         <div class="card">
                             <div class="card-body">
                                 <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
-                                <!-- Welcome <span id="name-goes-here"></span> -->
                                 <input type="file" id="profile-img-file" style="display:none" accept="image/*">
                             </div>
                         </div>
@@ -205,9 +89,6 @@
                 </fieldset>
 
                 <div class="d-flex mt-5 align-items-center justify-content-center">
-
-                    <!-- <button type="button" class="btn btn-danger" onclick="editUserInfo()">Edit</button>
-                    <span style="width: 10px"></span> -->
                     <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
                 </div>
             </form>
@@ -225,218 +106,6 @@
 
         </footer>
   </div>
-            <!----------------------------------------------->
-            <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
-            <!----------------------------------------------->
-            <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-            </script>
-            <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
-            <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
-
-            <!--------------------------------------------------------------------->
-            <!-- JS files: Your o   wn JavaScript functions included here    -->
-            <!--------------------------------------------------------------------->
-
-            <script>
-                var currentUser;
-
-                function populateInfo() {
-                    firebase.auth().onAuthStateChanged(user => {
-                        // Check if user is signed in:
-                        if (user) {
-                            currentUser = db.collection("users").doc(user.uid)
-                            currentUser.get()
-                                .then(userDoc => {
-                                    //get the data fields of the user
-                                    var userName = userDoc.data().name;
-                                    var userAge = userDoc.data().age;
-                                    var userDescription = userDoc.data().description;
-
-                                    //if the data fields are not empty, then write them in to the form.
-                                    if (userName != null) {
-                                        document.getElementById("nameInput").value = userName;
-                                    }
-                                    if (userAge != null) {
-                                        document.getElementById("ageInput").value = userAge;
-                                    }
-                                    if (userDescription != null) {
-                                        document.getElementById("descriptionInput").value = userDescription;
-                                    }
-                                })
-                        } else {
-                            // No user is signed in.
-                            console.log("No user is signed in");
-                        }
-                    });
-                }
-                populateInfo();
-
-                function editUserInfo() {
-                    document.getElementById("personalinfo").disabled = false;
-                }
-
-                function saveUserInfo() {
-                    name = document.getElementById('nameInput').value;
-                    age = document.getElementById('ageInput').value;
-                    description = document.getElementById('descriptionInput').value;
-                    //profilePic = document.getElementById('profile-img').value;
-                    //write the value in the database:
-                    currentUser.update({
-                        //below means field of 'name' in firebase store - data from firestore
-                        name: name,
-                        age: age,
-                        description: description,
-                    }).then(goHome());
-                }
-
-                function goHome() {
-            setTimeout(() => window.location.href = "frontpage.html?", 800)
-        }
-
-                function insertName() {
-                    firebase.auth().onAuthStateChanged(user => {
-                        // Check if user is signed in:
-                        if (user) {
-                            currentUser = db.collection("users").doc(user.uid)
-                            currentUser.get()
-                                .then(userDoc => {
-                                    var user_Name = userDoc.data().name;
-                                    //console.log(user_Name);
-                                    //document.getElementById("username").innerText = n;                     
-                                    //using javascript
-                                    //$("#name-goes-here").text(userName); //using jquery
-                                })
-                        } else {
-                            // No user is signed in.
-                        }
-                    });
-                }
-                insertName();
-
-
-                function insertAge() {
-                    firebase.auth().onAuthStateChanged(user => {
-                        // Check if user is signed in:
-                        if (user) {
-                            currentUser = db.collection("users").doc(user.uid)
-                            //get the document for current user.
-                            currentUser.get()
-                                .then(userDoc => {
-                                    var user_Age = userDoc.data().age;
-                                    //console.log(user_Name);
-                                    //document.getElementById("username").innerText = n;                     
-                                    //using javascript
-                                    $("#age-goes-here").text(user_Age); //using jquery
-                                })
-                        } else {
-                            // No user is signed in.
-                        }
-                    });
-                }
-                insertAge();
-
-                function insertDescription() {
-                    firebase.auth().onAuthStateChanged(user => {
-                        // Check if user is signed in:
-                        if (user) {
-                            currentUser = db.collection("users").doc(user.uid)
-                            currentUser.get()
-                                .then(userDoc => {
-                                    var user_Description = userDoc.data().description;
-
-                                    //document.getElementById("description-goes-here").innerText = n;                     
-                                    //using javascript
-                                    $("#description-goes-here").text(user_Description); //using jquery
-
-                                })
-                        } else {
-                            // No user is signed in.
-                        }
-                    });
-                }
-                insertDescription();
-
-                function uploadUserProfilePic() {
-
-                    firebase.auth().onAuthStateChanged(function (user) {
-                        var fileInput = document.getElementById("profile-img-file"); // pointer #1
-                        const image = document.getElementById("profile-img"); // pointer #2
-
-                        // listen for file selection
-                        fileInput.addEventListener('change', function (e) {
-                            var file = e.target.files[0];
-                            var blob = URL.createObjectURL(file);
-                            image.src = blob; // display this image
-
-                            //store using this name
-
-                            //*****************************************************
-                            //*********************************************************
-                            //JIn's opinion: The storageRef is referencing to a file that does not exists with in the storage.
-                            //try copying a file in the storage to have the same name, and then put the new Item in to it.
-                            var storageRef = storage.ref("images/" + user.uid + ".jpg");
-
-                            storageRef.put(file)
-                                .then(function () {
-                                    console.log('Uploaded to Cloud Storage.');
-                                })
-
-                            storageRef.getDownloadURL()
-                                .then(function (url) { // Get URL of the uploaded file
-                                    console.log(url); // Save the URL into users collection
-                                    db.collection("users").doc(user.uid).update({
-                                            "profilePic": url
-                                        })
-                                        .then(function () {
-                                            console.log('Added Profile Pic URL to Firestore.');
-                                        })
-                                })
-                        })
-                    })
-                }
-                uploadUserProfilePic();
-
-
-                function showUploadedPicture() {
-                    const fileInput = document.getElementById("profile-img-file"); // pointer #1
-                    const image = document.getElementById("profile-img"); // pointer #2
-
-                    //attach listener to input file
-                    //when this file changes, do something
-                    fileInput.addEventListener('change', function (e) {
-
-                        //the change event returns a file "e.target.files[0]"
-                        var img_file = URL.createObjectURL(e.target.files[0]);
-
-                        //change the DOM img element source to point to this file
-                        //assign the "src" property of the "img" tag
-                        image.src = img_file;
-                    })
-                }
-                showUploadedPicture();
-
-                function displayUserProfilePic() {
-                    //console.log("hi");
-                    firebase.auth().onAuthStateChanged(function (user) { //get user object
-                        db.collection("users").doc(user.uid) //use user's uid
-                            .get() //READ the doc
-                            .then(function (doc) {
-                                var picUrl = doc.data().profilePic; //extract pic url
-
-                                // use this line if "mypicdiv" is a "div"
-                                //$("#profile-img").append("<img src='" + picUrl + "'>")
-
-                                // use this line if "mypic-goes-here" is an "img" 
-                                $("#profile-img").attr("src", picUrl);
-                            })
-                    })
-                }
-                displayUserProfilePic();
-            </script>
 
 </body>
 
