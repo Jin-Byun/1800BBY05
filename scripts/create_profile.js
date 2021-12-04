@@ -24,7 +24,6 @@ function populateInfo() {
         }
     });
 }
-populateInfo();
 
 function editUserInfo() {
     document.getElementById("personalinfo").disabled = false;
@@ -54,7 +53,6 @@ function insertName() {
         }
     });
 }
-insertName();
 
 
 function insertAge() {
@@ -70,7 +68,6 @@ function insertAge() {
         }
     });
 }
-insertAge();
 
 function insertDescription() {
     firebase.auth().onAuthStateChanged(user => {
@@ -87,7 +84,6 @@ function insertDescription() {
         }
     });
 }
-insertDescription();
 
 function uploadUserProfilePic() {
 
@@ -118,7 +114,6 @@ function uploadUserProfilePic() {
         })
     })
 }
-uploadUserProfilePic();
 
 function goHome() {
 setTimeout(() => window.location.href = "frontpage.html?", 800)
@@ -132,7 +127,6 @@ function showUploadedPicture() {
         image.src = img_file;
     })
 }
-showUploadedPicture();
 
 function displayUserProfilePic() {
     firebase.auth().onAuthStateChanged(function (user) { 
@@ -144,4 +138,3 @@ function displayUserProfilePic() {
             })
     })
 }
-displayUserProfilePic();

@@ -24,7 +24,7 @@ var currentUser;
                         }
                     });
                 }
-                populateInfo();
+                
 
                 function editUserInfo() {
                     document.getElementById("personalinfo").disabled = false;
@@ -58,7 +58,7 @@ var currentUser;
                         }
                     });
                 }
-                insertName();
+                
 
 
                 function insertAge() {
@@ -75,7 +75,7 @@ var currentUser;
                         }
                     });
                 }
-                insertAge();
+                
 
                 function insertDescription() {
                     firebase.auth().onAuthStateChanged(user => {
@@ -92,7 +92,7 @@ var currentUser;
                         }
                     });
                 }
-                insertDescription();
+                
 
                 function uploadUserProfilePic() {
 
@@ -123,7 +123,7 @@ var currentUser;
                         })
                     })
                 }
-                uploadUserProfilePic();
+                
 
                 function showUploadedPicture() {
                     const fileInput = document.getElementById("profile-img-file"); 
@@ -133,7 +133,7 @@ var currentUser;
                         image.src = img_file;
                     })
                 }
-                showUploadedPicture();
+                
 
                 function displayUserProfilePic() {
                     firebase.auth().onAuthStateChanged(function (user) { 
@@ -145,4 +145,4 @@ var currentUser;
                             })
                     })
                 }
-                displayUserProfilePic();
+                

@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles/my_style.css">
     <link rel="stylesheet" href="styles/edit_profile.css">
-   </head>
+</head>
 
 <body>
     <!-- Header Navigation Bar -->
@@ -68,45 +68,54 @@
 
     <div class="container ">
         <h1></h1><span id="add-user-form"></span>
-            <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
+        <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
 
-            <form><br>
-                <fieldset class="mb-3" id="personalinfo">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
-                    </div>
-                    <div class="form-group">
-                        <label>Favourite Quote</label>
-                        <input type="text" id="descriptionInput" class="form-control"
-                            placeholder="Add your favourite quote">
-                    </div>
-
-                </fieldset>
-
-                <div class="d-flex mt-5 align-items-center justify-content-center">
-                    <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
+        <form><br>
+            <fieldset class="mb-3" id="personalinfo">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
                 </div>
-            </form>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
+                </div>
+                <div class="form-group">
+                    <label>Favourite Quote</label>
+                    <input type="text" id="descriptionInput" class="form-control"
+                        placeholder="Add your favourite quote">
+                </div>
+
+            </fieldset>
+
+            <div class="d-flex mt-5 align-items-center justify-content-center">
+                <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
+            </div>
+        </form>
 
     </div>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div class="fixed-bottom">
         <footer class="navbar-bottom">
-          
+
             <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
             <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
             <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
 
 
         </footer>
-  </div>
+    </div>
 
+    <script>
+        populateInfo();
+        insertName();
+        insertAge();
+        insertDescription();
+        uploadUserProfilePic();
+        showUploadedPicture();
+        displayUserProfilePic();
+    </script>
 </body>
 
 </html>

@@ -32,9 +32,10 @@
     <script src="scripts/create_profile.js"></script>
 
     <link rel="stylesheet" href="styles/my_style.css" />
-    <link rel="stylesheet"  href="styles/create_profile.css">
+    <link rel="stylesheet" href="styles/create_profile.css">
 
 </head>
+
 <body>
 
     <!-- Header Navigation Bar -->
@@ -61,63 +62,71 @@
                     <div class="container text-center col-md-4 col-md-offset-4">
                         <div class="card">
                             <div class="card-body">
-                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100"/>
-                                <input type="file" id="profile-img-file"  style="display:none" accept="image/*">
+                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
+                                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
                             </div>
                         </div>
-                        
+
                         <button onclick="document.getElementById('profile-img-file').click()" id="upload-button">Upload
                             Photo</button>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 
     <div class="container ">
         <h1></h1><span id="add-user-form"></span>
-            <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
+        <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
 
-            <form><br>
-                <fieldset class="mb-3" id="personalinfo">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label>Age</label>
-                        <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
-                    </div>
-                    <div class="form-group">
-                        <label>Favourite Quote</label>
-                        <input type="text" id="descriptionInput" class="form-control"
-                            placeholder="Add your favourite quote">
-                    </div>
-
-                </fieldset>
-
-                <div class="d-flex mt-5 align-items-center justify-content-center">
-                    <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
+        <form><br>
+            <fieldset class="mb-3" id="personalinfo">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
                 </div>
-            </form>
-
-            <br> <br>
-
-            <div class="fixed-bottom py-3 bg-secondary align-items-center">
-                <div class="container text-center py-0">
-                    <footer class="navbar bg-secondary fixed-bottom py-0">
-
-                        <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-                        <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
-                        <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
-
-                    </footer>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
                 </div>
+                <div class="form-group">
+                    <label>Favourite Quote</label>
+                    <input type="text" id="descriptionInput" class="form-control"
+                        placeholder="Add your favourite quote">
+                </div>
+
+            </fieldset>
+
+            <div class="d-flex mt-5 align-items-center justify-content-center">
+                <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
             </div>
+        </form>
+
+        <br> <br>
+
+        <div class="fixed-bottom py-3 bg-secondary align-items-center">
+            <div class="container text-center py-0">
+                <footer class="navbar bg-secondary fixed-bottom py-0">
+
+                    <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+                    <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+                    <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
+
+                </footer>
+            </div>
+        </div>
     </div>
 
-            
-            
+    <script>
+        populateInfo();
+        insertName();
+        insertAge();
+        insertDescription();
+        uploadUserProfilePic();
+        showUploadedPicture();
+        displayUserProfilePic();
+    </script>
+
 </body>
 
 </html>
