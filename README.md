@@ -13,3 +13,6 @@ Hej also rewards the user with attractive badges. The user can gain their first 
 ======================================================================
 
 Jin, Basil, Ryan
+
+Team 5 BBY
+COMP 1800
