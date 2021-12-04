@@ -1,0 +1,223 @@
+table {
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+p {
+  margin: 0;
+}
+
+p:nth-child(1) {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+th {
+  font-size: 1.1rem;
+  border-bottom: 2px solid orangered;
+}
+
+th:nth-child(1) {
+  width: 56%;
+}
+
+th:nth-child(2) {
+  width: 22%;
+  text-align: center;
+}
+
+th:nth-child(3) {
+  width: 22%;
+  text-align: center;
+}
+
+td:nth-child(1) {
+  width: 56%;
+}
+
+td:nth-child(2) {
+  width: 22%;
+  text-align: center;
+}
+
+td:nth-child(3) {
+  width: 22%;
+  text-align: center;
+}
+
+#reminders-go-here {
+  margin-top: 2%;
+  border-bottom: 2px solid orangered;
+}
+
+.textblock {
+  border: 2px solid orangered;
+  margin-bottom: 4%;
+  padding: 2%;
+}
+
+.weekend {
+  color: red;
+}
+
+.bttn {
+  cursor: pointer;
+  display: inline-block;
+  width: 50%;
+  background: rgba(255, 0, 0, 0.5);
+  font-family: inherit;
+  font-size: 16px;
+  border: 1px solid #f37f5230;
+  border-radius: 5%;
+}
+
+.bttn:focus {
+  outline: 0;
+
+}
+
+.bttn:active {
+  transform: scale(0.98);
+}
+
+#app-calendar {
+  width: 88vw;
+  max-width: 80vh;
+  margin: 0 auto;
+  display: grid;
+  overflow: hidden;
+  text-align: center;
+  column-gap: 2px;
+  row-gap: 4px;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 9% repeat(6, 1fr);
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: rgba(0, 0, 0, 0.7) solid 2px;
+  border-radius: 50%;
+  font-size: 12pt;
+  height: 100%;
+}
+
+.xtrablock {
+  height: 100%;
+}
+
+.weekend {
+  color: red;
+}
+
+.date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ivory;
+  margin: auto 0;
+  line-height: 100%;
+  border-radius: 10px;
+  border: black solid 1px;
+  font-size: 10pt;
+  font-weight: 800;
+  height: 100%;
+}
+
+.today {
+  color: black;
+  text-shadow: 1px 0px #f37f52, 2px 0px 1px #f37f52, 2px 1px #f37f52, 1px 1px #f37f52, 2px 2px #f37f52, 3px 3px 1px black, 3px 0.5px 2px black;
+  font-size: 15pt;
+  font-weight: bold;
+  border: solid green 2px;
+  text-decoration: none;
+}
+
+.day {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+}
+
+.rem1,
+.rem2 {
+  background-color: rgba(0, 255, 0, 0.4);
+}
+
+.rem3,
+.rem4 {
+  background-color: rgba(255, 255, 0, 0.6);
+}
+
+.rem5,
+.rem6 {
+  background-color: rgba(255, 0, 0, 0.8);
+  color: yellow;
+  border-color: black;
+}
+
+.rem7 {
+  background-color: rgba(0, 0, 0, 1);
+  color: black;
+  border-color: gray;
+  text-shadow: 0 0 6px whitesmoke;
+}
+
+.toprow {
+  display: grid;
+  width: 88vw;
+  max-width: 80vh;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-inline: auto;
+  text-align: center;
+  grid-template-columns: 6% 88% 6%;
+}
+
+.btntop {
+  line-height: 0;
+  padding-top: 0.4vh;
+  font-size: 2vh;
+  font-weight: 800;
+  padding-inline: 0;
+}
+
+#date {
+  line-height: 1.5;
+  padding-bottom: 0;
+  font-size: clamp(2.35vh, 5vw, 1.6rem);
+  font-weight: 700;
+}
+
+#prev {
+  grid-column: 1 / span 1;
+  margin-right: auto;
+}
+
+#next {
+  grid-column: 3 / span 1;
+  margin-left: auto;
+}
+
+#history {
+  padding-bottom: 45px;
+}
+
+#history > .col {
+  margin-inline: 0.5rem;
+}
+
+.col > h1 {
+  margin-bottom: 4%;
+  margin-left: 2%;
+}
+
+#reminderContainer > h1 {
+  margin-left: 0.7rem; 
+  }
+
+h6 {
+  text-decoration: orangered underline 1px;
+}

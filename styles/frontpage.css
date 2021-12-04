@@ -1,0 +1,89 @@
+table {
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+p {
+  margin: 0;
+}
+
+p:nth-child(1) {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+th {
+  font-size: 1.1rem;
+  border-bottom: 2px solid orangered;
+}
+
+th:nth-child(1) {
+  width: 60%;
+}
+
+th:nth-child(2) {
+  width: 40%;
+  text-align: center;
+}
+
+td:nth-child(1) {
+  width: 60%;
+}
+
+td:nth-child(2) {
+  width: 40%;
+  text-align: center;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.text-center {
+  border: solid 2px #f37f52;
+}
+
+#counter {
+  font-size: 1.9rem;
+}
+
+#counter + span {
+  font-size: 2rem; 
+  line-height: 110%;
+}
+
+#quote {
+  border: 2px solid #f37f52;
+  padding: 2%;
+}
+
+#quote > .col {
+  margin-inline: 0.7rem;
+}
+
+.col > h1 {
+  margin-bottom: 4%;
+}
+
+#reminderContainer {
+  border: 2px solid #f37f52;
+}
+
+#reminderContainer > h1 {
+  margin-left: 0.7rem; 
+  margin-top: 1.5%; 
+  margin-bottom: 2%;;
+}
+
+#isEmpty-go-here {
+  text-align: center; 
+  margin: 3%;
+}
+
+#author-goes-here {
+  text-align: right; 
+  font-style: italic;
+}

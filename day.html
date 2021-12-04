@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Hej!</title>
+    <title>HEJ!</title>
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="author" content="BCIT">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
@@ -26,174 +26,14 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
 
-    <!-- Link to the api keys for your firebase project -->
     <script src="scripts/firebaseAPI.js"></script>
 
-    <!-- Optional styles and scripts of your own -->
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+        <!-- Optional styles and scripts of your own -->
     <link rel="stylesheet" href="styles/my_style.css">
-
-    <style>
-        html,
-        body {
-            height: 100%;
-            width: 100%;
-        }
-
-        section {
-            margin: 0%;
-            height: 40vh;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .clock {
-            height: 40vh;
-            width: 40vh;
-            border-radius: 50%;
-            border: 5px solid #f37f52;
-            display: grid;
-            grid-template-columns: 1;
-            grid-template-rows: 1;
-        }
-
-        span {
-            position: absolute;
-            color: whitesmoke;
-            background-color: #f37f52;
-            border-radius: 30%;
-            text-shadow: 0 0 3px black;
-            transform-origin: top left;
-            grid-row: 1;
-            grid-column: 1;
-        }
-
-        .clock>.cap,
-        .hour,
-        .minute {
-            grid-column: 1;
-            grid-row: 1;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            border: 2px solid rgba(0, 0, 0, 0.3);
-            transform: rotate(-90deg);
-            transform-origin: left;
-            background-color: #f37f52;
-        }
-
-        .clock>canvas {
-            position: relative;
-            grid-column: 1;
-            grid-row: 1;
-            transform: rotate(0.5deg);
-            z-index: -1;
-        }
-
-        .cap {
-            top: 50%;
-            width: 7px;
-            height: 7px;
-            background-color: #f37f52 !important;
-            border-radius: 50%;
-        }
-
-        .hour {
-            width: 30%;
-            height: 5px;
-        }
-
-        .minute {
-            width: 45%;
-            height: 3px;
-        }
-
-
-        #reminderContainer {
-            margin-bottom: 15%;
-            padding-bottom: 15%;
-        }
-
-        table {
-            width: 100%;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        p:nth-child(1) {
-            font-weight: bold;
-            font-size: 1rem;
-        }
-
-        th {
-            font-size: 1.1rem;
-            border-bottom: 2px solid orangered;
-        }
-        th:nth-child(1) {
-            width: 56%;
-        }
-
-        th:nth-child(2) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
-
-        th:nth-child(3) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
-        
-        td:nth-child(1) {
-            width: 56%;
-            /* margin-inline: auto; */
-        }
-
-        td:nth-child(2) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
-
-        td:nth-child(3) {
-            width: 22%;
-            text-align: center;
-            /* margin-inline: auto; */
-        }
-
-        #reminders-go-here {
-            margin-top: 2%;
-            margin-bottom: 5%;
-        }
-
-        .bttn {
-    cursor: pointer;
-    display: inline-block;
-    width: 50%;
-    background: rgba(255, 0, 0, 0.5);
-    font-family: inherit;
-    font-size: 16px;
-    border: 1px solid #f37f5230;
-    border-radius: 5%;
-}
-
-.bttn:focus {
-    outline: 0;
-
-} 
-
-.bttn:active {
-    transform: scale(0.98);
-}
-
-    </style>
+    <link rel="stylesheet" href="styles/day.css">
 
 </head>
 
@@ -241,7 +81,7 @@
     <br />
 
     <div class="container" id="reminderContainer">
-        <h3 id="to_do_date" style="margin-left: 4%;"></h3>
+        <h3 id="to_do_date"></h3>
         <!-- Here is container for cards  -->
         <div class="container">
             <table>
@@ -259,10 +99,10 @@
 
           <div class="fixed-bottom">
     <footer class="navbar-bottom">
-            
-        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
-        <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
+
+        <a id="first-icon" href="calendar.html" class="bi bi-calendar-date"></a>
+        <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle"></a>
+        <a id="third-icon" href="profile_user.html" class="bi bi-person"></a>
 
 
     </footer>
@@ -270,264 +110,11 @@
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
+    <script src="scripts/day.js"></script>
+    
     <script>
-        var userID;
-        var count = 0;
-        var reminderList = [];
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September",
-            "October", "November", "December"
-        ]
-        const ang2rad = (angle) => {
-            return angle * (Math.PI / 180);
-        };
-        const diameter = document.querySelector(".clock").offsetWidth;
-        const radius = diameter / 2;
-        const clock = document.querySelector(".clock");
-        const time = ['00', '04', '08', '12', '16', '20'];
-        const collist = ["#00ff0080", "#00ff0080", "#ffff0080", "#ffff0080", "#ff000080", "#ff000080", "#00000080",
-            "#00000080"
-        ]
-
-        let angle = -90;
-        const deltaAngle = 360 / time.length;
-
-        time.forEach(char => {
-            const charElement = document.createElement('span');
-            charElement.innerText = char;
-            const xPos = radius - 12 + radius * Math.cos(ang2rad(angle));
-            const yPos = radius - 14.5 + radius * Math.sin(ang2rad(angle));
-            const spread = `translate(${xPos}px, ${yPos}px)`;
-            charElement.style.transform = spread;
-            angle += deltaAngle;
-            clock.appendChild(charElement);
-        });
-
-        function counterUp(clickedid) {
-            let urlstring = new URL(window.location.href);
-            let stringSplit = urlstring.searchParams.get("uid").split('?');
-            let currUID = stringSplit[0];
-            console.log(currUID);
-            let disable = document.createAttribute("disabled");
-            document.getElementById(clickedid).setAttributeNode(disable);
-            db.collection("users").doc(currUID).get().then(query => {
-                let thing = query.data();
-                // let tmp = thing.data();
-                console.log(thing);
-                thing.counter += 1;
-                console.log(thing);
-                query.ref.update(thing);
-            });
-        }
-
-        function removeReminder(clickedid) {
-            let remNum = clickedid.substring('cremove'.length);
-            let remID = document.getElementById('ctitle' + remNum);
-            let remContent = remID.innerHTML.split('</p>')[0].substring('<p>'.length);
-            db.collection("reminders").where("Name", "==", remContent).limit(1).get().then(query => {
-                let thing = query.docs[0];
-                let tmp = thing.data();
-                tmp.Active = false;
-                // console.log(tmp);
-                thing.ref.update(tmp);
-                document.getElementById("reminders-go-here").innerHTML = "";
-                    let elem = document.getElementsByTagName("canvas");
-                    while(elem[0]){
-                        elem[0].parentNode.removeChild(elem[0])
-                    }
-                getReminder();
-                });
-        }
-        //-------------------------
-        //the hands of the clock
-        //-------------------------
-        const hrE1 = document.querySelector(".hour");
-        const minE1 = document.querySelector(".minute");
-        var date = new Date;
-        var hrdeg = date.getHours() / 24 * 360 - 90;
-        var mindeg = date.getMinutes() / 60 * 360 - 90;
-        minE1.style.transform = `rotate(${mindeg}deg)`;
-        hrE1.style.transform = `rotate(${hrdeg}deg)`;
-        setInterval(() => {
-            date = new Date;
-            hrdeg = date.getHours() / 24 * 360 - 90 + (date.getMinutes() / (24 * 60) * 360);
-            mindeg = date.getMinutes() / 60 * 360 - 90;
-            minE1.style.transform = `rotate(${mindeg}deg)`;
-            hrE1.style.transform = `rotate(${hrdeg}deg)`;
-        }, 1000)
-
-        function showDate() {
-            // create a URL object
-            let params = new URL(window.location.href);
-            let data = params.searchParams.get("uid").split('?'); // data[0] = uid, 1 = year, 2= month, 3 = date
-            let message = data[1] + " " + data[2] + " " + data[3];
-            document.getElementById("date-go-here").innerHTML = message;
-            let currentUser = db.collection("users").doc(data[0])
-            currentUser.get().then(userDoc => {
-                //get user name
-                fullName = userDoc.data().name.split(' ');
-                firstName = fullName[0];
-                let todoheading = firstName + ", " +
-                    (date.getFullYear() == data[1] && months[date.getMonth()] == data[2] && date.getDate() ==
-                        data[3] ? "for today" : "on " + (data[1] + " " + data[2] + " " + data[3])) + ":";
-                document.getElementById("to_do_date").innerHTML = todoheading;
-            })
-        }
-        getReminder();
-        showDate();
-
-        function makeScheduleArc(collection, int) {
-                clock.insertAdjacentHTML("afterbegin",
-                    `<canvas id="reminder${int}" width="${diameter}" height="${diameter}"></canvas>`);
-                let timeSplit = collection.Time.split(':');
-                let startangle = (parseInt(timeSplit[0]) / 24 * 360 - 90) * Math.PI / 180 + (parseInt(timeSplit[1]) / (60 * 24) * 2 * Math
-                    .PI);
-                let endangle = startangle + 1 / 24 * 2 * Math.PI;
-                let c = document.getElementById("reminder" + int);
-                let ctx = c.getContext('2d');
-                ctx.fillStyle = collist[int];
-                ctx.beginPath();
-                ctx.moveTo(radius, radius);
-                ctx.arc(radius - 6, radius - 6, radius - 2, startangle, endangle, false);
-                ctx.lineTo(radius, radius);
-                ctx.fill();
-                ctx.stroke();
-                ctx.closePath();
-            
-        }
-
-        //unnecessary.
-
-        function getReminder() {
-            let params = new URL(window.location.href);
-            let datedata = params.searchParams.get("uid").split('?');
-            let year = datedata[1];
-            let month = months.indexOf(datedata[2]);
-            let date = datedata[3];
-            firebase.auth().onAuthStateChanged(user => {
-                if (user) {
-                    userID = user.uid;
-                    var activities = [];
-                    var reminderRef = db.collection("reminders");
-                    reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
-                        .then((querySnapshot) => {
-                            querySnapshot.forEach((doc) => {
-                                activities.push(doc.data());
-                                //             // doc.data() is never undefined for query doc snapshots
-                            });
-                            reminderList = [];
-                            let dailies = [];
-                            let weeklies = [];
-                            let biweeklies = [];
-                            activities.forEach(element => {
-                                if (element.Frequency == "Daily") {
-                                    dailies.push(element);
-                                } else if (element.Frequency == "Weekly") {
-                                    weeklies.push(element);
-                                } else {
-                                    biweeklies.push(element);
-                                }
-                            });
-                            // console.log(dailies);
-                            for (let i = 0; i < dailies.length; i++) {
-                                if (year > new Date(dailies[i].TimeStamp).getFullYear() || (year ==
-                                        new Date(dailies[i].TimeStamp).getFullYear() &&
-                                        month > new Date(dailies[i].TimeStamp).getMonth())) {
-                                    reminderList.push(dailies[i]);
-                                    
-                                } else if (year == new Date(dailies[i].TimeStamp).getFullYear() && month ==
-                                    new Date(dailies[i].TimeStamp).getMonth()) {
-                                    reminderList.push(dailies[i]);
-                                    }
-                            }
-                            for (let i = 0; i < weeklies.length; i++) {
-                                if (year > new Date(weeklies[i].TimeStamp).getFullYear() || (year ==
-                                        new Date(weeklies[i].TimeStamp).getFullYear() &&
-                                        month > new Date(weeklies[i].TimeStamp).getMonth())) {
-                                    if (new Date(year, month, date).getDay() == new Date(weeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        reminderList.push(weeklies[i]);
-                                        }
-                                } else
-                                if (year == new Date(weeklies[i].TimeStamp).getFullYear() && month ==
-                                    new Date(weeklies[i].TimeStamp).getMonth()) {
-                                    if (new Date(year, month, date).getDay() == new Date(weeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        reminderList.push(weeklies[i]);
-                                        }
-                                }
-                            }
-                            for (let i = 0; i < biweeklies.length; i++) {
-                                if (year > new Date(biweeklies[i].TimeStamp).getFullYear() || (year ==
-                                        new Date(biweeklies[i].TimeStamp).getFullYear() &&
-                                        month > new Date(biweeklies[i].TimeStamp).getMonth())) {
-                                    if (new Date(year, month, date).getDay() == new Date(biweeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        if (((Math.floor(new Date(year, month, date))) - Math.floor(
-                                                new Date(new Date(biweeklies[i].TimeStamp)
-                                                .getFullYear(), new Date(biweeklies[i].TimeStamp)
-                                                    .getMonth(), new Date(biweeklies[i].TimeStamp)
-                                                    .getDate()))) % 14 == 0) {
-                                            reminderList.push(biweeklies[i]);
-                                            }
-                                    }
-                                } else
-                                if (year == new Date(biweeklies[i].TimeStamp).getFullYear() && month ==
-                                    new Date(biweeklies[i].TimeStamp).getMonth()) {
-                                    if (new Date(year, month, date).getDay() == new Date(biweeklies[i]
-                                            .TimeStamp).getDay()) {
-                                        if ((Math.floor(new Date(year, month, date)) - Math.floor(new Date(
-                                                new Date(biweeklies[i].TimeStamp).getFullYear(),
-                                                new Date(biweeklies[i].TimeStamp).getMonth(),
-                                                new Date(biweeklies[i].TimeStamp).getDate()))) % 14 == 0) {
-                                            reminderList.push(biweeklies[i]);
-                                            
-                                        }
-                                    }
-                                }
-                            }
-                            displayRems(reminderList);
-                        })
-                        
-                } else {
-                    //     // User is signed out
-                    //     // ...
-                }
-                // console.log(reminderList);
-            });
-        }
-
-        function displayRems(list) {
-                    // console.log(list);
-                    var j = 1;
-                    let urlstring = new URL(window.location.href);
-                    let stringSplit = urlstring.searchParams.get("uid").split('?');
-                    for (let i = 0; i < list.length; i++) {//iterate thru each doc
-                        makeScheduleArc(list[i], j);
-                        
-                        let reminder = list[i].Name;
-                        let startTime = list[i].Time;
-                        let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime.split(':')[0]) + 1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' + startTime.split(':')[1];
-                        let newcard = CardTemplate.content.cloneNode(true);
-
-                        // //update title and text and image
-                        newcard.querySelector('.card-title').innerHTML = `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
-                        // //updates href, so we can click.
-                        
-                        // //give unique ids to all elements for future use
-                        let disable = document.createAttribute("disabled");
-                        if(parseInt(stringSplit[1]) > date.getFullYear() || (parseInt(stringSplit[1]) == date.getFullYear() && months.indexOf(stringSplit[2]) > date.getMonth()) || (parseInt(stringSplit[1]) == date.getFullYear() && months.indexOf(stringSplit[2]) == date.getMonth() && parseInt(stringSplit[3]) > date.getDate())) {
-                        newcard.querySelector('.form-check-input').setAttributeNode(disable);                                
-                        newcard.querySelector('.card-title').setAttribute("style", "color: rgba(0,0,0,0.4);");
-                        }
-                        newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-                        newcard.querySelector('.form-check-input').setAttribute("id", "cdone" + i);
-                        newcard.querySelector('.bttn').setAttribute("id", "cremove" + i);
-                        //attach to gallery
-                        document.getElementById("reminders-go-here").appendChild(newcard);
-                        j++;
-
-                    }
-                }
+    getReminder();
+    showDate();
     </script>
 
 </body>

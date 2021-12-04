@@ -35,63 +35,14 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/my_style.css">
+  <link rel="stylesheet" href="styles/frontpage.css">
+
 
 
 </head>
 
 <style>
-  table {
-    width: 100%;
-    margin-inline: 0;
-    padding-inline: 0;
-  }
 
-  p {
-    margin: 0;
-  }
-
-  p:nth-child(1) {
-    font-weight: bold;
-    font-size: 1rem;
-  }
-
-  th {
-    font-size: 1.1rem;
-    border-bottom: 2px solid orangered;
-  }
-
-  th:nth-child(1) {
-    width: 60%;
-  }
-
-  th:nth-child(2) {
-    width: 40%;
-    text-align: center;
-  }
-
-  td:nth-child(1) {
-    width: 60%;
-  }
-
-  td:nth-child(2) {
-    width: 40%;
-    text-align: center;
-  }
-
-  html,
-  body {
-    height: 100%;
-    width: 100%;
-  }
-
-  #quote {
-    border: 2px solid #f37f52;
-    padding: 2%;
-  }
-
-  #reminderContainer {
-    border: 2px solid #f37f52;
-  }
 </style>
 
 <body>
@@ -100,7 +51,7 @@
   <!-- The following is HTML for layout -->
   <!-------------------------------------->
   <!-- Header Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
       <a class="navbar-brand" href="./frontpage.html">HE J!</a>
     </div>
@@ -110,14 +61,13 @@
   <div class="jumbotron jumbotron-fluid my-2">
     <div class="container">
       <h1 class="display-4">Welcome <span id="name-goes-here"></span> </h1>
-      <p class="lead">
-      </p>
     </div>
   </div>
 
 
-  <div class="text-center py-2 px-2 mx-2" style="border: solid 2px #f37f52; ">
-    <h2>You've completed <span class="navbar-brand" id="counter" style="font-size: 1.9rem;"></span>reminders with <span class="navbar-brand" style="font-size: 2rem; line-height: 110%;">HE J!</span></h2>
+  <div class="text-center py-2 px-2 mx-2">
+    <h2>You've completed <span class="navbar-brand" id="counter"></span>reminders with <span class="navbar-brand">HE
+        J!</span></h2>
     <a href="#"></a>
   </div>
 
@@ -129,9 +79,10 @@
     </tr>
     <h2 class="card-isEmpty"></h2>
   </template>
+
+  <!-- Here is container for cards  -->
   <div class="mx-2 px-2 my-2" id="reminderContainer">
-    <h1 style="margin-left: 0.7rem; margin-top: 1.5%; margin-bottom: 2%;">Active Schedules</h1>
-    <!-- Here is container for cards  -->
+    <h1>Active Schedules</h1>
     <div>
       <table>
         <tr>
@@ -142,15 +93,15 @@
       <table id="reminders-go-here">
       </table>
     </div>
-    <div id="isEmpty-go-here" style="text-align: center; margin: 3%;"></div>
+    <div id="isEmpty-go-here"></div>
   </div>
 
   <div id="quote" class="mx-2">
-    <div class="col" style="margin-inline: 0.7rem;">
-      <h1 style="margin-bottom: 4%;">Quote of the Day:</h1>
+    <div class="col">
+      <h1>Quote of the Day:</h1>
       <div>
         <div id="quote-goes-here"></div>
-        <div id="author-goes-here" style="text-align: right; font-style: italic;"></div>
+        <div id="author-goes-here"></div>
       </div>
     </div>
   </div>
@@ -160,127 +111,24 @@
   <div class="fixed-bottom">
     <footer class="navbar-bottom ">
 
-      <a id="first-icon" href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-      <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle" style="font-size: 2em;"></a>
-      <a id="third-icon" href="profile_user.html" class="bi bi-person" style="font-size: 2em;"></a>
+      <a id="first-icon" href="calendar.html" class="bi bi-calendar-date"></a>
+      <a id="second-icon" href="create_schedule.html" class="bi bi-plus-circle"></a>
+      <a id="third-icon" href="profile_user.html" class="bi bi-person"></a>
 
 
     </footer>
 
   </div>
 
-  <!----------------------------------------------->
-  <!-- JS: Boostrap, Firebase, API related, add Jquery    -->
-  <!----------------------------------------------->
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-  </script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script> -->
-  <!-- Link to the api keys for your firebase project -->
-  <!-- <script src="scripts/firebase_api_elmo.js"></script> -->
-
   <!--------------------------------------------------------------------->
   <!-- JS files: Your own JavaScript functions included here    -->
   <!--------------------------------------------------------------------->
-
+  <script src="scripts/frontpage.js"></script>
   <script>
-    insertCounter(); // around line 370
-    displayRems(); // around line 296
-    insertName(); // around line 337
-    addQuote(); // around line 358
-    var today = new Date(Date.now());
-
-    //Create table row for showing reminders that the user had made.
-    function displayRems() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          userID = user.uid;
-          var activities = [];
-          var reminderRef = db.collection("reminders");
-          reminderRef.where("UserID", "==", userID).where("Active", "==", true).get()
-            .then((querySnapshot) => {
-              querySnapshot.forEach((doc) => {
-                activities.push(doc.data());
-              });
-              if (activities.length == 0) {
-                let newcard = CardTemplate.content.cloneNode(true);
-                newcard.querySelector('.card-isEmpty').innerText = "No active reminder!";
-                document.getElementById("isEmpty-go-here").appendChild(newcard);
-              } else {
-                activities.forEach(element => { //iterate thru each activity
-
-                  let reminder = element.Name;
-                  let startTime = element.Time;
-                  let endTime = (parseInt(startTime.split(':')[0]) + 1 == 24 ? "00" : (parseInt(startTime
-                      .split(':')[0]) + 1 < 10 ? "0" : "") + (parseInt(startTime.split(':')[0]) + 1)) + ':' +
-                    startTime.split(':')[1];
-                  let freq = element.Frequency;
-                  let isAlive = (element.Active ? "Active!" : "Not Active...");
-                  let newcard = CardTemplate.content.cloneNode(true);
-
-                  newcard.querySelector('.card-title').innerHTML =
-                    `<p>${reminder}</p><p>from ${startTime + "~" + endTime}</p>`;
-                  newcard.querySelector('.card-freq').innerHTML = freq;
-
-                  document.getElementById("reminders-go-here").appendChild(newcard);
-                })
-              }
-            })
-        }
-      });
-    }
-    //insert user's name in the welcome message.
-    function insertName() {
-      firebase.auth().onAuthStateChanged(user => {
-        // Check if user is signed in:
-        if (user) {
-          // Do something for the current logged-in user here: 
-          //go to the correct user document by referencing to the user uid
-          currentUser = db.collection("users").doc(user.uid);
-          //get the document for current user.
-          currentUser.get()
-            .then(userDoc => {
-              var user_Name = userDoc.data().name;
-              //method #1:  insert with html only
-              document.getElementById("name-goes-here").innerText = user_Name; //using javascript
-            })
-        } else {
-          // No user is signed in.
-        }
-      });
-    }
-    //insert quote of the day 
-    function addQuote() {
-      fetch("https://type.fit/api/quotes").then(function (response) {
-        return response.json();
-      }).then(function (data) {
-        let todayQ = data[(today.getMonth() + 1) * today.getDate()].text;
-        let todayA = data[(today.getMonth() + 1) * today.getDate()].author;
-
-        document.getElementById("quote-goes-here").innerHTML = todayQ;
-        document.getElementById("author-goes-here").innerHTML = todayA;
-
-      });
-    }
-    //insert the number of activities done.
-    function insertCounter() {
-      firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          db.collection("users").doc(user.uid).get().then(docs => {
-              document.getElementById("counter").innerText = docs.data().counter;
-            }
-
-
-          )
-        }
-      });
-    }
+    displayRems();
+    insertNameAndCounter();
+    addQuote();
   </script>
-
 </body>
 
 </html>
