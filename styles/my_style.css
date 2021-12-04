@@ -108,6 +108,7 @@ body {
 }
 
 footer>a {
+    font-size: 2rem;
     color: #f37f52;
     text-shadow: 1px 0px #f37f52, -1px 0px #f37f52, 0px 1px #f37f52, 0px -1px #f37f52;
 }
