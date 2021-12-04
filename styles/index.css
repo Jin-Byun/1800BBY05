@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-style.super-wide {
+    word-spacing: 0.2em;
+}
+
+.ripple {
+    background-color: #ffec82;
+    color: rgb(0, 0, 0);
+    border: solid 3px rgb(255, 192, 99);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 240%;
+    padding: 20px 30px;
+    overflow: hidden;
+    margin: 10px 0;
+    position: relative;
+    margin-top: 100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+}
+
+.ripple:focus {
+    outline: none;
+}
+
+.ripple .circle {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    animation: scale .5s ease-out;
+
+}
+
+@keyframes scale {
+    to {
+        transform: translate(-50%, -50%) scale(3);
+        opacity: 0;
+    }
+}

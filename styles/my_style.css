@@ -15,13 +15,13 @@
 
 
 #logo {
-    font-family: logo,  !important;
+    font-family: logo !important;
 }
 
 label,
 th,
 td {
-    font-family: heading,  !important;
+    font-family: heading !important;
 }
 
 h1,
@@ -30,20 +30,20 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: heading,  !important;
+    font-family: heading !important;
 }
 
 li {
-    font-family: body,  !important;
+    font-family: body !important;
 }
 
 #date,
 #app-calendar {
-    font-family: heading,  !important;
+    font-family: heading !important;
 }
 
 p {
-    font-family: body,  !important;
+    font-family: body  !important;
 }
 
 * {
@@ -79,6 +79,7 @@ body {
     position: fixed;
 }
 
+/* For bottom nav bar*/
 .navbar-bottom {
     display: grid;
 
@@ -88,7 +89,8 @@ body {
     border-top: solid 2px #f37f5230;
     border-left: solid 2px #f37f5230;
     border-right: solid 2px #f37f5230;
-}
+
+}/*Bottom navbar icons*/
 
 #first-icon {
     grid-column: 2;
@@ -111,9 +113,3 @@ footer>a {
 }
 
 
-/** Create New Schedule**/
-option1,
-option2,
-option3 {
-    display: inline-block;
-}
