@@ -2,130 +2,129 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>Hej!</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <title>Hej!</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="author" content="BCIT">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap, firebase-auth-ui -->
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-    <!-- Bootstrap FirebaseUI CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <!-- Bootstrap, firebase-auth-ui -->
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <!-- Bootstrap FirebaseUI CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
-    <!-- Google Icons (Material Design)-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
+  <!-- Google Icons (Material Design)-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 
-    <!-- Firebase 8 CDNs-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
-    </script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <!-- Firebase 8 CDNs-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+  </script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
 
-    <script src="scripts/firebaseAPI.js"></script>
-    <script src="scripts/create_profile.js"></script>
+  <script src="scripts/firebaseAPI.js"></script>
+  <script src="scripts/create_profile.js"></script>
 
-    <link rel="stylesheet" href="styles/my_style.css" />
-    <link rel="stylesheet" href="styles/create_profile.css">
+  <link rel="stylesheet" href="styles/my_style.css" />
+  <link rel="stylesheet" href="styles/create_profile.css">
 
 </head>
 
 <body>
 
-    <!-- Header Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="./index.html">HE J!</a>
-        </div>
-    </nav>
-
-    <!-- Main part of the page -->
-    <div id="firebaseui-auth-container"></div>
-    <br><br>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-        integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-    <div class="container">
-        <div class="team-single">
-            <div class="row">
-                <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
-                </div>
-                <span id="create_prof">Create Profile</span> <span id="name2-goes-here"></span>
-                <br>
-                <div class="team-single-img ">
-                    <div class="container text-center col-md-4 col-md-offset-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
-                                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
-                            </div>
-                        </div>
-
-                        <button onclick="document.getElementById('profile-img-file').click()" id="upload-button">Upload
-                            Photo</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- Header Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./index.html">HE J!</a>
     </div>
+  </nav>
 
-    <div class="container ">
-        <h1></h1><span id="add-user-form"></span>
-        <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
+  <!-- Main part of the page -->
+  <div id="firebaseui-auth-container"></div>
+  <br><br>
 
-        <form><br>
-            <fieldset class="mb-3" id="personalinfo">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
-                </div>
-                <div class="form-group">
-                    <label>Age</label>
-                    <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
-                </div>
-                <div class="form-group">
-                    <label>Favourite Quote</label>
-                    <input type="text" id="descriptionInput" class="form-control"
-                        placeholder="Add your favourite quote">
-                </div>
-
-            </fieldset>
-
-            <div class="d-flex mt-5 align-items-center justify-content-center">
-                <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
-            </div>
-        </form>
-
-        <br> <br>
-
-        <div class="fixed-bottom py-3 bg-secondary align-items-center">
-            <div class="container text-center py-0">
-                <footer class="navbar bg-secondary fixed-bottom py-0">
-
-                    <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
-                    <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
-                    <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
-
-                </footer>
-            </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+  <div class="container">
+    <div class="team-single">
+      <div class="row">
+        <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
         </div>
-    </div>
+        <span id="create_prof">Create Profile</span> <span id="name2-goes-here"></span>
+        <br>
+        <div class="team-single-img ">
+          <div class="container text-center col-md-4 col-md-offset-4">
+            <div class="card">
+              <div class="card-body">
+                <img id="profile-img" src="/images/avatar01.jpg" width="100" height="100" />
+                <input type="file" id="profile-img-file" style="display:none" accept="image/*">
+              </div>
+            </div>
 
-    <script>
-        populateInfo();
-        insertName();
-        insertAge();
-        insertDescription();
-        uploadUserProfilePic();
-        showUploadedPicture();
-        displayUserProfilePic();
-    </script>
+            <button onclick="document.getElementById('profile-img-file').click()" id="upload-button">Upload
+              Photo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container ">
+    <h1></h1><span id="add-user-form"></span>
+    <h4 class="font-size38 sm-font-size32 xs-font-size30"></h4>
+
+    <form><br>
+      <fieldset class="mb-3" id="personalinfo">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input type="text" id="ageInput" class="form-control" placeholder="Enter your age">
+        </div>
+        <div class="form-group">
+          <label>Favourite Quote</label>
+          <input type="text" id="descriptionInput" class="form-control" placeholder="Add your favourite quote">
+        </div>
+
+      </fieldset>
+
+      <div class="d-flex mt-5 align-items-center justify-content-center">
+        <a button type="button" class="btn btn-warning" onclick="saveUserInfo()">Save</a>
+      </div>
+    </form>
+
+    <br> <br>
+
+    <div class="fixed-bottom py-3 bg-secondary align-items-center">
+      <div class="container text-center py-0">
+        <footer class="navbar bg-secondary fixed-bottom py-0">
+
+          <a href="calendar.html" class="bi bi-calendar-date" style="font-size: 2em; "></a>
+          <a href="create_schedule.html" class="bi bi-plus-circle mx-3" style="font-size: 3em;"></a>
+          <a href="profile_user.html" i class="bi bi-person mx-3" style="font-size: 2em;"></a>
+
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    populateInfo();
+    insertName();
+    insertAge();
+    insertDescription();
+    uploadUserProfilePic();
+    showUploadedPicture();
+    displayUserProfilePic();
+  </script>
 
 </body>
 
