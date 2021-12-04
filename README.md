@@ -41,37 +41,34 @@ Content of the project folder:
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-        /icons
-            /activity.svg
-        /login.jpg
-        /list of avatars.jpg
+        /list of avatars.jpg # Folder for avatars and badges
         
 ├── scripts                         # Folder for scripts
         /firebase_api.js            # firebase API stuff, shared across pages
         /login_firebase.js          # JS for login.html
-        /calendar.js 
-        /create_profile.js
-        /create_schedule.js
-        /day.js
-        /edit_profile.js
-        /frontpage.js
-        /index.js
-        /login.js
-        /profile_user.js
-        /profiles.js
-        /redirect.js
+        /calendar.js 		    # JS for calendar.html
+        /create_profile.js	    # JS for create_profile.html
+        /create_schedule.js	    # JS for create_schedule.html
+        /day.js			    # JS for day.html
+        /edit_profile.js	    # JS for edit_profile.html
+        /frontpage.js		    # JS for frontpage.html
+        /index.js		    # JS for index.html
+        /login.js		    # JS for login.html
+        /profile_user.js	    # JS for profile_user.html
+        /profiles.js		    # JS for profiles.html
+        /redirect.js		    # JS for redirect.html
 
 ├── styles                          # Folder for styles
         /index.css                  # style for index.html
         /login.css                  # style for login.html
-        /frontpage.css              # style for frontpage.htm
-        /calendar.css
-        /create_profile.css
-        /create_schedule.css
-        /day.css
-        /edit_profile.css
-        /my_style.css
-        /profile_user.css
+        /frontpage.css              # style for frontpage.html
+        /calendar.css		    # style for calendar.html
+        /create_profile.css	    # style for create_profile.html
+        /create_schedule.css	    # style for create_schedule.html
+        /day.css		    # style for day.html
+        /edit_profile.css	    # style for edit_profile.html
+        /my_style.css		    # style for global styles
+        /profile_user.css	    # style for profile_user.html
 
 Firebase hosting files: 
 ├── .firebase
